@@ -1,4 +1,4 @@
-SQLite db = new SQLite(this, "users.sqlite" );
+
 class SQL {
   String getUser(String userName) {
     db.query("SELECT userName FROM Users WHERE userName='"+ userName + "'");
@@ -16,8 +16,9 @@ class SQL {
   //String getPassword() {
   //}
 
-  //void createUser() {
-  //}
+  void createUser(String userName, String password, int type) {
+    
+  }
 
   //String getQuestionName() {
   //}

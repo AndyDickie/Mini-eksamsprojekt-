@@ -1,11 +1,14 @@
 import controlP5.*;
 import java.security.*;
 import de.bezier.data.sql.*;
+SQLite db;
 
 void setup(){
-  //SQL sql = new SQL();
+  db = new SQLite(this, "users.sqlite" );
+  db.connect();
+  SQL sql = new SQL();
   
-  //println(sql.getUser("hello"));
+  println(sql.getUser("hello"));
 }
 
 
