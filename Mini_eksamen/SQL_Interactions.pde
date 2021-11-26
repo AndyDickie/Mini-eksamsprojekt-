@@ -1,5 +1,6 @@
 
 class SQL {
+  String signingSalt = "sQLLlerkk4221€€))";
   String getUser(String userName) {
     db.query("SELECT userName FROM Users WHERE userName='"+ userName + "'");
     String username = db.getString("userName");
@@ -16,11 +17,11 @@ class SQL {
     if (userType == 0)return "Elev";
     else return "Lærer";
   }
-  
+
   int getUserId(String userName) {
-   db.query("SELECT ID FROM users WHERE userName='"+ userName + "'"); 
-   int userId = db.getInt("ID");
-   return userId;
+    db.query("SELECT ID FROM users WHERE userName='"+ userName + "'");
+    int userId = db.getInt("ID");
+    return userId;
   }
 
   String getPassword(String userName) {
@@ -33,35 +34,55 @@ class SQL {
     password = hash(password);
     db.query("INSERT INTO users VALUES ('"+ userName + "', '"+ password + "'," + type +", null)");
   }
-  
-  void userJoinClass(int userId, String classID){
-  //Insæt getUserId når funktionen skal kaldes
-  db.query("UPDATE Klasser SET 'Username-ID'="+ userId +" WHERE Klassekode=" + classID);
+
+  void userJoinClass(int userId, String classID) {
+    db.query("INSERT INTO 'Elev-tilknytning' VALUES ('"+classID+"', " + userId + ")");
   }
 
   boolean login(String userName, String password) {
     password = hash(password);
     if (getUser(userName) == "") return false;
-      //text("user does not exist", width/2, height/10);
+    //text("user does not exist", width/2, height/10);
     if (password.equals(getPassword(userName))) return true;
     else return false;
   }
-  
-  void createClass(String className, int techerId){
+
+  void createClass(String className, int techerId) {
     int classId = int(random(100000, 999999+1));
-    db.query("INSERT INTO Klasser VALUES ('" + className + "', " + classId + ", null, null, " + techerId + ")");
+    db.query("INSERT INTO Klasser VALUES ('" + className + "', " + classId + ", null, " + techerId + ")");
   }
-    
-  
-  
+
+  String getClassID(String className) {
+    db.query("SELECT ID FROM Klasser WHERE Klassenavn='" + className + "'");
+    String classId = str(db.getInt("ID"));
+    return classId;
+  }
+
+
+
   //String getQuestionName() {
   //}
 
   //String getQuestionAnswer() {
   //}
-  
+
   //void addQuestion()
+
   
-  
-  
+  String hash(String input) {
+    try {
+      MessageDigest md = MessageDigest.getInstance("SHA-256");
+      String inputText = input + signingSalt;
+      md.update(inputText.getBytes());
+      byte[] byteList = md.digest();
+
+      StringBuffer hashedValueBuffer = new StringBuffer();
+      for (byte b : byteList)hashedValueBuffer.append(hex(b));
+      return hashedValueBuffer.toString();
+    }
+    catch (Exception e) {
+      System.out.println("Exception: "+e);
+    }
+    return null;
+  }
 }
