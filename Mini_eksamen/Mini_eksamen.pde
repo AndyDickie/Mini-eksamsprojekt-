@@ -10,7 +10,7 @@ void setup(){
   println(sql.getUser("hello"));
   println(sql.getUserType("hello"));
   println(sql.getPassword("hello"));
-  println(sql.login("hello", "1234"));
+  println(sql.login("hello", "123"));
   println(sql.getUserId("hello"));
   sql.userJoinClass(3, "622050");
 }
