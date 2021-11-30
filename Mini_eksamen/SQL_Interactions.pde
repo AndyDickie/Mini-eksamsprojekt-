@@ -52,12 +52,16 @@ class SQL {
     db.query("INSERT INTO Klasser VALUES ('" + className + "', " + classId + ", null, " + techerId + ")");
   }
 
-  String getClassID(String className) {
+  int getClassID(String className) {
     db.query("SELECT ID FROM Klasser WHERE Klassenavn='" + className + "'");
-    String classId = str(db.getInt("ID"));
+    int classId = db.getInt("ID");
     return classId;
   }
 
+  String getClassName(int classId){
+    db.query("SELECT Klassenavn FROM Klasser WHERE Klassekode=" + classId);
+    return db.getString("Klassenavn");
+  }
 
 
   //String getQuestionName() {
