@@ -17,6 +17,8 @@ void setup(){
   cp5 = new ControlP5(this);
   c = new Controller(0);
   println(c.getClassName(622050));
+  println(c.getUserClasses(1));
+  
   size(1000, 800);
   
   c.load();

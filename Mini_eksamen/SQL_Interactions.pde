@@ -62,6 +62,24 @@ class SQL {
     db.query("SELECT Klassenavn FROM Klasser WHERE Klassekode=" + classId);
     return db.getString("Klassenavn");
   }
+  
+  StringList getUserClasses(int userID){
+    StringList KlasseListe = new StringList();
+    String s = "SELECT \"Klasse-code\" FROM \"Elev-tilknytning\"";// WHERE \"Username-ID\"=" + userID;
+    String kc = "Klasse-code";
+    println(s);
+    db.query(s);
+   // int ting = db.getInt(kc);
+    while (db.next()){
+   int   ting = db.getInt(kc);
+   println("TING " + ting);
+   
+      //KlasseListe.append(getClassName(db.getInt(kc)));
+     // println(getClassName(db.getInt(kc)));
+      //println(ting);
+    }
+    return KlasseListe;
+  }
 
 
   //String getQuestionName() {
