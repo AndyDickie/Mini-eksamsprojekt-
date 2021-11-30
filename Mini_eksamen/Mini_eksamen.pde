@@ -23,7 +23,6 @@ void setup(){
   c = new Controller(0);
   println(c.getClassName(622050));
   size(1000, 800);
-  
   c.load();
 }
 

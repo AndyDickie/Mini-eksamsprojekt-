@@ -63,6 +63,9 @@ class SQL {
     return db_users.getString("Klassenavn");
   }
 
+  void createTest(String testName){
+    db_tests.query("INSERT INTO Test VALUES(null, '" + testName + "')");
+  }
 
   //String getQuestionName() {
   //}
