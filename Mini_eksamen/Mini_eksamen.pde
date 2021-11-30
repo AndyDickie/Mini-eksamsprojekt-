@@ -1,7 +1,7 @@
 import controlP5.*;
 import java.security.*;
 import de.bezier.data.sql.*;
-SQLite db;
+SQLite db_users,db_tests;
 ControlP5 cp5;
 boolean passMode;
 PFont f;
@@ -11,8 +11,10 @@ String user;
 void setup(){
   f = createFont("Arial", 20);
   passMode = true;
-  db = new SQLite(this, "users.sqlite" );
-  db.connect();
+  db_users = new SQLite(this, "users.sqlite" );
+  db_tests = new SQLite(this,"tests.sqlite");
+  db_tests.connect();
+  db_users.connect();
   
   //SQL sql = new SQL();
   //println(sql.getUser("hello"));

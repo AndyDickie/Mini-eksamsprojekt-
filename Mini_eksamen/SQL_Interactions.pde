@@ -2,8 +2,8 @@
 class SQL {
   String signingSalt = "sQLLlerkk4221€€))";
   String getUser(String userName) {
-    db.query("SELECT userName FROM Users WHERE userName='"+ userName + "'");
-    String username = db.getString("userName");
+    db_users.query("SELECT userName FROM Users WHERE userName='"+ userName + "'");
+    String username = db_users.getString("userName");
     if (username != null) {
       return username;
     } else {
@@ -12,31 +12,31 @@ class SQL {
   }
 
   String getUserType(String userName) {
-    db.query("SELECT Stilling FROM users WHERE userName='"+ userName + "'");
-    int userType = db.getInt("Stilling");
+    db_users.query("SELECT Stilling FROM users WHERE userName='"+ userName + "'");
+    int userType = db_users.getInt("Stilling");
     if (userType == 0)return "Elev";
     else return "Lærer";
   }
 
   int getUserId(String userName) {
-    db.query("SELECT ID FROM users WHERE userName='"+ userName + "'");
-    int userId = db.getInt("ID");
+    db_users.query("SELECT ID FROM users WHERE userName='"+ userName + "'");
+    int userId = db_users.getInt("ID");
     return userId;
   }
 
   String getPassword(String userName) {
-    db.query("SELECT password FROM users WHERE Username='"+ userName + "'");
-    String userPassword = db.getString("Password");
+    db_users.query("SELECT password FROM users WHERE Username='"+ userName + "'");
+    String userPassword = db_users.getString("Password");
     return userPassword;
   }
 
   void createUser(String userName, String password, int type) {
     password = hash(password);
-    db.query("INSERT INTO users VALUES ('"+ userName + "', '"+ password + "'," + type +", null)");
+    db_users.query("INSERT INTO users VALUES ('"+ userName + "', '"+ password + "'," + type +", null)");
   }
 
   void userJoinClass(int userId, String classID) {
-    db.query("INSERT INTO 'Elev-tilknytning' VALUES ('"+classID+"', " + userId + ")");
+    db_users.query("INSERT INTO 'Elev-tilknytning' VALUES ('"+classID+"', " + userId + ")");
   }
 
   boolean login(String userName, String password) {
@@ -49,12 +49,12 @@ class SQL {
 
   void createClass(String className, int techerId) {
     int classId = int(random(100000, 999999+1));
-    db.query("INSERT INTO Klasser VALUES ('" + className + "', " + classId + ", null, " + techerId + ")");
+    db_users.query("INSERT INTO Klasser VALUES ('" + className + "', " + classId + ", null, " + techerId + ")");
   }
 
   String getClassID(String className) {
-    db.query("SELECT ID FROM Klasser WHERE Klassenavn='" + className + "'");
-    String classId = str(db.getInt("ID"));
+    db_users.query("SELECT ID FROM Klasser WHERE Klassenavn='" + className + "'");
+    String classId = str(db_users.getInt("ID"));
     return classId;
   }
 
