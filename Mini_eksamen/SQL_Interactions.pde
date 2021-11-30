@@ -66,6 +66,10 @@ class SQL {
   void createTest(String testName){
     db_tests.query("INSERT INTO Test VALUES(null, '" + testName + "')");
   }
+  
+  void createQuestionAnswer(String question,String answer){
+  db_tests.query("INSERT INTO Spørgsmål VALUES ('" + TestID + "'," + question + "," + answer + ", null)"); 
+  }
 
   //String getQuestionName() {
   //}
