@@ -53,14 +53,14 @@ class SQL {
   }
 
   int getClassID(String className) {
-    db.query("SELECT ID FROM Klasser WHERE Klassenavn='" + className + "'");
-    int classId = db.getInt("ID");
+    db_users.query("SELECT ID FROM Klasser WHERE Klassenavn='" + className + "'");
+    int classId = db_users.getInt("ID");
     return classId;
   }
 
   String getClassName(int classId){
-    db.query("SELECT Klassenavn FROM Klasser WHERE Klassekode=" + classId);
-    return db.getString("Klassenavn");
+    db_users.query("SELECT Klassenavn FROM Klasser WHERE Klassekode=" + classId);
+    return db_users.getString("Klassenavn");
   }
 
 

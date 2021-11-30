@@ -16,10 +16,7 @@ void setup(){
   db_tests = new SQLite(this,"tests.sqlite");
   db_tests.connect();
   db_users.connect();
-  
-
-  db = new SQLite(this, "users.sqlite" );
-  db.connect();
+ 
 
 
   cp5 = new ControlP5(this);
