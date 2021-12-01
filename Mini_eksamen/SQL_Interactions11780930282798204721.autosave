@@ -58,12 +58,12 @@ class SQL {
     return classId;
   }
 
-  String getClassName(int classId){
-    db_users.query("SELECT Klassenavn FROM Klasser WHERE Klassekode=" + classId);
+  String getClassName(int classId) {
+    db_users.query("SELECT Klassenavn FROM Klasser WHERE Klassekode='" + classId +"'");
     return db_users.getString("Klassenavn");
   }
-  
-   StringList getUserClasses(int userID) {
+
+  StringList getUserClasses(int userID) {
     StringList KlasseListe = new StringList();
     IntList KlasseKListe = new IntList();
     String s = "SELECT Klassecode FROM \"Elev-tilknytning\" WHERE UsernameID='" + userID + "'";
@@ -89,19 +89,13 @@ class SQL {
     return KlasseListe;
   }
 
-  void createTest(String testName){
-    db_tests.query("INSERT INTO Test VALUES(null, '" + testName + "')");
-  }
-  
-  void createQuestionAnswer(int testID,String question,String answer){
-  db_tests.query("INSERT INTO Sporgsmal VALUES ('" + testID + "','" + question + "','" + answer + "', null)"); 
-  }
-  
-  int getTestID(String testName){
-    db_tests.query("SELECT ID FROM Test WHERE Navn='" + testName + "'");
-    int testID = db_tests.getInt("ID");
-    return testID;
-    }
+  //void createTest(String testName){
+  //  db_tests.query("INSERT INTO Test VALUES(null, '" + testName + "')");
+  //}
+
+  //void createQuestionAnswer(String question,String answer){
+  //db_tests.query("INSERT INTO Spørgsmål VALUES ('" + TestID + "'," + question + "," + answer + ", null)");
+  //}
 
   //String getQuestionName() {
   //}
@@ -111,7 +105,7 @@ class SQL {
 
   //void addQuestion()
 
-  
+
   String hash(String input) {
     try {
       MessageDigest md = MessageDigest.getInstance("SHA-256");
