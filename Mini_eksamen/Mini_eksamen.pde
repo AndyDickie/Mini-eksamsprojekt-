@@ -11,6 +11,7 @@ String user;
 void setup(){
   f = createFont("Arial", 20);
   passMode = true;
+  textMode(CENTER);
 
   db_users = new SQLite(this, "users.sqlite" );
   db_tests = new SQLite(this,"tests.sqlite");

@@ -26,6 +26,7 @@ void Show_Password() {
       user = c.getUser(userName);
       c.ToggleLogin(false);
       c.state = 1;
+      c.userName = userName;
     } else {
       println("Something went wrong, try again!");
     }

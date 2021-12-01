@@ -58,50 +58,43 @@ class SQL {
     return classId;
   }
 
-  String getClassName(int classId){
+  String getClassName(int classId) {
     db_users.query("SELECT Klassenavn FROM Klasser WHERE Klassekode=" + classId);
     return db_users.getString("Klassenavn");
   }
-  
-   StringList getUserClasses(int userID) {
+
+  StringList getUserClasses(int userID) {
     StringList KlasseListe = new StringList();
     IntList KlasseKListe = new IntList();
     String s = "SELECT Klassecode FROM \"Elev-tilknytning\" WHERE UsernameID='" + userID + "'";
     String kc = "Klassecode";
-    println(s);
     db_users.query(s);
-    // int ting = db.getInt(kc);
-    int u = 0;
     while (db_users.next()) {
-      println("TING " + "   " + u);
       int ting = db_users.getInt(kc);
       KlasseKListe.append(ting);
       println(ting);
-      //KlasseListe.append(cn);
-      u++;
     }
-    
-    for (int i=0; i < KlasseKListe.size(); i++){
+    for (int i=0; i < KlasseKListe.size(); i++) {
       println(i);
       KlasseListe.append(getClassName(KlasseKListe.get(i)));
     }
-   
+
     return KlasseListe;
   }
 
-  void createTest(String testName){
+  void createTest(String testName) {
     db_tests.query("INSERT INTO Test VALUES(null, '" + testName + "')");
   }
-  
-  void createQuestionAnswer(int testID,String question,String answer){
-  db_tests.query("INSERT INTO Sporgsmal VALUES ('" + testID + "','" + question + "','" + answer + "', null)"); 
+
+  void createQuestionAnswer(int testID, String question, String answer) {
+    db_tests.query("INSERT INTO Sporgsmal VALUES ('" + testID + "','" + question + "','" + answer + "', null)");
   }
-  
-  int getTestID(String testName){
+
+  int getTestID(String testName) {
     db_tests.query("SELECT ID FROM Test WHERE Navn='" + testName + "'");
     int testID = db_tests.getInt("ID");
     return testID;
-    }
+  }
 
   //String getQuestionName() {
   //}
@@ -111,7 +104,7 @@ class SQL {
 
   //void addQuestion()
 
-  
+
   String hash(String input) {
     try {
       MessageDigest md = MessageDigest.getInstance("SHA-256");
