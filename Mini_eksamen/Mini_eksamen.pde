@@ -26,9 +26,11 @@ void setup(){
   
   size(1000, 800);
   c.load();
+  c.createQuestionAnswer(c.getTestID("matPrøveTest2"),"Antalplaneter","7");
 }
 
 
 void draw(){
   c.update();
+  
 }

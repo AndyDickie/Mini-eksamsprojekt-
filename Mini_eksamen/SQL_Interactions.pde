@@ -85,9 +85,15 @@ class SQL {
     db_tests.query("INSERT INTO Test VALUES(null, '" + testName + "')");
   }
   
-  void createQuestionAnswer(String question,String answer){
-  db_tests.query("INSERT INTO Sporgsmål VALUES ('" + TestID + "'," + question + "," + answer + ", null)"); 
+  void createQuestionAnswer(int testID,String question,String answer){
+  db_tests.query("INSERT INTO Spørgsmål VALUES ('" + testID + "'," + question + "," + answer + ", null)"); 
   }
+  
+  int getTestID(String testName){
+    db_tests.query("SELECT ID FROM Test WHERE Navn='" + testName + "'");
+    int testID = db_tests.getInt("ID");
+    return testID;
+    }
 
   //String getQuestionName() {
   //}
