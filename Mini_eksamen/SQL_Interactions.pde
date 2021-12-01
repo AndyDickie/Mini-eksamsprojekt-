@@ -68,10 +68,10 @@ class SQL {
     String s = "SELECT \"Klasse-code\" FROM \"Elev-tilknytning\"";// WHERE \"Username-ID\"=" + userID;
     String kc = "Klasse-code";
     println(s);
-    db.query(s);
+    db_users.query(s);
    // int ting = db.getInt(kc);
-    while (db.next()){
-   int   ting = db.getInt(kc);
+    while (db_users.next()){
+   int   ting = db_users.getInt(kc);
    println("TING " + ting);
    
       //KlasseListe.append(getClassName(db.getInt(kc)));
@@ -86,7 +86,7 @@ class SQL {
   }
   
   void createQuestionAnswer(String question,String answer){
-  db_tests.query("INSERT INTO Spørgsmål VALUES ('" + TestID + "'," + question + "," + answer + ", null)"); 
+  db_tests.query("INSERT INTO Sporgsmål VALUES ('" + TestID + "'," + question + "," + answer + ", null)"); 
   }
 
   //String getQuestionName() {
