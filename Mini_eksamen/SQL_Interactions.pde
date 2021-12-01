@@ -2,8 +2,8 @@
 class SQL {
   String signingSalt = "sQLLlerkk4221€€))";
   String getUser(String userName) {
-    db_users.query("SELECT userName FROM Users WHERE userName='"+ userName + "'");
-    String username = db_users.getString("userName");
+    db.query("SELECT userName FROM Users WHERE userName='"+ userName + "'");
+    String username = db.getString("userName");
     if (username != null) {
       return username;
     } else {
@@ -12,31 +12,31 @@ class SQL {
   }
 
   String getUserType(String userName) {
-    db_users.query("SELECT Stilling FROM users WHERE userName='"+ userName + "'");
-    int userType = db_users.getInt("Stilling");
+    db.query("SELECT Stilling FROM users WHERE userName='"+ userName + "'");
+    int userType = db.getInt("Stilling");
     if (userType == 0)return "Elev";
     else return "Lærer";
   }
 
   int getUserId(String userName) {
-    db_users.query("SELECT ID FROM users WHERE userName='"+ userName + "'");
-    int userId = db_users.getInt("ID");
+    db.query("SELECT ID FROM users WHERE userName='"+ userName + "'");
+    int userId = db.getInt("ID");
     return userId;
   }
 
   String getPassword(String userName) {
-    db_users.query("SELECT password FROM users WHERE Username='"+ userName + "'");
-    String userPassword = db_users.getString("Password");
+    db.query("SELECT password FROM users WHERE Username='"+ userName + "'");
+    String userPassword = db.getString("Password");
     return userPassword;
   }
 
   void createUser(String userName, String password, int type) {
     password = hash(password);
-    db_users.query("INSERT INTO users VALUES ('"+ userName + "', '"+ password + "'," + type +", null)");
+    db.query("INSERT INTO users VALUES ('"+ userName + "', '"+ password + "'," + type +", null)");
   }
 
   void userJoinClass(int userId, String classID) {
-    db_users.query("INSERT INTO 'Elev-tilknytning' VALUES ('"+classID+"', " + userId + ")");
+    db.query("INSERT INTO 'Elev-tilknytning' VALUES ('"+classID+"', " + userId + ")");
   }
 
   boolean login(String userName, String password) {
@@ -49,18 +49,18 @@ class SQL {
 
   void createClass(String className, int techerId) {
     int classId = int(random(100000, 999999+1));
-    db_users.query("INSERT INTO Klasser VALUES ('" + className + "', " + classId + ", null, " + techerId + ")");
+    db.query("INSERT INTO Klasser VALUES ('" + className + "', " + classId + ", null, " + techerId + ")");
   }
 
   int getClassID(String className) {
-    db_users.query("SELECT ID FROM Klasser WHERE Klassenavn='" + className + "'");
-    int classId = db_users.getInt("ID");
+    db.query("SELECT ID FROM Klasser WHERE Klassenavn='" + className + "'");
+    int classId = db.getInt("ID");
     return classId;
   }
 
   String getClassName(int classId) {
-    db_users.query("SELECT Klassenavn FROM Klasser WHERE Klassekode=" + classId);
-    return db_users.getString("Klassenavn");
+    db.query("SELECT Klassenavn FROM Klasser WHERE Klassekode=" + classId);
+    return db.getString("Klassenavn");
   }
 
   StringList getUserClasses(int userID) {
@@ -68,9 +68,9 @@ class SQL {
     IntList KlasseKListe = new IntList();
     String s = "SELECT Klassecode FROM \"Elev-tilknytning\" WHERE UsernameID='" + userID + "'";
     String kc = "Klassecode";
-    db_users.query(s);
-    while (db_users.next()) {
-      int ting = db_users.getInt(kc);
+    db.query(s);
+    while (db.next()) {
+      int ting = db.getInt(kc);
       KlasseKListe.append(ting);
       println(ting);
     }
@@ -83,16 +83,16 @@ class SQL {
   }
 
   void createTest(String testName) {
-    db_tests.query("INSERT INTO Test VALUES(null, '" + testName + "')");
+    db.query("INSERT INTO Test VALUES(null, '" + testName + "')");
   }
 
   void createQuestionAnswer(int testID, String question, String answer) {
-    db_tests.query("INSERT INTO Sporgsmal VALUES ('" + testID + "','" + question + "','" + answer + "', null)");
+    db.query("INSERT INTO Sporgsmal VALUES ('" + testID + "','" + question + "','" + answer + "', null)");
   }
 
   int getTestID(String testName) {
-    db_tests.query("SELECT ID FROM Test WHERE Navn='" + testName + "'");
-    int testID = db_tests.getInt("ID");
+    db.query("SELECT ID FROM Test WHERE Navn='" + testName + "'");
+    int testID = db.getInt("ID");
     return testID;
   }
 

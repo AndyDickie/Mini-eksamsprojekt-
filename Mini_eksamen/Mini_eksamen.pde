@@ -1,7 +1,7 @@
 import controlP5.*;
 import java.security.*;
 import de.bezier.data.sql.*;
-SQLite db_users,db_tests;
+SQLite db;
 ControlP5 cp5;
 boolean passMode;
 PFont f;
@@ -13,10 +13,8 @@ void setup(){
   passMode = true;
   textMode(CENTER);
 
-  db_users = new SQLite(this, "users.sqlite" );
-  db_tests = new SQLite(this,"tests.sqlite");
-  db_tests.connect();
-  db_users.connect();
+  db = new SQLite(this, "users.sqlite" );
+  db.connect();
  
 
 
