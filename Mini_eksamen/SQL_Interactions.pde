@@ -86,7 +86,7 @@ class SQL {
   }
   
   void createQuestionAnswer(int testID,String question,String answer){
-  db_tests.query("INSERT INTO Spørgsmål VALUES ('" + testID + "'," + question + "," + answer + ", null)"); 
+  db_tests.query("INSERT INTO Sporgsmal VALUES ('" + testID + "','" + question + "','" + answer + "', null)"); 
   }
   
   int getTestID(String testName){
