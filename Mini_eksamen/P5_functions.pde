@@ -13,7 +13,14 @@ void Show_Password() {
     String password = cp5.get(Textfield.class, "Password").getText();
     int type = int(cp5.get(Toggle.class, "Teacher/Student").getValue());
     println(type);
-    c.createUser(userName, password, type);
+    if (password != "" && userName != ""){
+      c.createUser(userName, password, type);
+      c.ToggleRegister(false);
+      c.state = 0;
+    }
+    else {
+      println("Something went wrong, try again!");
+    }
   }
 
   void Login() {
@@ -25,7 +32,7 @@ void Show_Password() {
     if (c.login(userName, password)) {
       user = c.getUser(userName);
       c.ToggleLogin(false);
-      c.state = 1;
+      c.state = 3;
       c.userName = userName;
     } else {
       println("Something went wrong, try again!");
