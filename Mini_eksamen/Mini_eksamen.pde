@@ -24,11 +24,11 @@ void setup(){
   println(c.getUserClasses(1));
   
   size(1000, 800);
-  c.load();
+  //c.load();
   c.test.display();
   //c.createQuestionAnswer(c.getTestID("matPrøveTest2"),"Antalplaneter","7");
 }
 
 void draw(){
-  c.update();
+  //c.update();
 }
