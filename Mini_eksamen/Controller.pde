@@ -2,12 +2,15 @@ class Controller extends Init {
   int state;
   String userName;
   Button Login, Register, Home;
+  AnswerFunction test;
   
   Controller(int state_) {
     state = state_;
     Login = new Button(width/3-50, height/3-50, 100, 100, "Login");
     Register = new Button(2*(width/3)-50, (height/3)-50, 100, 100, "Register");
     Home = new Button(width/10, height/10, 100, 100, "Home");
+    
+    test = new AnswerFunction();
   }
 
   void startScreen() {
@@ -29,6 +32,11 @@ class Controller extends Init {
     background(0);
     textSize(50);
     text("Hej " + userName, width/2, height/10);
+  }
+  
+  void answerScreen(){
+   background(0);
+   test.display();
   }
   void update() {
     if (state == 0) {
