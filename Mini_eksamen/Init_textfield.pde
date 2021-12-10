@@ -15,8 +15,6 @@ class Init extends SQL {
     //create user bangs
     create_user = cp5.addBang("Create_User").setPosition(width/2+110, height/2-140).setSize(80, 40).setVisible(false);
     type = cp5.addToggle("Teacher/Student").setPosition(width/2+110, height/2-240).setSize(50, 20).setValue(false).setMode(ControlP5.SWITCH).setVisible(false);
-    '
-    
     pass_field.setPasswordMode(passMode);
   }
   void ToggleLogin(boolean vis) {
