@@ -1,5 +1,5 @@
 void mouseReleased() {
-  if (c.state == 0 && c.Login1.hasClicked() == true) {
+  if (c.state == 0 && c.Login.hasClicked() == true) {
     c.ToggleLogin(true);
     c.state = 1;
   }

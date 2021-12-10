@@ -36,7 +36,12 @@ class SQL {
   }
 
   void userJoinClass(int userId, String classID) {
+    if (getClassName(int(classID)) != null){
     db.query("INSERT INTO 'Elev-tilknytning' VALUES ('"+classID+"', " + userId + ")");
+    }
+    else {
+      println("FEJL");
+    }
   }
 
   boolean login(String userName, String password) {
