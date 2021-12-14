@@ -29,8 +29,21 @@ void controlEvent(ControlEvent theEvent) {
       println("Something went wrong, try again!");
     }
   }
-  if (theEvent.getName() == "") {
+  if (theEvent.getName() == "Join Class") {
+    String classID = cp5.get(Textfield.class, "ClassID").getText();
+    try {
+      c.userJoinClass(c.getUserId(c.userName), classID);
+      c.ToggleClass(false);
+      c.state = 3;
+    }
+    catch(Exception e) {
+      print(e);
+      println("Something went wrong");
+    }
   }
-  if (theEvent.getName() == "") {
+  if (theEvent.getName() == "Show Password") {
+    Textfield pass = cp5.get(Textfield.class, "Password");
+    pass.setPasswordMode(passMode);
+    passMode = !passMode;
   }
 }

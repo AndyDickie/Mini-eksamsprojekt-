@@ -18,4 +18,14 @@ void mouseReleased() {
     c.ToggleClass(true); 
     c.state = 4;
   }
+  
+  if(c.state == 3 && c.SeeTestAnswers.hasClicked()){
+    c.ToggleTeacherTests(true);
+    StringList klasseliste = c.getTeacherClasses(5);
+    for (int i =0; i<klasseliste.size();i++){
+      teacherClass.addItem(klasseliste.get(i),i);
+    }
+    c.state = 5;
+    
+  }
 }
