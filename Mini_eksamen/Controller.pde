@@ -1,7 +1,7 @@
 class Controller extends Init {
   int state;
   String userName;
-  Button Login, Register, Home, JoinClass;
+  Button Login, Register, Home, JoinClass, SeeTestAnswers;
   AnswerFunction test;
   
   Controller(int state_) {
@@ -10,6 +10,7 @@ class Controller extends Init {
     Register = new Button(2*(width/3)-50, (height/3)-50, 100, 100, "Register");
     Home = new Button(width/10, height/10, 100, 100, "Home");
     JoinClass = new Button(width/10, 2*height/10, 100, 50, "Join Class");
+    SeeTestAnswers = new Button(width/10, 2*height/5, 100, 50, "See Answers From Tests");
     
     test = new AnswerFunction();
   }
@@ -34,6 +35,7 @@ class Controller extends Init {
     textSize(50);
     text("Hej " + userName, width/2, height/10);
     JoinClass.display();
+    SeeTestAnswers.display();
   }
   
   void answerScreen(){
@@ -42,6 +44,15 @@ class Controller extends Init {
   }
     void joinClassScreen() {
     //background(0);
+    
+  }
+  
+  void SeeTestAnswersScreen(){
+    background(0);
+    
+   // teacherClass.addItems(klasseliste);
+    
+    //Her skal gøres så man kan vælge hvilken klasse man skal se resultater for
     
   }
   void update() {
@@ -61,6 +72,9 @@ class Controller extends Init {
     
     if (state == 4) {
       joinClassScreen();
+    }
+    if (state == 5){
+      SeeTestAnswersScreen();
     }
   }
 }

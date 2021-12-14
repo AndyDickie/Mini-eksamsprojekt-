@@ -101,6 +101,16 @@ class SQL {
     int testID = db.getInt("ID");
     return testID;
   }
+  
+  StringList getTeacherClasses(int userID){
+    StringList KlasseListe = new StringList();
+    String s = "SELECT Klassenavn FROM Klasser WHERE LærerID="+ userID;
+    db.query(s);
+    while (db.next()){
+      KlasseListe.append(db.getString("Klassenavn"));
+    }
+    return KlasseListe;
+  }
 
   //String getQuestionName() {
   //}
