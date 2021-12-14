@@ -15,14 +15,7 @@ void mouseReleased() {
   }
 
   if (c.state == 3 && c.JoinClass.hasClicked()) {
-    //c.ToggleLogin(false);
     c.ToggleClass(true); 
-    //c.ToggleAll(true);
-    //c.ToggleLogin(false);
-    //c.ToggleRegister(false);
-    
-    //class_id = cp5.addTextfield("ClassID").setPosition(width/2, height/3).setSize(200, 40).setAutoClear(false).setFont(f);
-    //join_class = cp5.addBang("Join_Class").setPosition(width/2+210, height/3).setSize(80, 40);
     c.state = 4;
   }
 }

@@ -1,6 +1,7 @@
 
 class SQL {
   String signingSalt = "sQLLlerkk4221€€))";
+  
   String getUser(String userName) {
     db.query("SELECT userName FROM Users WHERE userName='"+ userName + "'");
     String username = db.getString("userName");
