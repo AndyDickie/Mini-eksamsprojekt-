@@ -45,12 +45,6 @@ class Controller extends Init {
     
   }
   void update() {
-    
-    //if (userName != null){
-    //  c.state = 3;
-    //  //ToggleLogin(false);
-    //  //test = false;
-    //}
     if (state == 0) {
       startScreen();
     }

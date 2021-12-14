@@ -29,15 +29,15 @@
 //  }
 //}
 
-void Join_Class() {
-  String classID = cp5.get(Textfield.class, "ClassID").getText();
-  try {
-    c.userJoinClass(c.getUserId(c.userName), classID);
-    c.ToggleClass(false);
-    c.state = 3;
-  }
-  catch(Exception e) {
-    print(e);
-    println("Something went wrong");
-  }
-}
+//void Join_Class() {
+//  String classID = cp5.get(Textfield.class, "ClassID").getText();
+//  try {
+//    c.userJoinClass(c.getUserId(c.userName), classID);
+//    c.ToggleClass(false);
+//    c.state = 3;
+//  }
+//  catch(Exception e) {
+//    print(e);
+//    println("Something went wrong");
+//  }
+//}
