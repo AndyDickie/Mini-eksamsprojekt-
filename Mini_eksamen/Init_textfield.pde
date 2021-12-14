@@ -2,6 +2,7 @@ Bang create_user, join_class;
 Button show_password, login;
 Textfield username_field, pass_field, class_id;
 Toggle type;
+ScrollableList teacherTests,teacherClass;
 
 class Init extends SQL {
   void toggle(String controller, boolean vis) {
@@ -26,6 +27,10 @@ class Init extends SQL {
     pass_field = cp5.addTextfield("Password").setPosition(width/2-100, height/2-120).setSize(200, 40).setAutoClear(false).setFont(f).setVisible(false);
     pass_field.setFocus(false);
     pass_field.setPasswordMode(passMode);
+    
+    //Scrollable list
+    teacherTests = cp5.addScrollableList("Din Klasses Tests").setPosition(width/2+50,100).setSize(400,300).setFont(f).setBarHeight(40).setItemHeight(30).setVisible(false);
+    teacherClass = cp5.addScrollableList("Dine Klasser").setPosition(50,100).setSize(400,300).setFont(f).setBarHeight(40).setItemHeight(30).setVisible(false);
 
     //create user bangs
     cp5.addButton("Create User").setPosition(width/2+110, height/2-140).setSize(80, 40).setVisible(false);
@@ -38,6 +43,18 @@ class Init extends SQL {
     toggle("Password", vis);
     toggle("Show Password", vis);
     toggle("Login", vis);
+  }
+  
+  void ToggleTeacherTests(boolean vis){
+    println("Toggle TeacherTestList");
+    if(vis){
+      cp5.getController("Din Klasses Tests").show();
+      cp5.getController("Dine Klasser").show();
+    }
+    else{
+      cp5.getController("Din Klasses Tests").hide();
+      cp5.getController("Dine Klasser").hide();
+    }
   }
 
   void ToggleRegister(boolean vis) {
