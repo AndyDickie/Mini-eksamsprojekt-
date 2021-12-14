@@ -21,15 +21,12 @@ class Init extends SQL {
     pass_field.setPasswordMode(passMode);
 
     //create user bangs
-    cp5.addButton("Create_User").setPosition(width/2+110, height/2-140).setSize(80, 40).setVisible(false);
+    cp5.addButton("Create User").setPosition(width/2+110, height/2-140).setSize(80, 40).setVisible(false);
     type = cp5.addToggle("Teacher/Student").setPosition(width/2+110, height/2-240).setSize(80, 40).setValue(false).setMode(ControlP5.SWITCH).setVisible(false);
     println("load");
   }
-  void Lock(boolean locked) {
-    username_field.setLock(locked);
-  }
+  
   void ToggleLogin(boolean vis) {
-    println("Toggle Login");
     if (vis) {
       cp5.getController("Username").show();
       cp5.getController("Password").show();
@@ -44,14 +41,13 @@ class Init extends SQL {
   }
 
   void ToggleRegister(boolean vis) {
-    println("Toggle Register");
     if (vis) {
-      cp5.getController("Create_User").show();
+      cp5.getController("Create User").show();
       cp5.getController("Teacher/Student").show();
       cp5.getController("Username").show();
       cp5.getController("Password").show();
     } else {
-      cp5.getController("Create_User").hide();
+      cp5.getController("Create User").hide();
       cp5.getController("Teacher/Student").hide();
       cp5.getController("Username").hide();
       cp5.getController("Password").hide();
@@ -59,15 +55,13 @@ class Init extends SQL {
   }
 
   void ToggleClass(boolean vis) {
-    println("Toggle Class");
     cp5.getController("Join_Class").setVisible(vis);
     cp5.getController("ClassID").setVisible(vis);
   }
 
   void ToggleAll(boolean vis) {
-    println("Toggle all");
     if (vis) {
-      cp5.getController("Create_User").show();
+      cp5.getController("Create User").show();
       cp5.getController("Teacher/Student").show();
       cp5.getController("Username").show();
       cp5.getController("Password").show();
@@ -76,7 +70,7 @@ class Init extends SQL {
       cp5.getController("Join_Class").show();
       cp5.getController("ClassID").show();
     } else {
-      cp5.getController("Create_User").hide();
+      cp5.getController("Create User").hide();
       cp5.getController("Teacher/Student").hide();
       cp5.getController("Username").hide();
       cp5.getController("Password").hide();
