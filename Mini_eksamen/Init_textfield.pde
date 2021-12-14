@@ -4,6 +4,13 @@ Textfield username_field, pass_field, class_id;
 Toggle type;
 
 class Init extends SQL {
+  void toggle(String controller, boolean vis) {
+    if (vis) {
+      cp5.getController(controller).show();
+    } else {
+      cp5.getController(controller).hide();
+    }
+  }
   void load() {
     //Join class bang & textfield
     class_id = cp5.addTextfield("ClassID").setPosition(width/2, height/3).setSize(200, 40).setAutoClear(false).setFont(f).setVisible(false);
@@ -25,59 +32,55 @@ class Init extends SQL {
     type = cp5.addToggle("Teacher/Student").setPosition(width/2+110, height/2-240).setSize(80, 40).setValue(false).setMode(ControlP5.SWITCH).setVisible(false);
     println("load");
   }
-  
+
   void ToggleLogin(boolean vis) {
-    if (vis) {
-      cp5.getController("Username").show();
-      cp5.getController("Password").show();
-      cp5.getController("Show Password").show();
-      cp5.getController("Login").show();
-    } else {
-      cp5.getController("Username").hide();
-      cp5.getController("Password").hide();
-      cp5.getController("Show Password").hide();
-      cp5.getController("Login").hide();
-    }
+    toggle("Username", vis);
+    toggle("Password", vis);
+    toggle("Show Password", vis);
+    toggle("Login", vis);
   }
 
   void ToggleRegister(boolean vis) {
-    if (vis) {
-      cp5.getController("Create User").show();
-      cp5.getController("Teacher/Student").show();
-      cp5.getController("Username").show();
-      cp5.getController("Password").show();
-    } else {
-      cp5.getController("Create User").hide();
-      cp5.getController("Teacher/Student").hide();
-      cp5.getController("Username").hide();
-      cp5.getController("Password").hide();
-    }
+    toggle("Create User", vis);
+    toggle("Teacher/Student", vis);
+    toggle("Username", vis);
+    toggle("Password", vis);
   }
 
   void ToggleClass(boolean vis) {
-    cp5.getController("Join Class").setVisible(vis);
-    cp5.getController("ClassID").setVisible(vis);
+    //cp5.getController("Join Class").setVisible(vis);
+    //cp5.getController("ClassID").setVisible(vis);
+    toggle("Join Class", vis);
+    toggle("ClassID", vis);
   }
 
   void ToggleAll(boolean vis) {
-    if (vis) {
-      cp5.getController("Create User").show();
-      cp5.getController("Teacher/Student").show();
-      cp5.getController("Username").show();
-      cp5.getController("Password").show();
-      cp5.getController("Show Password").show();
-      cp5.getController("Login").show();
-      cp5.getController("Join Class").show();
-      cp5.getController("ClassID").show();
-    } else {
-      cp5.getController("Create User").hide();
-      cp5.getController("Teacher/Student").hide();
-      cp5.getController("Username").hide();
-      cp5.getController("Password").hide();
-      cp5.getController("Show Password").hide();
-      cp5.getController("Login").hide();
-      cp5.getController("Join Class").hide();
-      cp5.getController("ClassID").hide();
-    }
+    //if (vis) {
+    //  cp5.getController("Create User").show();
+    //  cp5.getController("Teacher/Student").show();
+    //  cp5.getController("Username").show();
+    //  cp5.getController("Password").show();
+    //  cp5.getController("Show Password").show();
+    //  cp5.getController("Login").show();
+    //  cp5.getController("Join Class").show();
+    //  cp5.getController("ClassID").show();
+    //} else {
+    //  cp5.getController("Create User").hide();
+    //  cp5.getController("Teacher/Student").hide();
+    //  cp5.getController("Username").hide();
+    //  cp5.getController("Password").hide();
+    //  cp5.getController("Show Password").hide();
+    //  cp5.getController("Login").hide();
+    //  cp5.getController("Join Class").hide();
+    //  cp5.getController("ClassID").hide();
+    //}
+    toggle("Username", vis);
+    toggle("Password", vis);
+    toggle("Show Password", vis);
+    toggle("Login", vis);
+    toggle("Create User", vis);
+    toggle("Teacher/Student", vis);
+    toggle("Join Class", vis);
+    toggle("ClassID", vis);
   }
 }
