@@ -112,6 +112,23 @@ class SQL {
     return KlasseListe;
   }
 
+  void insertUserAnswer(String UserAnswer, int questionID, int userID ){
+    db.query("INSERT INTO Elevsvar VALUES (null, '"+ questionID +"', '"+userID+"', '"+ UserAnswer+ "')");
+  }
+  
+  void getuserAnswer(int questionID, int userID){
+    db.query("SELECT * FROM Elevsvar Where SporgsmalID = "+ questionID + " AND UsernameID = " + userID);
+  }
+  
+  
+  void getTestAnswer(){
+    db.query("SELECT * FROM Elevsvar,Sporgsmal,Test Where Elevsvar.SporgsmalID=Sporgsmal.ID AND Sporgsmal.TestID=Test.ID AND Test.ID =" +1);
+  }
+  
+  
+  void getQuestionAnswer(int questionID){
+    db.query("SELECT * FROM Elevsvar Where SporgsmalID = " + questionID );
+  }
   //String getQuestionName() {
   //}
 
