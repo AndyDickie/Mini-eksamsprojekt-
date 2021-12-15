@@ -1,3 +1,5 @@
+Object selected;
+
 void mouseReleased() {
   if (c.state == 0 && c.Login.hasClicked() == true) {
     c.ToggleLogin(true);
@@ -23,9 +25,17 @@ void mouseReleased() {
     c.ToggleTeacherTests(true);
     StringList klasseliste = c.getTeacherClasses(5);
     for (int i =0; i<klasseliste.size();i++){
-      teacherClass.addItem(klasseliste.get(i),i);
+      teacherClass.addItem(klasseliste.get(i),c.getClassCode(klasseliste.get(i)));
     }
+    
+   
     c.state = 5;
     
   }
+}
+
+
+void DineKlasser (int index){
+  selected = cp5.get(ScrollableList.class, "DineKlasser").getItem(index).get("value");
+  println(selected);
 }

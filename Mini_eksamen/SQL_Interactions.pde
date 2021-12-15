@@ -53,10 +53,17 @@ class SQL {
     else return false;
   }
 
-  void createClass(String className, int techerId) {
+  void createClass(String className, int teacherId) {
     int classId = int(random(100000, 999999+1));
-    db.query("INSERT INTO Klasser VALUES ('" + className + "', " + classId + ", null, " + techerId + ")");
+    db.query("INSERT INTO Klasser VALUES ('" + className + "', " + classId + ", null, " + teacherId + ")");
   }
+  
+  int getClassCode(String className){
+    db.query("SELECT Klassekode FROM Klasser WHERE Klassenavn='" + className + "'");
+    int classCode = db.getInt("Klassekode");
+    return classCode;
+  }
+  
 
   int getClassID(String className) {
     db.query("SELECT ID FROM Klasser WHERE Klassenavn='" + className + "'");
@@ -89,7 +96,7 @@ class SQL {
   }
 
   void createTest(String testName) {
-    db.query("INSERT INTO Test VALUES(null, '" + testName + "')");
+    db.query("INSERT INTO Test VALUES(null, '" + testName + "', )");
   }
 
   void createQuestionAnswer(int testID, String question, String answer) {
@@ -110,6 +117,16 @@ class SQL {
       KlasseListe.append(db.getString("Klassenavn"));
     }
     return KlasseListe;
+  }
+  
+  StringList getTestsPerClass(int Klassekode){
+    StringList TestListe = new StringList();
+    String s = "SELECT Navn FROM Test WHERE Klassekode="+ Klassekode;
+    db.query(s);
+    while(db.next()){
+      TestListe.append(db.getString("Navn"));
+    }
+    return TestListe;
   }
 
   void insertUserAnswer(String UserAnswer, int questionID, int userID ){

@@ -75,6 +75,13 @@ class Controller extends Init {
     }
     if (state == 5){
       SeeTestAnswersScreen();
+      teacherTests.clear();
+      if(selected!=null){
+    StringList testliste = c.getTestsPerClass((int)selected);
+    for (int i=0; i<testliste.size();i++){
+      teacherTests.addItem(testliste.get(i),i);
+    }
+    }
     }
   }
 }

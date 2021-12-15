@@ -29,13 +29,14 @@ class Init extends SQL {
     pass_field.setPasswordMode(passMode);
     
     //Scrollable list
-    teacherTests = cp5.addScrollableList("Din Klasses Tests").setPosition(width/2+50,100).setSize(400,300).setFont(f).setBarHeight(40).setItemHeight(30).setVisible(false);
-    teacherClass = cp5.addScrollableList("Dine Klasser").setPosition(50,100).setSize(400,300).setFont(f).setBarHeight(40).setItemHeight(30).setVisible(false);
+    teacherTests = cp5.addScrollableList("DinKlassesTests").setPosition(width/2+50,100).setSize(400,300).setFont(f).setBarHeight(40).setItemHeight(30).setVisible(false);
+    teacherClass = cp5.addScrollableList("DineKlasser").setPosition(50,100).setSize(400,300).setFont(f).setBarHeight(40).setItemHeight(30).setVisible(false);
 
     //create user bangs
     cp5.addButton("Create User").setPosition(width/2+110, height/2-140).setSize(80, 40).setVisible(false);
     type = cp5.addToggle("Teacher/Student").setPosition(width/2+110, height/2-240).setSize(80, 40).setValue(false).setMode(ControlP5.SWITCH).setVisible(false);
     println("load");
+    
   }
 
   void ToggleLogin(boolean vis) {
@@ -48,12 +49,12 @@ class Init extends SQL {
   void ToggleTeacherTests(boolean vis){
     println("Toggle TeacherTestList");
     if(vis){
-      cp5.getController("Din Klasses Tests").show();
-      cp5.getController("Dine Klasser").show();
+      cp5.getController("DinKlassesTests").show();
+      cp5.getController("DineKlasser").show();
     }
     else{
-      cp5.getController("Din Klasses Tests").hide();
-      cp5.getController("Dine Klasser").hide();
+      cp5.getController("DinKlassesTests").hide();
+      cp5.getController("DineKlasser").hide();
     }
   }
 
