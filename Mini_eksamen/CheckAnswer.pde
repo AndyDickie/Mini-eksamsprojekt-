@@ -4,22 +4,19 @@ class CheckAnswer {
   String CorrectAnswer;
   String StudentAnswer;
   
-  void AnswerSame(){
-    if (StudentAnswer=CorrectAnswer){
-    correct = +1;
-    
-    } else{
-     wrong = +1; 
-    }
+  Boolean answerStatus(String StudentAnswer, String CorrectAnswer){
+    if (StudentAnswer==CorrectAnswer) return true;
+    if (StudentAnswer!=CorrectAnswer) return false; 
+    else return false;  
   }
   
-  ifT (wrong >= 1){
-    println("answerwrong");
+  void CorrectAnswer(int questionID){
+    db.query("SELECT Svar FROM Sporgsmal where Sporgsmal.ID=" +questionID);
     
   }
   
-  if (correct >= 1){
-   println("answercorrect"); 
+  void StudentAnswer(int questionID){
+   db.query("SELECT Elevsvar FROM Elevsvar where Elevsvar.SporgsmalID=" +questionID); 
     
   }
   
