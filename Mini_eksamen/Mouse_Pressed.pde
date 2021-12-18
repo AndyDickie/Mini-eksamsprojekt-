@@ -1,4 +1,5 @@
-Object selected;
+Object selectedClass, selectedTest;
+String DinValgteTest;
 
 void mouseReleased() {
   if (c.state == 0 && c.Login.hasClicked() == true) {
@@ -11,7 +12,11 @@ void mouseReleased() {
     c.state = 1;
   }
 
+<<<<<<< Updated upstream
   if (c.StartupPage.hasClicked() == true && c.state == 1 || c.StartupPage.hasClicked() == true && c.state == 2) {
+=======
+  if (c.Home.hasClicked() == true) {
+>>>>>>> Stashed changes
     c.ToggleAll(false);
     c.state = 0;
   }
@@ -23,9 +28,13 @@ void mouseReleased() {
     c.state = 4;
   }
 
+<<<<<<< Updated upstream
   if (c.state == 3 && c.SeeTestAnswers.hasClicked() && c.userType == 1) {
     background(0);
     c.ToggleAll(false);
+=======
+  if (c.state == 3 && c.SeeTestAnswers.hasClicked()) {
+>>>>>>> Stashed changes
     c.ToggleTeacherTests(true);
     StringList klasseliste = c.getTeacherClasses(5);
     for (int i =0; i<klasseliste.size(); i++) {
@@ -33,6 +42,7 @@ void mouseReleased() {
     }
     c.state = 5;
   }
+<<<<<<< Updated upstream
   if (c.state == 3 && c.CreateClass.hasClicked() && c.userType == 1) {
     background(0);
     c.ToggleAll(false);
@@ -54,4 +64,22 @@ void mouseReleased() {
 void DineKlasser (int index) {
   selected = cp5.get(ScrollableList.class, "DineKlasser").getItem(index).get("value");
   println(selected);
+=======
+  if (c.state==5 && c.Continue.hasClicked() && selectedTest!=null) {
+    DinValgteTest = (String)selectedTest;
+    c.ToggleTeacherTests(false);
+    c.state=6;
+  }
+}
+
+
+void DineKlasser (int index) {
+  selectedClass = cp5.get(ScrollableList.class, "DineKlasser").getItem(index).get("value");
+  println(selectedClass);
+}
+
+void DinKlassesTests (int index) {
+  selectedTest = cp5.get(ScrollableList.class, "DinKlassesTests").getItem(index).get("name");
+  println(selectedTest);
+>>>>>>> Stashed changes
 }

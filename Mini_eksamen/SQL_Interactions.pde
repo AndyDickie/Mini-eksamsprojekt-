@@ -1,7 +1,7 @@
 
 class SQL {
   String signingSalt = "sQLLlerkk4221€€))";
-  
+
   String getUser(String userName) {
     db.query("SELECT userName FROM Users WHERE userName='"+ userName + "'");
     String username = db.getString("userName");
@@ -38,10 +38,9 @@ class SQL {
   }
 
   void userJoinClass(int userId, String classID) {
-    if (getClassName(int(classID)) != null){
-    db.query("INSERT INTO 'Elev-tilknytning' VALUES ('"+classID+"', " + userId + ")");
-    }
-    else {
+    if (getClassName(int(classID)) != null) {
+      db.query("INSERT INTO 'Elev-tilknytning' VALUES ('"+classID+"', " + userId + ")");
+    } else {
       println("FEJL");
     }
   }
@@ -58,13 +57,13 @@ class SQL {
     int classId = int(random(100000, 999999+1));
     db.query("INSERT INTO Klasser VALUES ('" + className + "', " + classId + ", null, " + teacherId + ")");
   }
-  
-  int getClassCode(String className){
+
+  int getClassCode(String className) {
     db.query("SELECT Klassekode FROM Klasser WHERE Klassenavn='" + className + "'");
     int classCode = db.getInt("Klassekode");
     return classCode;
   }
-  
+
 
   int getClassID(String className) {
     db.query("SELECT ID FROM Klasser WHERE Klassenavn='" + className + "'");
@@ -109,34 +108,45 @@ class SQL {
     int testID = db.getInt("ID");
     return testID;
   }
+<<<<<<< Updated upstream
  
   StringList getTeacherClasses(int userID){
+=======
+
+  StringList getTeacherClasses(int userID) {
+>>>>>>> Stashed changes
     StringList KlasseListe = new StringList();
     String s = "SELECT Klassenavn FROM Klasser WHERE LærerID="+ userID;
     db.query(s);
-    while (db.next()){
+    while (db.next()) {
       KlasseListe.append(db.getString("Klassenavn"));
     }
     return KlasseListe;
   }
+<<<<<<< Updated upstream
  
   StringList getTestsPerClass(int Klassekode){
+=======
+
+  StringList getTestsPerClass(int Klassekode) {
+>>>>>>> Stashed changes
     StringList TestListe = new StringList();
     String s = "SELECT Navn FROM Test WHERE Klassekode="+ Klassekode;
     db.query(s);
-    while(db.next()){
+    while (db.next()) {
       TestListe.append(db.getString("Navn"));
     }
     return TestListe;
   }
 
-  void insertUserAnswer(String UserAnswer, int questionID, int userID ){
+  void insertUserAnswer(String UserAnswer, int questionID, int userID ) {
     db.query("INSERT INTO Elevsvar VALUES (null, '"+ questionID +"', '"+userID+"', '"+ UserAnswer+ "')");
   }
-  
-  void getuserAnswer(int questionID, int userID){
+
+  void getuserAnswer(int questionID, int userID) {
     db.query("SELECT * FROM Elevsvar Where SporgsmalID = "+ questionID + " AND UsernameID = " + userID);
   }
+<<<<<<< Updated upstream
   
   //Kan gøres nemmer ved at fjerne * og gøre det specifikt 
   void getTestAnswer(int testID){
@@ -144,6 +154,16 @@ class SQL {
   }
   
   void getQuestionAnswer(int questionID){
+=======
+
+
+  void getTestAnswer() {
+    db.query("SELECT * FROM Elevsvar,Sporgsmal,Test Where Elevsvar.SporgsmalID=Sporgsmal.ID AND Sporgsmal.TestID=Test.ID AND Test.ID =" +1);
+  }
+
+
+  void getQuestionAnswer(int questionID) {
+>>>>>>> Stashed changes
     db.query("SELECT * FROM Elevsvar Where SporgsmalID = " + questionID );
   }
   

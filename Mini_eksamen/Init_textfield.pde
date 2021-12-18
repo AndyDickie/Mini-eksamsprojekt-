@@ -2,7 +2,7 @@ Bang create_user, join_class;
 Button show_password, login;
 Textfield username_field, pass_field, class_id;
 Toggle type;
-ScrollableList teacherTests,teacherClass;
+ScrollableList teacherTests, teacherClass;
 
 class Init extends SQL {
   void toggle(String controller, boolean vis) {
@@ -27,19 +27,23 @@ class Init extends SQL {
     pass_field = cp5.addTextfield("Password").setPosition(width/2-100, height/2-120).setSize(200, 40).setAutoClear(false).setFont(f).setVisible(false);
     pass_field.setFocus(false);
     pass_field.setPasswordMode(passMode);
-    
+
     //Scrollable list
-    teacherTests = cp5.addScrollableList("DinKlassesTests").setPosition(width/2+50,100).setSize(400,300).setFont(f).setBarHeight(40).setItemHeight(30).setVisible(false);
-    teacherClass = cp5.addScrollableList("DineKlasser").setPosition(50,100).setSize(400,300).setFont(f).setBarHeight(40).setItemHeight(30).setVisible(false);
+    teacherTests = cp5.addScrollableList("DinKlassesTests").setPosition(width/2+50, 100).setSize(400, 300).setFont(f).setBarHeight(40).setItemHeight(30).setVisible(false);
+    teacherClass = cp5.addScrollableList("DineKlasser").setPosition(50, 100).setSize(400, 300).setFont(f).setBarHeight(40).setItemHeight(30).setVisible(false);
 
     //create user bangs
     cp5.addButton("Create User").setPosition(width/2+110, height/2-140).setSize(80, 40).setVisible(false);
     type = cp5.addToggle("Teacher/Student").setPosition(width/2+110, height/2-240).setSize(80, 40).setValue(false).setMode(ControlP5.SWITCH).setVisible(false);
+<<<<<<< Updated upstream
     println("load");
     
     //Create class textfield
     cp5.addTextfield("Class Name").setPosition(width/2-100, height/2).setSize(200,40).setFont(f).setVisible(false);
     cp5.addButton("Create Class").setPosition(width/2+110, height/2).setSize(80,40).setVisible(false);
+=======
+    println("load");    
+>>>>>>> Stashed changes
   }
 
   void ToggleLogin(boolean vis) {
@@ -48,14 +52,13 @@ class Init extends SQL {
     toggle("Show Password", vis);
     toggle("Login", vis);
   }
-  
-  void ToggleTeacherTests(boolean vis){
+
+  void ToggleTeacherTests(boolean vis) {
     println("Toggle TeacherTestList");
-    if(vis){
+    if (vis) {
       cp5.getController("DinKlassesTests").show();
       cp5.getController("DineKlasser").show();
-    }
-    else{
+    } else {
       cp5.getController("DinKlassesTests").hide();
       cp5.getController("DineKlasser").hide();
     }

@@ -15,9 +15,9 @@ class AnswerFunction {
   }
   
   void display() {
-   first.display();
-   second.display();
-   third.display();
-   fourth.display();
+    first.display();
+    second.display();
+    third.display();
+    fourth.display();
   }
 }
