@@ -145,6 +145,7 @@ class SQL {
     db.query("SELECT * FROM Elevsvar Where SporgsmalID = " + questionID );
   }
   
+  
   //String getQuestionName() {
   //}
 
