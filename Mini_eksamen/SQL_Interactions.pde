@@ -137,15 +137,14 @@ class SQL {
     db.query("SELECT * FROM Elevsvar Where SporgsmalID = "+ questionID + " AND UsernameID = " + userID);
   }
   
-  
-  void getTestAnswer(){
-    db.query("SELECT * FROM Elevsvar,Sporgsmal,Test Where Elevsvar.SporgsmalID=Sporgsmal.ID AND Sporgsmal.TestID=Test.ID AND Test.ID =" +1);
+  void getTestAnswer(int testID){
+    db.query("SELECT * FROM Elevsvar,Sporgsmal,Test Where Elevsvar.SporgsmalID=Sporgsmal.ID AND Sporgsmal.TestID=Test.ID AND Test.ID =" +testID);
   }
-  
   
   void getQuestionAnswer(int questionID){
     db.query("SELECT * FROM Elevsvar Where SporgsmalID = " + questionID );
   }
+  
   //String getQuestionName() {
   //}
 
