@@ -63,12 +63,12 @@ void mouseReleased() {
       }
     }
   }
-}
-if (c.state==5 && c.Continue.hasClicked() && selectedTest!=null) {
-  DinValgteTest = (String)selectedTest;
-  c.ToggleTeacherTests(false);
-  c.state=6;
-}
+
+  if (c.state==5 && c.Continue.hasClicked() && selectedTest!=null) {
+    DinValgteTest = (String)selectedTest;
+    c.ToggleTeacherTests(false);
+    c.state=6;
+  }
 }
 
 
