@@ -10,13 +10,8 @@ class CheckAnswer {
     else return false;  
   }
   
-  void CorrectAnswer(int questionID){
-    db.query("SELECT Svar FROM Sporgsmal where Sporgsmal.ID=" +questionID);
-    
-  }
-  
-  void StudentAnswer(int questionID){
-   db.query("SELECT Elevsvar FROM Elevsvar where Elevsvar.SporgsmalID=" +questionID); 
+  void getAnswers(int questionID, int userID){
+    db.query("SELECT Svar,Elevsvar,UsernameID FROM Sporgsmal,Elevsvar Where Sporgsmal.ID=" +questionID+ " AND Elevsvar.SporgsmalID="+questionID+" AND Elevsvar.UsernameID="+userID);
     
   }
   

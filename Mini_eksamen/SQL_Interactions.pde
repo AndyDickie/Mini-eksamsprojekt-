@@ -109,7 +109,7 @@ class SQL {
     int testID = db.getInt("ID");
     return testID;
   }
-  
+ 
   StringList getTeacherClasses(int userID){
     StringList KlasseListe = new StringList();
     String s = "SELECT Klassenavn FROM Klasser WHERE LærerID="+ userID;
@@ -119,7 +119,7 @@ class SQL {
     }
     return KlasseListe;
   }
-  
+ 
   StringList getTestsPerClass(int Klassekode){
     StringList TestListe = new StringList();
     String s = "SELECT Navn FROM Test WHERE Klassekode="+ Klassekode;
@@ -138,6 +138,7 @@ class SQL {
     db.query("SELECT * FROM Elevsvar Where SporgsmalID = "+ questionID + " AND UsernameID = " + userID);
   }
   
+  //Kan gøres nemmer ved at fjerne * og gøre det specifikt 
   void getTestAnswer(int testID){
     db.query("SELECT * FROM Elevsvar,Sporgsmal,Test Where Elevsvar.SporgsmalID=Sporgsmal.ID AND Sporgsmal.TestID=Test.ID AND Test.ID =" +testID);
   }
