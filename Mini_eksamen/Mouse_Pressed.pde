@@ -11,7 +11,7 @@ void mouseReleased() {
     c.state = 1;
   }
   
-  if (c.Home.hasClicked() == true && c.state == 1 || c.Home.hasClicked() == true && c.state == 2) {
+  if (c.StartupPage.hasClicked() == true && c.state == 1 || c.StartupPage.hasClicked() == true && c.state == 2) {
     c.ToggleAll(false);
     c.state = 0;
   }

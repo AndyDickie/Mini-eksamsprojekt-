@@ -1,14 +1,14 @@
 class Controller extends Init {
   int state;
   String userName;
-  Button Login, Register, Home, JoinClass, SeeTestAnswers;
+  Button Login, Register, StartupPage, JoinClass, SeeTestAnswers;
   AnswerFunction test;
   
   Controller(int state_) {
     state = state_;
     Login = new Button(width/3-50, height/3-50, 100, 100, "Login");
     Register = new Button(2*(width/3)-50, (height/3)-50, 100, 100, "Register");
-    Home = new Button(width/10, height/10, 100, 100, "Home");
+    StartupPage = new Button(width/10, height/10, 100, 100, "Home");
     JoinClass = new Button(width/10, 2*height/10, 100, 50, "Join Class");
     SeeTestAnswers = new Button(width/10, 2*height/5, 100, 50, "See Answers From Tests");
     
@@ -22,13 +22,13 @@ class Controller extends Init {
   }
   void LoginScreen(){
     background(0);
-    Home.display();
+    StartupPage.display();
     //ToggleLogin(true);
   }
   
   void RegisterScreen(){
     background(0);
-    Home.display();
+    StartupPage.display();
   }
   void homeScreen() {
     background(0);
