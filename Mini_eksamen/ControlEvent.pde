@@ -49,6 +49,5 @@ void controlEvent(ControlEvent theEvent) {
   
   if (theEvent.getName() == "Dine Klasser"){
    println("saskdaskd");
-   
   }
 }
