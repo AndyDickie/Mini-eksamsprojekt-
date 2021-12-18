@@ -92,7 +92,7 @@ class Controller extends Init {
   //  //Her skal gøres så man kan vælge hvilken klasse man skal se resultater for
   //}
   void update() {
-    background(0,0,139);
+    //background(0,0,139);
     if (state == 0) {
       startScreen();
     }
