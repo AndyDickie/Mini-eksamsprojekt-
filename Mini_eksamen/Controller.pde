@@ -51,6 +51,7 @@ class Controller extends Init {
       textSize(50);
       text("Hej " + userName, width/2, height/10);
       JoinClass.display();
+      ViewClasses.display();
     }
   }
 

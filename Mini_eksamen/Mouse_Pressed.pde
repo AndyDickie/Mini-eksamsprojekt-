@@ -45,10 +45,21 @@ void mouseReleased() {
     println("vievClass tryk");
     StringList k = c.getTeacherClasses(c.getUserId(c.userName));
     println(k);
-    for (int i=0; i<k.size(); i++){
+    for (int i=0; i<k.size(); i++) {
       println("sss");
       text(k.get(i), width/2, height/20*i+150);
-      text(c.getClassCode(k.get(i)),width/2+200, height/20*i+150);
+      text(c.getClassCode(k.get(i)), width/2+200, height/20*i+150);
+    }
+  }
+  if (c.state == 3 && c.ViewClasses.hasClicked() && c.userType == 0) {
+    StringList k = c.getUserClasses(c.getUserId(c.userName));
+    println(k);
+    for (int i=0; i<k.size(); i++) {
+      try {
+        text(k.get(i), width/2, height/20*(i+1)+150);
+      }
+      catch (Exception e) {
+      }
     }
   }
 }
