@@ -13,9 +13,7 @@ class AnswerFunction {
     third = new Button(187.5+175+33.3+175+33.3, height-height/4, 175, 100, Tredjesporgsmal);
     fourth = new Button(187.5+175+33.3+175+33.3+175+33.3, height-height/4, 175, 100, Fjerdesporgsmal);
   }
-
-
-
+  
   void display() {
    first.display();
    second.display();
