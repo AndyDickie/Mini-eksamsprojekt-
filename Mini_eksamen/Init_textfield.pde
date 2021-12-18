@@ -35,15 +35,11 @@ class Init extends SQL {
     //create user bangs
     cp5.addButton("Create User").setPosition(width/2+110, height/2-140).setSize(80, 40).setVisible(false);
     type = cp5.addToggle("Teacher/Student").setPosition(width/2+110, height/2-240).setSize(80, 40).setValue(false).setMode(ControlP5.SWITCH).setVisible(false);
-<<<<<<< Updated upstream
-    println("load");
     
     //Create class textfield
     cp5.addTextfield("Class Name").setPosition(width/2-100, height/2).setSize(200,40).setFont(f).setVisible(false);
     cp5.addButton("Create Class").setPosition(width/2+110, height/2).setSize(80,40).setVisible(false);
-=======
     println("load");    
->>>>>>> Stashed changes
   }
 
   void ToggleLogin(boolean vis) {

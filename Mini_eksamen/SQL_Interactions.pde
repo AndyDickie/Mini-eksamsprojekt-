@@ -108,13 +108,8 @@ class SQL {
     int testID = db.getInt("ID");
     return testID;
   }
-<<<<<<< Updated upstream
- 
-  StringList getTeacherClasses(int userID){
-=======
 
   StringList getTeacherClasses(int userID) {
->>>>>>> Stashed changes
     StringList KlasseListe = new StringList();
     String s = "SELECT Klassenavn FROM Klasser WHERE LærerID="+ userID;
     db.query(s);
@@ -123,13 +118,8 @@ class SQL {
     }
     return KlasseListe;
   }
-<<<<<<< Updated upstream
  
-  StringList getTestsPerClass(int Klassekode){
-=======
-
   StringList getTestsPerClass(int Klassekode) {
->>>>>>> Stashed changes
     StringList TestListe = new StringList();
     String s = "SELECT Navn FROM Test WHERE Klassekode="+ Klassekode;
     db.query(s);
@@ -146,16 +136,12 @@ class SQL {
   void getuserAnswer(int questionID, int userID) {
     db.query("SELECT * FROM Elevsvar Where SporgsmalID = "+ questionID + " AND UsernameID = " + userID);
   }
-<<<<<<< Updated upstream
+
   
   //Kan gøres nemmer ved at fjerne * og gøre det specifikt 
   void getTestAnswer(int testID){
     db.query("SELECT * FROM Elevsvar,Sporgsmal,Test Where Elevsvar.SporgsmalID=Sporgsmal.ID AND Sporgsmal.TestID=Test.ID AND Test.ID =" +testID);
   }
-  
-  void getQuestionAnswer(int questionID){
-=======
-
 
   void getTestAnswer() {
     db.query("SELECT * FROM Elevsvar,Sporgsmal,Test Where Elevsvar.SporgsmalID=Sporgsmal.ID AND Sporgsmal.TestID=Test.ID AND Test.ID =" +1);
@@ -163,7 +149,6 @@ class SQL {
 
 
   void getQuestionAnswer(int questionID) {
->>>>>>> Stashed changes
     db.query("SELECT * FROM Elevsvar Where SporgsmalID = " + questionID );
   }
   
@@ -194,3 +179,5 @@ class SQL {
     return null;
   }
 }
+  
+  

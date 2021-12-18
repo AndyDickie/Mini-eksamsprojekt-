@@ -3,12 +3,8 @@ class Controller extends Init {
   int rykNedaf=150;
   HashMap<String, String> elever = new HashMap<String, String>();
   String userName;
-<<<<<<< Updated upstream
   int userType;
-  Button Login, Register, StartupPage, JoinClass, SeeTestAnswers, CreateClass, ViewClasses;
-=======
-  Button Login, Register, Home, JoinClass, SeeTestAnswers, Continue;
->>>>>>> Stashed changes
+  Button Login, Register, StartupPage, JoinClass, SeeTestAnswers, CreateClass, ViewClasses,Continue,Home;
   AnswerFunction test;
 
   Controller(int state_) {
@@ -19,11 +15,8 @@ class Controller extends Init {
     JoinClass = new Button(width/10, 2*height/10, 100, 50, "Join Class");
     CreateClass = new Button(width/10, 2*height/10, 100, 50, "Create Class");
     SeeTestAnswers = new Button(width/10, 2*height/5, 100, 50, "See Answers From Tests");
-<<<<<<< Updated upstream
     ViewClasses = new Button(width/10, 2*height/7.5, 100, 50, "View Your Classes");
-=======
     Continue = new Button(width-200, height-200, 100, 50, "Continue");
->>>>>>> Stashed changes
 
     test = new AnswerFunction();
   }
@@ -34,18 +27,14 @@ class Controller extends Init {
     Register.display();
   }
   void LoginScreen() {
-<<<<<<< Updated upstream
     background(0);
     StartupPage.display();
-=======
     //background(0);
-    Home.display();
->>>>>>> Stashed changes
+    //Home.display();
     //ToggleLogin(true);
   }
 
   void RegisterScreen() {
-<<<<<<< Updated upstream
     background(0);
     StartupPage.display();
   }
@@ -75,35 +64,32 @@ class Controller extends Init {
 
   void SeeTestAnswersScreen() {
     background(0);
-=======
-    //background(0);
-    Home.display();
-  }
-  void homeScreen() {
-    //background(0);
-    textSize(50);
-    text("Hej " + userName, width/2, height/10);
-    JoinClass.display();
-    SeeTestAnswers.display();
-  }
-
-  void answerScreen() {
-    //background(0);
-    test.display();
-  }
-  void joinClassScreen() {
-    //background(0);
-  }
-
-  void SeeTestAnswersScreen() {
-    //background(0);
     Continue.display();
->>>>>>> Stashed changes
-
-    // teacherClass.addItems(klasseliste);
-
-    //Her skal gøres så man kan vælge hvilken klasse man skal se resultater for
   }
+  //void homeScreen() {
+  //  //background(0);
+  //  textSize(50);
+  //  text("Hej " + userName, width/2, height/10);
+  //  JoinClass.display();
+  //  SeeTestAnswers.display();
+  //}
+
+  //void answerScreen() {
+  //  //background(0);
+  //  test.display();
+  //}
+  //void joinClassScreen() {
+  //  //background(0);
+  //}
+
+  //void SeeTestAnswersScreen() {
+  //  //background(0);
+  //  Continue.display();
+
+  //  // teacherClass.addItems(klasseliste);
+
+  //  //Her skal gøres så man kan vælge hvilken klasse man skal se resultater for
+  //}
   void update() {
     background(0,0,139);
     if (state == 0) {
@@ -126,14 +112,6 @@ class Controller extends Init {
     if (state == 5) {
       SeeTestAnswersScreen();
       teacherTests.clear();
-<<<<<<< Updated upstream
-      if (selected!=null) {
-        StringList testliste = c.getTestsPerClass((int)selected);
-        for (int i=0; i<testliste.size(); i++) {
-          teacherTests.addItem(testliste.get(i), i);
-        }
-      }
-=======
       if (selectedClass!=null) {
         StringList testliste = c.getTestsPerClass((int)selectedClass);
         for (int i=0; i<testliste.size(); i++) {
@@ -168,7 +146,6 @@ class Controller extends Init {
         text(nuvarendeProcent, 250+400+5, rykNedaf+30);
       }
       rectMode(CENTER);
->>>>>>> Stashed changes
     }
   }
 }
