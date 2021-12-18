@@ -27,6 +27,7 @@ void mouseReleased() {
   if (c.state == 3 && c.SeeTestAnswers.hasClicked() && c.userType == 1) {
     background(0);
     c.ToggleAll(false);
+  }
   if (c.state == 3 && c.SeeTestAnswers.hasClicked()) {
     c.ToggleTeacherTests(true);
     StringList klasseliste = c.getTeacherClasses(5);
@@ -63,12 +64,12 @@ void mouseReleased() {
     }
   }
 }
-  if (c.state==5 && c.Continue.hasClicked() && selectedTest!=null) {
-    DinValgteTest = (String)selectedTest;
-    c.ToggleTeacherTests(false);
-    c.state=6;
-  }
-  }
+if (c.state==5 && c.Continue.hasClicked() && selectedTest!=null) {
+  DinValgteTest = (String)selectedTest;
+  c.ToggleTeacherTests(false);
+  c.state=6;
+}
+}
 
 
 
@@ -81,4 +82,3 @@ void DinKlassesTests (int index) {
   selectedTest = cp5.get(ScrollableList.class, "DinKlassesTests").getItem(index).get("name");
   println(selectedTest);
 }
-  
