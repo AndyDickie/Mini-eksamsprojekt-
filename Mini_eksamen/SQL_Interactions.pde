@@ -12,11 +12,12 @@ class SQL {
     }
   }
 
-  String getUserType(String userName) {
+  int getUserType(String userName) {
     db.query("SELECT Stilling FROM users WHERE userName='"+ userName + "'");
     int userType = db.getInt("Stilling");
-    if (userType == 0)return "Elev";
-    else return "Lærer";
+    //if (userType == 0)return "Elev";
+    //else return "Lærer";
+    return userType;
   }
 
   int getUserId(String userName) {

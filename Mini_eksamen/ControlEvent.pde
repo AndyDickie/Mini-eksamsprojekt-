@@ -10,6 +10,9 @@ void controlEvent(ControlEvent theEvent) {
     if (password != null && c.login(userName, password)) {
       user = c.getUser(userName);
       c.userName = userName;
+      c.userType = int(c.getUserType(c.userName));
+      println("usertype:= "+ c.userType);
+      println(c.getUserType(c.userName));
       c.state = 3;
       c.ToggleLogin(false);
     } else {
@@ -47,8 +50,14 @@ void controlEvent(ControlEvent theEvent) {
     passMode = !passMode;
   }
   
-  if (theEvent.getName() == "Dine Klasser"){
+  if (theEvent.getName() == "Create Class"){
    println("saskdaskd");
-   
+   String className = cp5.get(Textfield.class, "Class Name").getText();
+   try{
+   c.createClass(className, c.getUserId(c.userName));
+   }
+   catch(Exception e){
+     println("Something went wrong");
+   }
   }
 }
