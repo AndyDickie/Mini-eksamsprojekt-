@@ -67,30 +67,7 @@ class Controller extends Init {
     background(0);
     Continue.display();
   }
-  //void homeScreen() {
-  //  //background(0);
-  //  textSize(50);
-  //  text("Hej " + userName, width/2, height/10);
-  //  JoinClass.display();
-  //  SeeTestAnswers.display();
-  //}
 
-  //void answerScreen() {
-  //  //background(0);
-  //  test.display();
-  //}
-  //void joinClassScreen() {
-  //  //background(0);
-  //}
-
-  //void SeeTestAnswersScreen() {
-  //  //background(0);
-  //  Continue.display();
-
-  //  // teacherClass.addItems(klasseliste);
-
-  //  //Her skal gøres så man kan vælge hvilken klasse man skal se resultater for
-  //}
   void update() {
     //background(0,0,139);
     if (state == 0) {
