@@ -46,4 +46,9 @@ void controlEvent(ControlEvent theEvent) {
     pass.setPasswordMode(passMode);
     passMode = !passMode;
   }
+  
+  if (theEvent.getName() == "Dine Klasser"){
+   println("saskdaskd");
+   
+  }
 }
