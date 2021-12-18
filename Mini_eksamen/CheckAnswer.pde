@@ -19,3 +19,4 @@ class CheckAnswer {
     db.query("SELECT Svar,Elevsvar,UsernameID FROM Sporgsmal,Elevsvar Where Sporgsmal.ID=" +questionID+ " AND Elevsvar.SporgsmalID="+questionID+" AND Elevsvar.UsernameID="+userID);
     return db.getString("Svar");
   }
+}
