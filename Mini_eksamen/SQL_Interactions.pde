@@ -1,4 +1,3 @@
-
 class SQL {
   String signingSalt = "sQLLlerkk4221€€))";
 
@@ -99,8 +98,8 @@ class SQL {
     db.query("INSERT INTO Test VALUES(null, '" + testName + "', )");
   }
 
-  void createQuestionAnswer(int testID, String question, String forstsvar, String Andetsvar,String Tredjesvar,String Fjerdesvar,int status,int questionNR) {
-    db.query("INSERT INTO Sporgsmal VALUES ('" + testID + "','" + question + "','" + forstsvar + "','" + Andetsvar + "','" + Tredjesvar + "','" + Fjerdesvar + "','"+ status +"','"+questionNR+"', null)");
+  void createQuestionAnswer(int testID, String question, String forstsporgsmal, String Andetsporgsmal, String Tredjesporgsmal, String Fjerdesporgsmal, int status, int questionNR) {
+    db.query("INSERT INTO Sporgsmal VALUES ('" + testID + "','" + question + "','" + forstsporgsmal + "','" + Andetsporgsmal + "','" + Tredjesporgsmal + "','" + Fjerdesporgsmal + "','"+questionNR+"', null)");
   }
 
   int getTestID(String testName) {
@@ -138,24 +137,41 @@ class SQL {
   }
 
   //Kan gøres nemmer ved at fjerne * og gøre det specifikt
-  void getTestAnswer(int testID) {
-    db.query("SELECT * FROM Elevsvar,Sporgsmal,Test Where Elevsvar.SporgsmalID=Sporgsmal.ID AND Sporgsmal.TestID=Test.ID AND Test.ID =" +testID);
+  ArrayList getTestAnswer(int testID) {
+    println("ssss");
+    db.query("SELECT Svar1, Svar2, Svar3, Svar4, Status, ID, Sporgsmal FROM Sporgsmal WHERE TestID =" +testID);
+    StringList k = new StringList();
+    ArrayList<testAns> a = new ArrayList<testAns>();
+    testAns h;
+    while (db.next()) {
+      k.append(db.getString("Svar1"));
+      k.append(db.getString("Svar2"));
+      k.append(db.getString("Svar3"));
+      k.append(db.getString("Svar4"));
+      k.append(db.getString("Status"));
+      k.append(db.getString("ID"));
+      k.append(db.getString("Sporgsmal"));
+      h = new testAns(k.get(0), k.get(1), k.get(2), k.get(3), k.get(4), k.get(5), k.get(6));
+      a.add(h);
+      k.clear();
+    }
+    return a;
   }
 
-  void getTestAnswer() {
-    db.query("SELECT * FROM Elevsvar,Sporgsmal,Test Where Elevsvar.SporgsmalID=Sporgsmal.ID AND Sporgsmal.TestID=Test.ID AND Test.ID =" +1);
-  }
+  //void getTestAnswer(int testID) {
+  //  db.query("SELECT * FROM Elevsvar,Sporgsmal,Test Where Elevsvar.SporgsmalID=Sporgsmal.ID AND Sporgsmal.TestID=Test.ID AND Test.ID =" +testID);
+  //}
 
   void getQuestionAnswer(int questionID) {
     db.query("SELECT * FROM Elevsvar Where SporgsmalID = " + questionID );
   }
 
-// det er noget lort ved ikke om vi skal bruge det
-//int getquestionID(){
-//  db.query("SELECT SpgNr FROM Sporgsmal Where ID=" +questionNR);
-//  int questionID = db.getInt("ID");
-//  return questionID;
-//}
+  // det er noget lort ved ikke om vi skal bruge det
+  //int getquestionID(){
+  //  db.query("SELECT SpgNr FROM Sporgsmal Where ID=" +questionNR);
+  //  int questionID = db.getInt("ID");
+  //  return questionID;
+  //}
 
   //String getQuestionName() {
   //}
@@ -182,19 +198,27 @@ class SQL {
     return null;
   }
 
-  Boolean answerStatus(String StudentAnswer, String CorrectAnswer) {
-    if (StudentAnswer==CorrectAnswer) return true;
-    if (StudentAnswer!=CorrectAnswer) return false;
+  //Boolean answerStatus(String StudentAnswer, String CorrectAnswer) {
+  //  if (StudentAnswer==CorrectAnswer) return true;
+  //  if (StudentAnswer!=CorrectAnswer) return false;
+  //  else return false;
+  //}
+
+  //String StudentAnswer(int questionID, int userID) {
+  //  db.query("SELECT Svar,Elevsvar,UsernameID FROM Sporgsmal,Elevsvar Where Sporgsmal.ID=" +questionID+ " AND Elevsvar.SporgsmalID="+questionID+" AND Elevsvar.UsernameID="+userID);
+  //  return db.getString("Elevsvar");
+  //}
+
+  //String CorrectAnswer(int questionID, int userID) {
+  //  db.query("SELECT Svar,Elevsvar,UsernameID FROM Sporgsmal,Elevsvar Where Sporgsmal.ID=" +questionID+ " AND Elevsvar.SporgsmalID="+questionID+" AND Elevsvar.UsernameID="+userID);
+  //  return db.getString("Svar");
+  //}
+  
+  Boolean answerCorrect(int questionID, int userID){
+    db.query("SELECT Svar,Elevsvar,UsernameID FROM Sporgsmal,Elevsvar Where Sporgsmal.ID=" +questionID+ " AND Elevsvar.SporgsmalID="+questionID+" AND Elevsvar.UsernameID="+userID);
+    String rigtigtSvar = db.getString("Svar");
+    String elevSvar = db.getString("Elevsvar");
+    if(rigtigtSvar==elevSvar)return true;
     else return false;
-  }
-
-  String StudentAnswer(int questionID, int userID) {
-    db.query("SELECT Svar,Elevsvar,UsernameID FROM Sporgsmal,Elevsvar Where Sporgsmal.ID=" +questionID+ " AND Elevsvar.SporgsmalID="+questionID+" AND Elevsvar.UsernameID="+userID);
-    return db.getString("Elevsvar");
-  }
-
-  String CorrectAnswer(int questionID, int userID) {
-    db.query("SELECT Svar,Elevsvar,UsernameID FROM Sporgsmal,Elevsvar Where Sporgsmal.ID=" +questionID+ " AND Elevsvar.SporgsmalID="+questionID+" AND Elevsvar.UsernameID="+userID);
-    return db.getString("Svar");
   }
 }

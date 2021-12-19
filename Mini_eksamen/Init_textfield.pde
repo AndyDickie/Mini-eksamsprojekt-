@@ -23,11 +23,12 @@ class Init extends SQL {
     cp5.addButton("Nyt spoergsmaal").setPosition(75,300).setSize(150,50).setVisible(false);
     cp5.setColorBackground(color(128));
     cp5.setColorForeground(color(105));
-    
+
+
     //textfields
-    username_field = cp5.addTextfield("Username").setPosition(width/2-100, height/2-200).setSize(200, 40).setAutoClear(false).setFont(f).setVisible(false);
+    username_field = cp5.addTextfield("Username").setPosition(width/2-150, height/2-50).setSize(200, 40).setAutoClear(false).setFont(f).setVisible(true);
     username_field.setFocus(false);
-    pass_field = cp5.addTextfield("Password").setPosition(width/2-100, height/2-120).setSize(200, 40).setAutoClear(false).setFont(f).setVisible(false);
+    pass_field = cp5.addTextfield("Password").setPosition(width/2-150, height/2+30).setSize(200, 40).setAutoClear(false).setFont(f).setVisible(true);
     pass_field.setFocus(false);
     pass_field.setPasswordMode(passMode);
     
@@ -62,8 +63,8 @@ class Init extends SQL {
     teacherClass = cp5.addScrollableList("DineKlasser").setPosition(50, 100).setSize(400, 300).setFont(f).setBarHeight(40).setItemHeight(30).setVisible(false);
 
     //create user bangs
-    cp5.addButton("Create User").setPosition(width/2+110, height/2-140).setSize(80, 40).setVisible(false);
-    type = cp5.addToggle("Teacher/Student").setPosition(width/2+110, height/2-240).setSize(80, 40).setValue(false).setMode(ControlP5.SWITCH).setVisible(false);
+    cp5.addButton("Create User").setPosition(width/2+78, height/2+140).setSize(80, 40).setVisible(true);
+    type = cp5.addToggle("Teacher/Student").setPosition(width/2-165, height/2-140).setSize(80, 40).setValue(false).setMode(ControlP5.SWITCH).setVisible(true);
     
     //Create class textfield
     cp5.addTextfield("Class Name").setPosition(width/2-100, height/2).setSize(200,40).setFont(f).setVisible(false);

@@ -16,6 +16,9 @@ class Button {
     if (show) {
       textAlign(CENTER);
       fill(105);
+      if (mouseX >= x-w/2 && mouseX <= x+w/2 && mouseY <= y+h/2 && mouseY >= y-h/2){
+        fill(150);
+      }
       rect(x, y, w, h);
       fill(255);
       textSize(20);

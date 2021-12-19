@@ -9,9 +9,6 @@ class Controller extends Init {
  
   Controller(int state_) {
     state = state_;
-    Login = new Button(width/3-50, height/3-50, 100, 100, "Login");
-    Register = new Button(2*(width/3)-50, (height/3)-50, 150, 100, "Register");
-    StartupPage = new Button(width/10, height/10, 150, 100, "Home");
     JoinClass = new Button(width/10, 2*height/10, 150, 50, "Join Class");
     CreateClass = new Button(width/10, 2*height/10, 150, 50, "Create Class");
     SeeTestAnswers = new Button(425, 110, 150, 40, "Se resultater");
@@ -23,32 +20,28 @@ class Controller extends Init {
   }
 
   void startScreen() {
-    background(0);
-    Login.display();
-    Register.display();
-  }
-  void LoginScreen() {
-    background(0);
-    StartupPage.display();
-    //background(0);
-    //Home.display();
-    //ToggleLogin(true);
-  }
-
-  void RegisterScreen() {
-    background(0);
-    StartupPage.display();
+    //background(0,0,107);
+    textAlign(CENTER);
+    fill(255);
+    textSize(80);
+    text("Dit test univers", width/2,120);
+    //stroke(0,0,140);
+    line(200,130,800,130);
+    fill(0,0,209);
+    strokeWeight(2);
+    rect(width/2,height/2+50,350,400);
+    strokeWeight(1);
   }
   void homeScreen() {
     if (userType == 1) {
-      //background(0);
+      //background(0,0,139);
       textSize(50);
       text("Hej " + userName, width/2, height/10);
       CreateClass.display();
       SeeTestAnswers.display();
       ViewClasses.display();
     } else {
-      //background(0);
+      //background(0,0,139);
       textSize(50);
       text("Hej " + userName, width/2, height/10);
       JoinClass.display();
@@ -57,15 +50,15 @@ class Controller extends Init {
   }
 
   void answerScreen() {
-    background(0);
+    background(0,0,139);
     test.display();
   }
   void joinClassScreen() {
-    background(0);
+    background(0,0,139);
   }
 
   void SeeTestAnswersScreen() {
-    background(0);
+    background(0,0,139);
     Continue.display();
   }
 
@@ -74,17 +67,9 @@ class Controller extends Init {
     if (state == 0) {
       startScreen();
     }
-
-    if (state == 1) {
-      LoginScreen();
-    }
-    if (state == 2) {
-      RegisterScreen();
-    }
     if (state == 3) {
       homeScreen();
     }
-
     if (state == 4) {
       joinClassScreen();
     }
@@ -111,7 +96,7 @@ class Controller extends Init {
       text("på elevens navn", width-240, 110);
       fill(255);
       textSize(50);
-      text(DinValgteTest, 30, 70);
+      text(DinValgteTestNavn, 30, 70);
       textSize(20);
       text("Procent korrekt", 30, 110);
       for (Map.Entry me : elever.entrySet()) {
@@ -155,13 +140,14 @@ class Controller extends Init {
     text("Klasse navn:",75,170);
     fill(0);
     rectMode(CENTER);
+    background(0,0,139);
+    c.test.display();
+
     }
   }
 }
 
-
-
-void udregnProcentRigtigt(PVector point){
+void udregnProcentRigtigt(PVector point) {
   //Her skal point PVector bestå af antal rigtige spg på x-koordinaten og antal forkerte skal være på y-koordinaten.
   String procent = (int)((point.x/(point.x+point.y))*100)+"%";
   println(procent);

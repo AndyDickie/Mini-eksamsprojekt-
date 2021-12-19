@@ -1,31 +1,17 @@
-Object selectedClass, selectedTest;
-String DinValgteTest;
+Object selectedClass, selectedTest, selectedTestName;
+String DinValgteTestNavn;
+int DinValgteTest;
 
 void mouseReleased() {
-  if (c.state == 0 && c.Login.hasClicked() == true) {
-    c.ToggleLogin(true);
-    c.state = 1;
-  }
-
-  if (c.state == 0 && c.Register.hasClicked() == true) {
-    c.ToggleRegister(true);
-    c.state = 1;
-  }
-
-  if (c.StartupPage.hasClicked() == true && c.state == 1 || c.StartupPage.hasClicked() == true && c.state == 2) {
-    c.ToggleAll(false);
-    c.state = 0;
-  }
-
   if (c.state == 3 && c.JoinClass.hasClicked() && c.userType == 0) {
-    background(0);
+    background(0,0,139);
     c.ToggleAll(false);
     c.ToggleClass(true);
     c.state = 4;
   }
 
   if (c.state == 3 && c.SeeTestAnswers.hasClicked() && c.userType == 1) {
-    background(0);
+    background(0,0,139);
     c.ToggleAll(false);
   }
   if (c.state == 3 && c.SeeTestAnswers.hasClicked()) {
@@ -37,7 +23,7 @@ void mouseReleased() {
     c.state = 5;
   }
   if (c.state == 3 && c.CreateClass.hasClicked() && c.userType == 1) {
-    background(0);
+    background(0,0,139);
     c.ToggleAll(false);
     c.ToggleCreateClass(true);
     println("createclass tryk");
@@ -65,7 +51,9 @@ void mouseReleased() {
   }
 
   if (c.state==5 && c.Continue.hasClicked() && selectedTest!=null) {
-    DinValgteTest = (String)selectedTest;
+    DinValgteTestNavn = (String)selectedTestName;
+    DinValgteTest = (int)selectedTest;
+   
     c.ToggleTeacherTests(false);
     c.state=6;
   }
@@ -90,6 +78,7 @@ void DineKlasser (int index) {
 }
 
 void DinKlassesTests (int index) {
-  selectedTest = cp5.get(ScrollableList.class, "DinKlassesTests").getItem(index).get("name");
+  selectedTest = cp5.get(ScrollableList.class, "DinKlassesTests").getItem(index).get("value");
+  selectedTestName = cp5.get(ScrollableList.class, "DinKlassesTests").getItem(index).get("name");
   println(selectedTest);
 }
