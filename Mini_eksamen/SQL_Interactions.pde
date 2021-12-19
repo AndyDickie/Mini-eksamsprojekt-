@@ -1,4 +1,3 @@
-
 class SQL {
   String signingSalt = "sQLLlerkk4221€€))";
 

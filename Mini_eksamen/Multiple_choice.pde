@@ -1,4 +1,3 @@
-
 class AnswerFunction {
   
   Button first, second, third, fourth;   
