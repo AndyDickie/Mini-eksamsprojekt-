@@ -99,6 +99,7 @@ class Controller extends Init {
     }
     if (state==6) {
       rectMode(CORNER);
+      textAlign(CORNER);
       rykNedaf=150;
       background(0, 0, 139);
       fill(255);
@@ -124,6 +125,7 @@ class Controller extends Init {
         text(nuvarendeProcent, 250+400+5, rykNedaf+30);
       }
       rectMode(CENTER);
+      textAlign(CENTER);
     }
     if (state==7){
      background(0);
@@ -135,7 +137,8 @@ class Controller extends Init {
 
 
 
-void udregnProcentRigtigt(float point, float maxPoint){
-  String procent = (int)((point/maxPoint)*100)+"%";
+void udregnProcentRigtigt(PVector point){
+  //Her skal point PVector bestå af antal rigtige spg på x-koordinaten og antal forkerte skal være på y-koordinaten.
+  String procent = (int)((point.x/(point.x+point.y))*100)+"%";
   println(procent);
 }
