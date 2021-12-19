@@ -73,7 +73,6 @@ class Controller extends Init {
     if (state == 0) {
       startScreen();
     }
-
     if (state == 1) {
       LoginScreen();
     }
@@ -83,7 +82,6 @@ class Controller extends Init {
     if (state == 3) {
       homeScreen();
     }
-
     if (state == 4) {
       joinClassScreen();
     }
@@ -130,7 +128,6 @@ class Controller extends Init {
     if (state==7){
      background(0);
      c.test.display();
-      
     }
   }
 }
