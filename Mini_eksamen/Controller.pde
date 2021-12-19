@@ -22,7 +22,7 @@ class Controller extends Init {
   }
 
   void startScreen() {
-    //background(0);
+    background(0);
     Login.display();
     Register.display();
   }
