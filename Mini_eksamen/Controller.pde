@@ -15,7 +15,7 @@ class Controller extends Init {
     JoinClass = new Button(width/10, 2*height/10, 100, 50, "Join Class");
     CreateClass = new Button(width/10, 2*height/10, 100, 50, "Create Class");
     SeeTestAnswers = new Button(width/10, 2*height/5, 100, 50, "See Answers From Tests");
-    ViewClasses = new Button(width/10, 2*height/7.5, 100, 50, "View Your Classes");
+    ViewClasses = new Button(width/10, 2*height/7.5, 100, 50, "View Classes");
     Continue = new Button(width-200, height-200, 100, 50, "Continue");
 
     test = new AnswerFunction();
