@@ -65,12 +65,6 @@ class Controller extends Init {
     if (state == 0) {
       startScreen();
     }
-    if (state == 1) {
-      
-    }
-    if (state == 2) {
-      
-    }
     if (state == 3) {
       homeScreen();
     }
@@ -123,8 +117,6 @@ class Controller extends Init {
     }
   }
 }
-
-
 
 void udregnProcentRigtigt(PVector point) {
   //Her skal point PVector bestå af antal rigtige spg på x-koordinaten og antal forkerte skal være på y-koordinaten.
