@@ -99,7 +99,7 @@ class SQL {
     db.query("INSERT INTO Test VALUES(null, '" + testName + "', )");
   }
 
-  void createQuestionAnswer(int testID, String question, String forstsporgsmal, String Andetsporgsmal,String Tredjesporgsmal,String Fjerdesporgsmal, int status,int questionNR) {
+  void createQuestionAnswer(int testID, String question, String forstsporgsmal, String Andetsporgsmal, String Tredjesporgsmal, String Fjerdesporgsmal, int status, int questionNR) {
     db.query("INSERT INTO Sporgsmal VALUES ('" + testID + "','" + question + "','" + forstsporgsmal + "','" + Andetsporgsmal + "','" + Tredjesporgsmal + "','" + Fjerdesporgsmal + "','"+questionNR+"', null)");
   }
 
@@ -139,25 +139,42 @@ class SQL {
 
 
   //Kan gøres nemmer ved at fjerne * og gøre det specifikt
-  void getTestAnswer(int testID) {
-    db.query("SELECT * FROM Elevsvar,Sporgsmal,Test Where Elevsvar.SporgsmalID=Sporgsmal.ID AND Sporgsmal.TestID=Test.ID AND Test.ID =" +testID);
+  ArrayList getTestAnswer(int testID) {
+    println("ssss");
+    db.query("SELECT Svar1, Svar2, Svar3, Svar4, Status, ID, Sporgsmal FROM Sporgsmal WHERE TestID =" +testID);
+    StringList k = new StringList();
+    ArrayList<testAns> a = new ArrayList<testAns>();
+    testAns h;
+    while (db.next()) {
+      k.append(db.getString("Svar1"));
+      k.append(db.getString("Svar2"));
+      k.append(db.getString("Svar3"));
+      k.append(db.getString("Svar4"));
+      k.append(db.getString("Status"));
+      k.append(db.getString("ID"));
+      k.append(db.getString("Sporgsmal"));
+      h = new testAns(k.get(0), k.get(1), k.get(2), k.get(3), k.get(4), k.get(5), k.get(6));
+      a.add(h);
+      k.clear();
+    }
+    return a;
   }
 
-  void getTestAnswer() {
-    db.query("SELECT * FROM Elevsvar,Sporgsmal,Test Where Elevsvar.SporgsmalID=Sporgsmal.ID AND Sporgsmal.TestID=Test.ID AND Test.ID =" +1);
-  }
+  //void getTestAnswer(int testID) {
+  //  db.query("SELECT * FROM Elevsvar,Sporgsmal,Test Where Elevsvar.SporgsmalID=Sporgsmal.ID AND Sporgsmal.TestID=Test.ID AND Test.ID =" +testID);
+  //}
 
 
   void getQuestionAnswer(int questionID) {
     db.query("SELECT * FROM Elevsvar Where SporgsmalID = " + questionID );
   }
 
-// det er noget lort ved ikke om vi skal bruge det
-//int getquestionID(){
-//  db.query("SELECT SpgNr FROM Sporgsmal Where ID=" +questionNR);
-//  int questionID = db.getInt("ID");
-//  return questionID;
-//}
+  // det er noget lort ved ikke om vi skal bruge det
+  //int getquestionID(){
+  //  db.query("SELECT SpgNr FROM Sporgsmal Where ID=" +questionNR);
+  //  int questionID = db.getInt("ID");
+  //  return questionID;
+  //}
 
   //String getQuestionName() {
   //}
