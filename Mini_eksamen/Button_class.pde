@@ -15,7 +15,7 @@ class Button {
   void display() {
     if (show) {
       textAlign(CENTER);
-      fill(100);
+      fill(105);
       rect(x, y, w, h);
       fill(255);
       textSize(20);

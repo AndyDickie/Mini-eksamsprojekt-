@@ -4,9 +4,9 @@ class Controller extends Init {
   HashMap<String, String> elever = new HashMap<String, String>();
   String userName;
   int userType;
-  Button Login, Register, StartupPage, JoinClass, SeeTestAnswers, CreateClass, ViewClasses,Continue,Home;
+  Button Login, Register, StartupPage, JoinClass, SeeTestAnswers, CreateClass, ViewClasses,Continue,Home,CreateTest;
   AnswerFunction test;
-
+ 
   Controller(int state_) {
     state = state_;
     Login = new Button(width/3-50, height/3-50, 100, 100, "Login");
@@ -14,9 +14,10 @@ class Controller extends Init {
     StartupPage = new Button(width/10, height/10, 150, 100, "Home");
     JoinClass = new Button(width/10, 2*height/10, 150, 50, "Join Class");
     CreateClass = new Button(width/10, 2*height/10, 150, 50, "Create Class");
-    SeeTestAnswers = new Button(width/10, 2*height/5, 150, 50, "View Results");
-    ViewClasses = new Button(width/10, 2*height/7.5, 150, 50, "View Classes");
+    SeeTestAnswers = new Button(425, 110, 150, 40, "Se resultater");
+    ViewClasses = new Button(125, 110, 150, 40, "Se klasser");
     Continue = new Button(width-200, height-200, 150, 50, "Continue");
+    CreateTest = new Button(275,110,150,40,"Lav test");
 
     test = new AnswerFunction();
   }
@@ -129,8 +130,31 @@ class Controller extends Init {
     }
     if (state==7){
      background(0);
-     c.test.display();
-      
+     c.test.display();  
+    }
+    
+    if (state==8){   
+    background(0,0,107);
+    fill(255);
+    c.ToggleCreateQuestion(true);
+    ViewClasses.display();
+    SeeTestAnswers.display();
+    CreateTest.display();
+    fill(192);
+    rectMode(CORNER);
+    rect(50,125,900,650);
+    textAlign(LEFT);
+    fill(255);
+    textSize(30);
+    fill(255);
+    text(userType+userName+"", 50, 65);
+    text("Producere spørgsmål:",75,270);
+    // skal tilføje +testName efter "String"
+    text("Test navn:",75,220);
+    // skal tilføje +className efter "String"
+    text("Klasse navn:",75,170);
+    fill(0);
+    rectMode(CENTER);
     }
   }
 }

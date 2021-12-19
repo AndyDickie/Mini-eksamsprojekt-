@@ -20,13 +20,13 @@ void setup() {
   db.connect();
 
   cp5 = new ControlP5(this);
-  c = new Controller(0);
+  c = new Controller(8);
   println(c.getClassName(622050));
   println(c.getUserClasses(1));
 
   size(1000, 800);
   c.load();
-  
+
   //c.test.display();
   //c.createQuestionAnswer(c.getTestID("matProveTest2"),"Antalplaneter","7");
 }
