@@ -16,8 +16,11 @@ void controlEvent(ControlEvent theEvent) {
       println(c.getUserType(c.userName));
       c.state = 3;
       c.ToggleLogin(false);
+      c.ToggleAll(false);
     } else {
-      println("Something went wrong, try again!");
+      textSize(20);
+      fill(255);
+      text("Der skete en fejl, prøv igen",width/2,height-100);
     }
   }
   if (theEvent.getName() == "Create User") {
@@ -28,10 +31,15 @@ void controlEvent(ControlEvent theEvent) {
     println(type);
     if (password != "" && userName != "") {
       c.createUser(userName, password, type);
-      c.ToggleRegister(false);
-      c.state = 0;
+      cp5.get(Textfield.class, "Username").clear();
+      cp5.get(Textfield.class, "Password").clear();
+      textSize(20);
+      fill(255);
+      text("Bruger oprettet succesfuldt",width/2,height-100);
     } else {
-      println("Something went wrong, try again!");
+      textSize(20);
+      fill(255);
+      text("Der skete en fejl, prøv igen",width/2,height-100);
     }
   }
   if (theEvent.getName() == "Join Class") {

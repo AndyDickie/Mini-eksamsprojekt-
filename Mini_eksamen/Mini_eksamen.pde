@@ -13,7 +13,8 @@ String user;
 void setup() {
   f = createFont("Arial", 20);
   passMode = true;
-  //textMode(CENTER);
+  
+  
   rectMode(CENTER);
 
   db = new SQLite(this, "users.sqlite" );
@@ -25,6 +26,7 @@ void setup() {
   println(c.getUserClasses(1));
 
   size(1000, 800);
+  background(0,0,107);
   c.load();
   
   //c.test.display();
