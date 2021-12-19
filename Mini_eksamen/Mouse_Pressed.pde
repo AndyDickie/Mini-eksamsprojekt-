@@ -73,6 +73,15 @@ void mouseReleased() {
   if (c.state==7 && c.test.first.hasClicked()){
   db.query("INSERT INTO Elevsvar VALUES(null,'"+questionID+"','"+c.getUserId(c.userName)+"','"+forstsporgsmal+"')");    
 }
+  if (c.state==7 && c.test.second.hasClicked()){
+  db.query("INSERT INTO Elevsvar VALUES(null,'"+questionID+"','"+c.getUserId(c.userName)+"','"+Andetsporgsmal+"')");    
+}
+if (c.state==7 && c.test.third.hasClicked()){
+  db.query("INSERT INTO Elevsvar VALUES(null,'"+questionID+"','"+c.getUserId(c.userName)+"','"+Tredjesporgsmal+"')");    
+}
+if (c.state==7 && c.test.fourth.hasClicked()){
+  db.query("INSERT INTO Elevsvar VALUES(null,'"+questionID+"','"+c.getUserId(c.userName)+"','"+Fjerdesporgsmal+"')");    
+}
 }
 
 void DineKlasser (int index) {
