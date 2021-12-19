@@ -53,12 +53,7 @@ void mouseReleased() {
   if (c.state==5 && c.Continue.hasClicked() && selectedTest!=null) {
     DinValgteTestNavn = (String)selectedTestName;
     DinValgteTest = (int)selectedTest;
-    
-    //for(int i =0; i<test;i++){
-      
-    //}
-    
-    
+   
     c.ToggleTeacherTests(false);
     c.state=6;
   }

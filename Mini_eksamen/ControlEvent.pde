@@ -57,8 +57,8 @@ void controlEvent(ControlEvent theEvent) {
   }
   if (theEvent.getName() == "Show Password") {
     Textfield pass = cp5.get(Textfield.class, "Password");
-    pass.setPasswordMode(passMode);
     passMode = !passMode;
+    pass.setPasswordMode(passMode);
   }
   
   if (theEvent.getName() == "Create Class"){
@@ -67,6 +67,7 @@ void controlEvent(ControlEvent theEvent) {
    String className = cp5.get(Textfield.class, "Class Name").getText();
    try{
    c.createClass(className, c.getUserId(c.userName));
+   c.ToggleAll(false);
    }
    catch(Exception e){
      println("Something went wrong");
