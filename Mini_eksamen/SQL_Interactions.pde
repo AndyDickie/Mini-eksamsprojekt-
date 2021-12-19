@@ -99,8 +99,8 @@ class SQL {
     db.query("INSERT INTO Test VALUES(null, '" + testName + "', )");
   }
 
-  void createQuestionAnswer(int testID, String question, String forstsporgsmal, String Andetsporgsmal,String Tredjesporgsmal,String Fjerdesporgsmal, int status,int questionNR) {
-    db.query("INSERT INTO Sporgsmal VALUES ('" + testID + "','" + question + "','" + forstsporgsmal + "','" + Andetsporgsmal + "','" + Tredjesporgsmal + "','" + Fjerdesporgsmal + "','"+questionNR+"', null)");
+  void createQuestionAnswer(int testID, String question, String forstsvar, String Andetsvar,String Tredjesvar,String Fjerdesvar,int status,int questionNR) {
+    db.query("INSERT INTO Sporgsmal VALUES ('" + testID + "','" + question + "','" + forstsvar + "','" + Andetsvar + "','" + Tredjesvar + "','" + Fjerdesvar + "','"+ status +"','"+questionNR+"', null)");
   }
 
   int getTestID(String testName) {
@@ -137,7 +137,6 @@ class SQL {
     db.query("SELECT * FROM Elevsvar Where SporgsmalID = "+ questionID + " AND UsernameID = " + userID);
   }
 
-
   //Kan gøres nemmer ved at fjerne * og gøre det specifikt
   void getTestAnswer(int testID) {
     db.query("SELECT * FROM Elevsvar,Sporgsmal,Test Where Elevsvar.SporgsmalID=Sporgsmal.ID AND Sporgsmal.TestID=Test.ID AND Test.ID =" +testID);
@@ -146,7 +145,6 @@ class SQL {
   void getTestAnswer() {
     db.query("SELECT * FROM Elevsvar,Sporgsmal,Test Where Elevsvar.SporgsmalID=Sporgsmal.ID AND Sporgsmal.TestID=Test.ID AND Test.ID =" +1);
   }
-
 
   void getQuestionAnswer(int questionID) {
     db.query("SELECT * FROM Elevsvar Where SporgsmalID = " + questionID );
@@ -166,7 +164,6 @@ class SQL {
   //}
 
   //void addQuestion()
-
 
   String hash(String input) {
     try {

@@ -70,17 +70,17 @@ void mouseReleased() {
     c.state=6;
   }
 
-//  if (c.state==7 && c.test.first.hasClicked()){
-//  db.query("INSERT INTO Elevsvar VALUES(null,'"+questionID+"','"+c.getUserId(c.userName)+"','"+forstsporgsmal+"')");    
+//if (c.state==7 && c.test.first.hasClicked()){
+//  db.query("INSERT INTO Elevsvar VALUES(null,'"+questionID+"','"+c.getUserId(c.userName)+"','"+forstsvar+"')");    
 //}
-//  if (c.state==7 && c.test.second.hasClicked()){
-//  db.query("INSERT INTO Elevsvar VALUES(null,'"+questionID+"','"+c.getUserId(c.userName)+"','"+Andetsporgsmal+"')");    
+//if (c.state==7 && c.test.second.hasClicked()){
+//  db.query("INSERT INTO Elevsvar VALUES(null,'"+questionID+"','"+c.getUserId(c.userName)+"','"+Andetsvar+"')");    
 //}
 //if (c.state==7 && c.test.third.hasClicked()){
-//  db.query("INSERT INTO Elevsvar VALUES(null,'"+questionID+"','"+c.getUserId(c.userName)+"','"+Tredjesporgsmal+"')");    
+//  db.query("INSERT INTO Elevsvar VALUES(null,'"+questionID+"','"+c.getUserId(c.userName)+"','"+Tredjesvar+"')");    
 //}
 //if (c.state==7 && c.test.fourth.hasClicked()){
-//  db.query("INSERT INTO Elevsvar VALUES(null,'"+questionID+"','"+c.getUserId(c.userName)+"','"+Fjerdesporgsmal+"')");    
+//  db.query("INSERT INTO Elevsvar VALUES(null,'"+questionID+"','"+c.getUserId(c.userName)+"','"+Fjerdesvar+"')");    
 //}
 }
 
