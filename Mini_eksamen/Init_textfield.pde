@@ -18,8 +18,8 @@ class Init extends SQL {
     cp5.addButton("Join Class").setPosition(width/2+220, height/3).setSize(80, 40).setVisible(false);
 
     //login bangs
-    cp5.addButton("Show Password").setPosition(width/2+110, height/2-80).setSize(80, 40).setVisible(false);
-    cp5.addButton("Login").setPosition(width/2+110, height/2-200).setSize(80, 40).setVisible(false);
+    cp5.addButton("Show Password").setPosition(width/2+78, height/2+30).setSize(80, 40).setVisible(true);
+    cp5.addButton("Login").setPosition(width/2+78, height/2+190).setSize(80, 40).setVisible(true);
     cp5.addButton("Nyt spoergsmaal").setPosition(75,300).setSize(150,50).setVisible(false);
     cp5.setColorBackground(color(128));
     cp5.setColorForeground(color(105));
