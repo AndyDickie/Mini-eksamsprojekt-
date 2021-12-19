@@ -3,21 +3,6 @@ String DinValgteTestNavn;
 int DinValgteTest;
 
 void mouseReleased() {
-  if (c.state == 0 && c.Login.hasClicked() == true) {
-    c.ToggleLogin(true);
-    c.state = 1;
-  }
-
-  if (c.state == 0 && c.Register.hasClicked() == true) {
-    c.ToggleRegister(true);
-    c.state = 1;
-  }
-
-  if (c.StartupPage.hasClicked() == true && c.state == 1 || c.StartupPage.hasClicked() == true && c.state == 2) {
-    c.ToggleAll(false);
-    c.state = 0;
-  }
-
   if (c.state == 3 && c.JoinClass.hasClicked() && c.userType == 0) {
     background(0,0,139);
     c.ToggleAll(false);
