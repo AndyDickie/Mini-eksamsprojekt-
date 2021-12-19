@@ -10,6 +10,7 @@ Controller c;
 String user;
 
 
+
 void setup() {
   f = createFont("Arial", 20);
   passMode = true;
@@ -31,7 +32,11 @@ void setup() {
   
   //c.test.display();
   //c.createQuestionAnswer(c.getTestID("matProveTest2"),"Antalplaneter","7");
+  //ArrayList<testAns> s =c.getTestAnswer(0);
+  //spg d = new spg(s.get(0));
 }
+
+
 
 void draw() {
   c.update();

@@ -4,7 +4,7 @@ class Controller extends Init {
   HashMap<String, String> elever = new HashMap<String, String>();
   String userName;
   int userType;
-  Button Login, Register, StartupPage, JoinClass, SeeTestAnswers, CreateClass, ViewClasses,Continue,Home;
+  Button Login, Register, StartupPage, JoinClass, SeeTestAnswers, CreateClass, ViewClasses, Continue, Home;
   AnswerFunction test;
 
   Controller(int state_) {
@@ -14,7 +14,6 @@ class Controller extends Init {
     SeeTestAnswers = new Button(width/10, 2*height/5, 150, 50, "View Results");
     ViewClasses = new Button(width/10, 2*height/7.5, 150, 50, "View Classes");
     Continue = new Button(width-200, height-200, 150, 50, "Continue");
-
     test = new AnswerFunction();
   }
 
@@ -127,7 +126,7 @@ class Controller extends Init {
 
 
 
-void udregnProcentRigtigt(PVector point){
+void udregnProcentRigtigt(PVector point) {
   //Her skal point PVector bestå af antal rigtige spg på x-koordinaten og antal forkerte skal være på y-koordinaten.
   String procent = (int)((point.x/(point.x+point.y))*100)+"%";
   println(procent);
