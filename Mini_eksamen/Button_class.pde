@@ -14,11 +14,12 @@ class Button {
 
   void display() {
     if (show) {
+      textAlign(CENTER);
       fill(100);
       rect(x, y, w, h);
       fill(255);
       textSize(20);
-      text(text, x-w/2, y);
+      text(text, x, y);
     }
   }
 
