@@ -22,7 +22,7 @@ void setup() {
   size(1000, 800);
   background(0,0,107);
   c.load();
-//hej 
+//hej
 
   //c.test.display();
   //c.createQuestionAnswer(c.getTestID("matProveTest2"),"Antalplaneter","7");
