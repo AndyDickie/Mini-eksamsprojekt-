@@ -3,19 +3,21 @@ class Controller extends Init {
   int rykNedaf=150;
   HashMap<String, String> elever = new HashMap<String, String>();
   String userName;
-  int userType;
-  Button Login, Register, StartupPage, JoinClass, SeeTestAnswers, CreateClass, ViewClasses,Continue,Home,CreateTest;
+  int userType, userID;
+  Button Login, Register, StartupPage, JoinClass, SeeTestAnswers, CreateClass, ViewClasses, Continue, Home, viewTests, CreateTest;
   AnswerFunction test;
- 
+  ArrayList<Button> test_knapper = new ArrayList<Button>();
+
   Controller(int state_) {
     state = state_;
     JoinClass = new Button(width/10, 2*height/10, 150, 50, "Join Class");
     CreateClass = new Button(width/10, 2*height/10, 150, 50, "Create Class");
-    SeeTestAnswers = new Button(425, 110, 150, 40, "Se resultater");
-    ViewClasses = new Button(125, 110, 150, 40, "Se klasser");
+    SeeTestAnswers = new Button(width/10, 2*height/5, 150, 50, "View Results");
+    ViewClasses = new Button(width/10, 2*height/7.5, 150, 50, "View Classes");
     Continue = new Button(width-200, height-200, 150, 50, "Continue");
-    CreateTest = new Button(275,110,150,40,"Lav test");
     test = new AnswerFunction();
+    viewTests = new Button(width/10, 2*height/7.5+55, 150, 50, "Tests");
+    CreateTest = new Button(275,110,150,40,"Lav test");
   }
 
   void startScreen() {
@@ -23,12 +25,12 @@ class Controller extends Init {
     textAlign(CENTER);
     fill(255);
     textSize(80);
-    text("Dit test univers", width/2,120);
+    text("Dit test univers", width/2, 120);
     //stroke(0,0,140);
-    line(200,130,800,130);
-    fill(0,0,209);
+    line(200, 130, 800, 130);
+    fill(0, 0, 209);
     strokeWeight(2);
-    rect(width/2,height/2+50,350,400);
+    rect(width/2, height/2+50, 350, 400);
     strokeWeight(1);
   }
   void homeScreen() {
@@ -45,19 +47,20 @@ class Controller extends Init {
       text("Hej " + userName, width/2, height/10);
       JoinClass.display();
       ViewClasses.display();
+      viewTests.display();
     }
   }
 
   void answerScreen() {
-    background(0,0,139);
+    background(0, 0, 139);
     test.display();
   }
   void joinClassScreen() {
-    background(0,0,139);
+    //background(0, 0, 139);
   }
 
   void SeeTestAnswersScreen() {
-    background(0,0,139);
+    background(0, 0, 139);
     Continue.display();
   }
 
@@ -70,7 +73,11 @@ class Controller extends Init {
       homeScreen();
     }
     if (state == 4) {
+      //text("Hej " + userName, width/2, height/10);
       joinClassScreen();
+      JoinClass.display();
+      ViewClasses.display();
+      viewTests.display();
     }
     if (state == 5) {
       SeeTestAnswersScreen();
@@ -112,40 +119,49 @@ class Controller extends Init {
       rectMode(CENTER);
       textAlign(CENTER);
     }
-    if (state==7){
-     background(0);
-     c.test.display();  
+    if (state==7) {
+      background(0, 0, 139);
+      c.test.display();
     }
-    
-    if (state==8){  
-    c.ToggleAll(false);
-    background(0,0,107);
-    fill(255);
-    c.ToggleCreateQuestion(true);
-    ViewClasses.display();
-    SeeTestAnswers.display();
-    CreateTest.display();
-    fill(192);
-    rectMode(CORNER);
-    rect(50,125,900,650);
-    textAlign(LEFT);
-    fill(255);
-    textSize(30);
-    fill(255);
-    text(userType+userName+"", 50, 65);
-    text("Producere spørgsmål:",75,270);
-    // skal tilføje +testName efter "String"
-    text("Test navn:",75,220);
-    // skal tilføje +className efter "String"
-    text("Klasse navn:",75,170);
-    fill(0);
-    rectMode(CENTER);
+    if (state==8) {
+      c.ToggleAll(false);
+      background(0, 0, 107);
+      fill(255);
+      c.ToggleCreateQuestion(true);
+      ViewClasses.display();
+      SeeTestAnswers.display();
+      CreateTest.display();
+      fill(192);
+      rectMode(CORNER);
+      rect(50, 125, 900, 650);
+      textAlign(LEFT);
+      fill(255);
+      textSize(30);
+      fill(255);
+      text(userType+userName+"", 50, 65);
+      text("Producere spørgsmål:", 75, 270);
+      // skal tilføje +testName efter "String"
+      text("Test navn:", 75, 220);
+      // skal tilføje +className efter "String"
+      text("Klasse navn:", 75, 170);
+      fill(0);
+      rectMode(CENTER);
+    }
+      if (state == 2) {
+        //text("Hej " + userName, width/2, height/10);
+        JoinClass.display();
+        ViewClasses.display();
+        viewTests.display();
+        for (int i=0; i<test_knapper.size(); i++) {
+          Button b = test_knapper.get(i);
+          b.display();
+        }
+      }
     }
   }
-}
 
-void udregnProcentRigtigt(PVector point) {
-  //Her skal point PVector bestå af antal rigtige spg på x-koordinaten og antal forkerte skal være på y-koordinaten.
-  String procent = (int)((point.x/(point.x+point.y))*100)+"%";
-  println(procent);
-}
+  void udregnProcentRigtigt(PVector point) {
+    //Her skal point PVector bestå af antal rigtige spg på x-koordinaten og antal forkerte skal være på y-koordinaten.
+    String procent = (int)((point.x/(point.x+point.y))*100)+"%";
+    println(procent);
+  }

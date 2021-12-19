@@ -173,13 +173,22 @@ class SQL {
   //  return questionID;
   //}
 
-  //String getQuestionName() {
-  //}
-
-  //String getQuestionAnswer() {
-  //}
-
-  //void addQuestion()
+  void AssignedTests() {
+    StringList o = c.getUserClasses(c.userID);
+    //c.test_knapper.clear();
+    for (int i=0; i<o.size(); i++) {
+      println("lll");
+      StringList m = c.getTestsPerClass(c.getClassCode(o.get(i)));
+      println(m);
+      //println(c.getClassCode(o.get(i)));
+      for (int j=0; i<m.size(); i++) {
+        String s = m.get(j);
+        println("m");
+        Button b = new Button(width/2, 2*height/10+50*i, 150, 50, s);
+        c.test_knapper.add(b);
+      }
+    }
+  }
 
   String hash(String input) {
     try {
@@ -213,12 +222,12 @@ class SQL {
   //  db.query("SELECT Svar,Elevsvar,UsernameID FROM Sporgsmal,Elevsvar Where Sporgsmal.ID=" +questionID+ " AND Elevsvar.SporgsmalID="+questionID+" AND Elevsvar.UsernameID="+userID);
   //  return db.getString("Svar");
   //}
-  
-  Boolean answerCorrect(int questionID, int userID){
+
+  Boolean answerCorrect(int questionID, int userID) {
     db.query("SELECT Svar,Elevsvar,UsernameID FROM Sporgsmal,Elevsvar Where Sporgsmal.ID=" +questionID+ " AND Elevsvar.SporgsmalID="+questionID+" AND Elevsvar.UsernameID="+userID);
     String rigtigtSvar = db.getString("Svar");
     String elevSvar = db.getString("Elevsvar");
-    if(rigtigtSvar==elevSvar)return true;
+    if (rigtigtSvar==elevSvar)return true;
     else return false;
   }
 }

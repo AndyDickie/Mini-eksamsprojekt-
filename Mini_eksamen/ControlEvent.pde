@@ -12,6 +12,7 @@ void controlEvent(ControlEvent theEvent) {
       user = c.getUser(userName);
       c.userName = userName;
       c.userType = int(c.getUserType(c.userName));
+      c.userID = c.getUserId(c.userName);
       println("usertype:= "+ c.userType);
       println(c.getUserType(c.userName));
       c.state = 3;

@@ -3,15 +3,17 @@ String DinValgteTestNavn;
 int DinValgteTest;
 
 void mouseReleased() {
-  if (c.state == 3 && c.JoinClass.hasClicked() && c.userType == 0) {
-    background(0,0,139);
+  if ((c.state == 3 || c.state == 2 || c.state == 4) && c.JoinClass.hasClicked() && c.userType == 0) {
+    background(0, 0, 139);
+    textSize(50);
+    text("Hej " + c.userName, width/2, height/10);
     c.ToggleAll(false);
     c.ToggleClass(true);
     c.state = 4;
   }
 
   if (c.state == 3 && c.SeeTestAnswers.hasClicked() && c.userType == 1) {
-    background(0,0,139);
+    background(0, 0, 139);
     c.ToggleAll(false);
   }
   if (c.state == 3 && c.SeeTestAnswers.hasClicked()) {
@@ -23,7 +25,7 @@ void mouseReleased() {
     c.state = 5;
   }
   if (c.state == 3 && c.CreateClass.hasClicked() && c.userType == 1) {
-    background(0,0,139);
+    background(0, 0, 139);
     c.ToggleAll(false);
     c.ToggleCreateClass(true);
     println("createclass tryk");
@@ -38,38 +40,52 @@ void mouseReleased() {
       text(c.getClassCode(k.get(i)), width/2+200, height/20*i+150);
     }
   }
-  if (c.state == 3 && c.ViewClasses.hasClicked() && c.userType == 0) {
+  if ((c.state == 3 || c.state == 2 || c.state == 4) && c.ViewClasses.hasClicked() && c.userType == 0) {
+    background(0, 0, 139);
+    textSize(50);
+    text("Hej " + c.userName, width/2, height/10);
+    c.ToggleAll(false);
     StringList k = c.getUserClasses(c.getUserId(c.userName));
     println(k);
     for (int i=0; i<k.size(); i++) {
       try {
+        textSize(20);
         text(k.get(i), width/2, height/20*(i+1)+150);
       }
       catch (Exception e) {
       }
+      c.state = 3;
     }
+  }
+
+  if ((c.state == 2 || c.state==3|| c.state == 4) && c.viewTests.hasClicked() && c.userType == 0) {
+    background(0, 0, 139);
+    textSize(50);
+    text("Hej " + c.userName, width/2, height/10);
+    c.AssignedTests();
+    c.state = 2;
   }
 
   if (c.state==5 && c.Continue.hasClicked() && selectedTest!=null) {
     DinValgteTestNavn = (String)selectedTestName;
     DinValgteTest = (int)selectedTest;
-   
+
     c.ToggleTeacherTests(false);
     c.state=6;
   }
 
-//if (c.state==7 && c.test.first.hasClicked()){
-//  db.query("INSERT INTO Elevsvar VALUES(null,'"+questionID+"','"+c.getUserId(c.userName)+"','"+forstsvar+"')");    
-//}
-//if (c.state==7 && c.test.second.hasClicked()){
-//  db.query("INSERT INTO Elevsvar VALUES(null,'"+questionID+"','"+c.getUserId(c.userName)+"','"+Andetsvar+"')");    
-//}
-//if (c.state==7 && c.test.third.hasClicked()){
-//  db.query("INSERT INTO Elevsvar VALUES(null,'"+questionID+"','"+c.getUserId(c.userName)+"','"+Tredjesvar+"')");    
-//}
-//if (c.state==7 && c.test.fourth.hasClicked()){
-//  db.query("INSERT INTO Elevsvar VALUES(null,'"+questionID+"','"+c.getUserId(c.userName)+"','"+Fjerdesvar+"')");    
-//}
+  //if (c.state==7 && c.test.first.hasClicked()){
+  //  db.query("INSERT INTO Elevsvar VALUES(null,'"+questionID+"','"+c.getUserId(c.userName)+"','"+forstsvar+"')");
+  //}
+  //if (c.state==7 && c.test.second.hasClicked()){
+  //  db.query("INSERT INTO Elevsvar VALUES(null,'"+questionID+"','"+c.getUserId(c.userName)+"','"+Andetsvar+"')");
+  //}
+  //if (c.state==7 && c.test.third.hasClicked()){
+  //  db.query("INSERT INTO Elevsvar VALUES(null,'"+questionID+"','"+c.getUserId(c.userName)+"','"+Tredjesvar+"')");
+  //}
+  //if (c.state==7 && c.test.fourth.hasClicked()){
+  //  db.query("INSERT INTO Elevsvar VALUES(null,'"+questionID+"','"+c.getUserId(c.userName)+"','"+Fjerdesvar+"')");
+  //}
 }
 
 void DineKlasser (int index) {
