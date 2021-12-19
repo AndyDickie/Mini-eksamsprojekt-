@@ -118,7 +118,7 @@ class SQL {
     }
     return KlasseListe;
   }
- 
+
   StringList getTestsPerClass(int Klassekode) {
     StringList TestListe = new StringList();
     String s = "SELECT Navn FROM Test WHERE Klassekode="+ Klassekode;
@@ -137,9 +137,9 @@ class SQL {
     db.query("SELECT * FROM Elevsvar Where SporgsmalID = "+ questionID + " AND UsernameID = " + userID);
   }
 
-  
-  //Kan gøres nemmer ved at fjerne * og gøre det specifikt 
-  void getTestAnswer(int testID){
+
+  //Kan gøres nemmer ved at fjerne * og gøre det specifikt
+  void getTestAnswer(int testID) {
     db.query("SELECT * FROM Elevsvar,Sporgsmal,Test Where Elevsvar.SporgsmalID=Sporgsmal.ID AND Sporgsmal.TestID=Test.ID AND Test.ID =" +testID);
   }
 
@@ -151,8 +151,8 @@ class SQL {
   void getQuestionAnswer(int questionID) {
     db.query("SELECT * FROM Elevsvar Where SporgsmalID = " + questionID );
   }
-  
-  
+
+
   //String getQuestionName() {
   //}
 
@@ -178,8 +178,8 @@ class SQL {
     }
     return null;
   }
-  
-    Boolean answerStatus(String StudentAnswer, String CorrectAnswer) {
+
+  Boolean answerStatus(String StudentAnswer, String CorrectAnswer) {
     if (StudentAnswer==CorrectAnswer) return true;
     if (StudentAnswer!=CorrectAnswer) return false;
     else return false;
@@ -193,6 +193,5 @@ class SQL {
   String CorrectAnswer(int questionID, int userID) {
     db.query("SELECT Svar,Elevsvar,UsernameID FROM Sporgsmal,Elevsvar Where Sporgsmal.ID=" +questionID+ " AND Elevsvar.SporgsmalID="+questionID+" AND Elevsvar.UsernameID="+userID);
     return db.getString("Svar");
+  }
 }
-  
-  
