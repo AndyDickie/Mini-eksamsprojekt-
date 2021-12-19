@@ -69,9 +69,11 @@ void mouseReleased() {
     c.ToggleTeacherTests(false);
     c.state=6;
   }
+
+  if (c.state==7 && c.test.first.hasClicked()){
+  db.query("INSERT INTO Elevsvar VALUES(null,'"+questionID+"','"+c.getUserId(c.userName)+"','"+forstsporgsmal+"')");    
 }
-
-
+}
 
 void DineKlasser (int index) {
   selectedClass = cp5.get(ScrollableList.class, "DineKlasser").getItem(index).get("value");

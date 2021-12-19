@@ -125,6 +125,11 @@ class Controller extends Init {
       }
       rectMode(CENTER);
     }
+    if (state==7){
+     background(0);
+     c.test.display();
+      
+    }
   }
 }
 
