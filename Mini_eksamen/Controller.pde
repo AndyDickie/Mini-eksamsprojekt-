@@ -22,25 +22,22 @@ class Controller extends Init {
   }
 
   void startScreen() {
-    background(0);
+    background(0,0,139);
     Login.display();
     Register.display();
   }
   void LoginScreen() {
-    background(0);
+    background(0,0,139);
     StartupPage.display();
-    //background(0);
-    //Home.display();
-    //ToggleLogin(true);
   }
 
   void RegisterScreen() {
-    background(0);
+    background(0,0,139);
     StartupPage.display();
   }
   void homeScreen() {
     if (userType == 1) {
-      //background(0);
+      //background(0,0,139);
       textSize(50);
       text("Hej " + userName, width/2, height/10);
       CreateClass.display();
@@ -56,15 +53,15 @@ class Controller extends Init {
   }
 
   void answerScreen() {
-    background(0);
+    background(0,0,139);
     test.display();
   }
   void joinClassScreen() {
-    background(0);
+    background(0,0,139);
   }
 
   void SeeTestAnswersScreen() {
-    background(0);
+    background(0,0,139);
     Continue.display();
   }
 
@@ -108,7 +105,7 @@ class Controller extends Init {
       text("på elevens navn", width-240, 110);
       fill(255);
       textSize(50);
-      text(DinValgteTest, 30, 70);
+      text(DinValgteTestNavn, 30, 70);
       textSize(20);
       text("Procent korrekt", 30, 110);
       for (Map.Entry me : elever.entrySet()) {
@@ -126,7 +123,7 @@ class Controller extends Init {
       textAlign(CENTER);
     }
     if (state==7){
-     background(0);
+     background(0,0,139);
      c.test.display();
     }
   }
