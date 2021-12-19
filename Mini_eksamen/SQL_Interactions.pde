@@ -137,7 +137,6 @@ class SQL {
     db.query("SELECT * FROM Elevsvar Where SporgsmalID = "+ questionID + " AND UsernameID = " + userID);
   }
 
-
   //Kan gøres nemmer ved at fjerne * og gøre det specifikt
   ArrayList getTestAnswer(int testID) {
     println("ssss");
@@ -164,7 +163,6 @@ class SQL {
   //  db.query("SELECT * FROM Elevsvar,Sporgsmal,Test Where Elevsvar.SporgsmalID=Sporgsmal.ID AND Sporgsmal.TestID=Test.ID AND Test.ID =" +testID);
   //}
 
-
   void getQuestionAnswer(int questionID) {
     db.query("SELECT * FROM Elevsvar Where SporgsmalID = " + questionID );
   }
@@ -184,7 +182,6 @@ class SQL {
 
   //void addQuestion()
 
-
   String hash(String input) {
     try {
       MessageDigest md = MessageDigest.getInstance("SHA-256");
@@ -202,19 +199,27 @@ class SQL {
     return null;
   }
 
-  Boolean answerStatus(String StudentAnswer, String CorrectAnswer) {
-    if (StudentAnswer==CorrectAnswer) return true;
-    if (StudentAnswer!=CorrectAnswer) return false;
+  //Boolean answerStatus(String StudentAnswer, String CorrectAnswer) {
+  //  if (StudentAnswer==CorrectAnswer) return true;
+  //  if (StudentAnswer!=CorrectAnswer) return false;
+  //  else return false;
+  //}
+
+  //String StudentAnswer(int questionID, int userID) {
+  //  db.query("SELECT Svar,Elevsvar,UsernameID FROM Sporgsmal,Elevsvar Where Sporgsmal.ID=" +questionID+ " AND Elevsvar.SporgsmalID="+questionID+" AND Elevsvar.UsernameID="+userID);
+  //  return db.getString("Elevsvar");
+  //}
+
+  //String CorrectAnswer(int questionID, int userID) {
+  //  db.query("SELECT Svar,Elevsvar,UsernameID FROM Sporgsmal,Elevsvar Where Sporgsmal.ID=" +questionID+ " AND Elevsvar.SporgsmalID="+questionID+" AND Elevsvar.UsernameID="+userID);
+  //  return db.getString("Svar");
+  //}
+  
+  Boolean answerCorrect(int questionID, int userID){
+    db.query("SELECT Svar,Elevsvar,UsernameID FROM Sporgsmal,Elevsvar Where Sporgsmal.ID=" +questionID+ " AND Elevsvar.SporgsmalID="+questionID+" AND Elevsvar.UsernameID="+userID);
+    String rigtigtSvar = db.getString("Svar");
+    String elevSvar = db.getString("Elevsvar");
+    if(rigtigtSvar==elevSvar)return true;
     else return false;
-  }
-
-  String StudentAnswer(int questionID, int userID) {
-    db.query("SELECT Svar,Elevsvar,UsernameID FROM Sporgsmal,Elevsvar Where Sporgsmal.ID=" +questionID+ " AND Elevsvar.SporgsmalID="+questionID+" AND Elevsvar.UsernameID="+userID);
-    return db.getString("Elevsvar");
-  }
-
-  String CorrectAnswer(int questionID, int userID) {
-    db.query("SELECT Svar,Elevsvar,UsernameID FROM Sporgsmal,Elevsvar Where Sporgsmal.ID=" +questionID+ " AND Elevsvar.SporgsmalID="+questionID+" AND Elevsvar.UsernameID="+userID);
-    return db.getString("Svar");
   }
 }
