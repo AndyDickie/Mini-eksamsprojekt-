@@ -23,6 +23,7 @@ class Init extends SQL {
     cp5.addButton("Nyt spoergsmaal").setPosition(75,300).setSize(150,50).setVisible(false);
     cp5.setColorBackground(color(128));
     cp5.setColorForeground(color(105));
+    cp5.setColorActive(color(36));
 
 
     //textfields
@@ -34,28 +35,23 @@ class Init extends SQL {
     
     forstspg = cp5.addTextfield("1 svar").setPosition(629.1, 365).setSize(250, 50).setAutoClear(false).setFont(f).setVisible(false);
     forstspg.setFocus(false);
-    forstspg.setColorBackground(color(255));
-    forstspg.setColorForeground(128);
+    forstspg.setColorBackground(color(255)); 
     forstspg.setColorValueLabel(0);
     andetspg = cp5.addTextfield("2 svar").setPosition(629.1, 450).setSize(250, 50).setAutoClear(false).setFont(f).setVisible(false);
     andetspg.setFocus(false);
     andetspg.setColorBackground(color(255));
-    andetspg.setColorForeground(128);
     andetspg.setColorValueLabel(0);
     tredjespg = cp5.addTextfield("3 svar").setPosition(629.1, 535).setSize(250, 50).setAutoClear(false).setFont(f).setVisible(false);
     tredjespg.setFocus(false);
     tredjespg.setColorBackground(color(255));
-    tredjespg.setColorForeground(128);
     tredjespg.setColorValueLabel(0);
     fjerdespg = cp5.addTextfield("4 svar").setPosition(629.1, 620).setSize(250, 50).setAutoClear(false).setFont(f).setVisible(false);
     fjerdespg.setFocus(false);
     fjerdespg.setColorBackground(color(255));
-    fjerdespg.setColorForeground(128);
     fjerdespg.setColorValueLabel(0);
     spg = cp5.addTextfield("Spørgsmål").setPosition(75, 365).setSize(500, 50).setAutoClear(false).setFont(f).setVisible(false);
     spg.setFocus(false);
     spg.setColorBackground(color(255));
-    spg.setColorForeground(128);
     spg.setColorValueLabel(0);
     
     //Scrollable list
