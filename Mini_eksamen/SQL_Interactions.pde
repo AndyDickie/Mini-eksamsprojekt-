@@ -99,8 +99,8 @@ class SQL {
     db.query("INSERT INTO Test VALUES(null, '" + testName + "', )");
   }
 
-  void createQuestionAnswer(int testID, String question, String answer) {
-    db.query("INSERT INTO Sporgsmal VALUES ('" + testID + "','" + question + "','" + answer + "', null)");
+  void createQuestionAnswer(int testID, String question, String forstsporgsmal, String Andetsporgsmal,String Tredjesporgsmal,String Fjerdesporgsmal, int status,int questionNR) {
+    db.query("INSERT INTO Sporgsmal VALUES ('" + testID + "','" + question + "','" + forstsporgsmal + "','" + Andetsporgsmal + "','" + Tredjesporgsmal + "','" + Fjerdesporgsmal + "','"+questionNR+"', null)");
   }
 
   int getTestID(String testName) {
@@ -152,6 +152,12 @@ class SQL {
     db.query("SELECT * FROM Elevsvar Where SporgsmalID = " + questionID );
   }
 
+// det er noget lort ved ikke om vi skal bruge det
+//int getquestionID(){
+//  db.query("SELECT SpgNr FROM Sporgsmal Where ID=" +questionNR);
+//  int questionID = db.getInt("ID");
+//  return questionID;
+//}
 
   //String getQuestionName() {
   //}
