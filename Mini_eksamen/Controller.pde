@@ -10,13 +10,13 @@ class Controller extends Init {
   Controller(int state_) {
     state = state_;
     Login = new Button(width/3-50, height/3-50, 100, 100, "Login");
-    Register = new Button(2*(width/3)-50, (height/3)-50, 100, 100, "Register");
-    StartupPage = new Button(width/10, height/10, 100, 100, "Home");
-    JoinClass = new Button(width/10, 2*height/10, 100, 50, "Join Class");
-    CreateClass = new Button(width/10, 2*height/10, 100, 50, "Create Class");
-    SeeTestAnswers = new Button(width/10, 2*height/5, 100, 50, "See Answers From Tests");
-    ViewClasses = new Button(width/10, 2*height/7.5, 100, 50, "View Your Classes");
-    Continue = new Button(width-200, height-200, 100, 50, "Continue");
+    Register = new Button(2*(width/3)-50, (height/3)-50, 150, 100, "Register");
+    StartupPage = new Button(width/10, height/10, 150, 100, "Home");
+    JoinClass = new Button(width/10, 2*height/10, 150, 50, "Join Class");
+    CreateClass = new Button(width/10, 2*height/10, 150, 50, "Create Class");
+    SeeTestAnswers = new Button(width/10, 2*height/5, 150, 50, "View Results");
+    ViewClasses = new Button(width/10, 2*height/7.5, 150, 50, "View Classes");
+    Continue = new Button(width-200, height-200, 150, 50, "Continue");
 
     test = new AnswerFunction();
   }
@@ -99,6 +99,7 @@ class Controller extends Init {
     }
     if (state==6) {
       rectMode(CORNER);
+      textAlign(CORNER);
       rykNedaf=150;
       background(0, 0, 139);
       fill(255);
@@ -124,6 +125,7 @@ class Controller extends Init {
         text(nuvarendeProcent, 250+400+5, rykNedaf+30);
       }
       rectMode(CENTER);
+      textAlign(CENTER);
     }
     if (state==7){
      background(0);
@@ -135,7 +137,8 @@ class Controller extends Init {
 
 
 
-void udregnProcentRigtigt(float point, float maxPoint){
-  String procent = (int)((point/maxPoint)*100)+"%";
+void udregnProcentRigtigt(PVector point){
+  //Her skal point PVector bestå af antal rigtige spg på x-koordinaten og antal forkerte skal være på y-koordinaten.
+  String procent = (int)((point.x/(point.x+point.y))*100)+"%";
   println(procent);
 }

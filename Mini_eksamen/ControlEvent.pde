@@ -1,5 +1,6 @@
 void controlEvent(ControlEvent theEvent) {
   if (theEvent.getName() == "Login") {
+    background(0);
     println("login er asdasdw");
     String userName = cp5.get(Textfield.class, "Username").getText();
     String password = cp5.get(Textfield.class, "Password").getText();
@@ -20,6 +21,7 @@ void controlEvent(ControlEvent theEvent) {
     }
   }
   if (theEvent.getName() == "Create User") {
+    background(0);
     String userName = cp5.get(Textfield.class, "Username").getText();
     String password = cp5.get(Textfield.class, "Password").getText();
     int type = int(cp5.get(Toggle.class, "Teacher/Student").getValue());
@@ -33,6 +35,7 @@ void controlEvent(ControlEvent theEvent) {
     }
   }
   if (theEvent.getName() == "Join Class") {
+    background(0);
     String classID = cp5.get(Textfield.class, "ClassID").getText();
     try {
       c.userJoinClass(c.getUserId(c.userName), classID);
@@ -51,6 +54,7 @@ void controlEvent(ControlEvent theEvent) {
   }
   
   if (theEvent.getName() == "Create Class"){
+   background(0);
    println("saskdaskd");
    String className = cp5.get(Textfield.class, "Class Name").getText();
    try{
