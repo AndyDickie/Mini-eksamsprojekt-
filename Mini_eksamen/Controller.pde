@@ -15,7 +15,6 @@ class Controller extends Init {
     ViewClasses = new Button(125, 110, 150, 40, "Se klasser");
     Continue = new Button(width-200, height-200, 150, 50, "Continue");
     CreateTest = new Button(275,110,150,40,"Lav test");
-
     test = new AnswerFunction();
   }
 
@@ -118,7 +117,8 @@ class Controller extends Init {
      c.test.display();  
     }
     
-    if (state==8){   
+    if (state==8){  
+    c.ToggleAll(false);
     background(0,0,107);
     fill(255);
     c.ToggleCreateQuestion(true);
@@ -140,9 +140,6 @@ class Controller extends Init {
     text("Klasse navn:",75,170);
     fill(0);
     rectMode(CENTER);
-    background(0,0,139);
-    c.test.display();
-
     }
   }
 }
