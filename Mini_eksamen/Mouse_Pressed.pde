@@ -63,42 +63,53 @@ void mouseReleased() {
     c.AssignedTests();
     c.state = 2;
   }
-
+  if (c.state == 9 && (c.next.hasClicked() || c.previous.hasClicked())) {
+    if (c.next.hasClicked() && c.CurrentQID>c.a.size()) {
+      c.CurrentQID += 1;
+    }
+    if (c.previous.hasClicked() && c.CurrentQID<c.a.size()) {
+      c.CurrentQID -= 1;
+    }
+  }
   if (c.state == 2) {
     for (int i=0; i<c.test_knapper.size(); i++) {
       Button b = c.test_knapper.get(i);
-      if (b.hasClicked()){
+      if (b.hasClicked()) {
         //question = new testAns)
         println("okokok");
         println(c.getTestID(b.text));
         c.getTestAnswer(c.getTestID(b.text));
         background(0, 0, 139);
         c.state = 9;
+      }
     }
   }
-  
-}
 
-if (c.state==5 && c.Continue.hasClicked() && selectedTest!=null) {
-  DinValgteTestNavn = (String)selectedTestName;
-  DinValgteTest = (int)selectedTest;
+  if (c.state==5 && c.Continue.hasClicked() && selectedTest!=null) {
+    DinValgteTestNavn = (String)selectedTestName;
+    DinValgteTest = (int)selectedTest;
 
-  c.ToggleTeacherTests(false);
-  c.state=6;
-}
+    c.ToggleTeacherTests(false);
+    c.state=6;
+  }
 
-//if (c.state==7 && c.test.first.hasClicked()){
-//  db.query("INSERT INTO Elevsvar VALUES(null,'"+questionID+"','"+c.getUserId(c.userName)+"','"+forstsvar+"')");
-//}
-//if (c.state==7 && c.test.second.hasClicked()){
-//  db.query("INSERT INTO Elevsvar VALUES(null,'"+questionID+"','"+c.getUserId(c.userName)+"','"+Andetsvar+"')");
-//}
-//if (c.state==7 && c.test.third.hasClicked()){
-//  db.query("INSERT INTO Elevsvar VALUES(null,'"+questionID+"','"+c.getUserId(c.userName)+"','"+Tredjesvar+"')");
-//}
-//if (c.state==7 && c.test.fourth.hasClicked()){
-//  db.query("INSERT INTO Elevsvar VALUES(null,'"+questionID+"','"+c.getUserId(c.userName)+"','"+Fjerdesvar+"')");
-//}
+
+  //if (c.state==7 && c.test.first.hasClicked()){
+  //  db.query("INSERT INTO Elevsvar VALUES(null,'"+questionID+"','"+c.getUserId(c.userName)+"','"+forstsvar+"')");
+  //}
+  //if (c.state==7 && c.test.second.hasClicked()){
+  //  db.query("INSERT INTO Elevsvar VALUES(null,'"+questionID+"','"+c.getUserId(c.userName)+"','"+Andetsvar+"')");
+  //}
+  //if (c.state==7 && c.test.third.hasClicked()){
+  //  db.query("INSERT INTO Elevsvar VALUES(null,'"+questionID+"','"+c.getUserId(c.userName)+"','"+Tredjesvar+"')");
+  //}
+  //if (c.state==7 && c.test.fourth.hasClicked()){
+  //  db.query("INSERT INTO Elevsvar VALUES(null,'"+questionID+"','"+c.getUserId(c.userName)+"','"+Fjerdesvar+"')");
+  //}
+
+  if (c.state==3 && c.CreateTest.hasClicked()) {
+    c.state=8;
+  }
 }
 
 void DineKlasser (int index) {

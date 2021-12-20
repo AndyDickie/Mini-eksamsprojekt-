@@ -4,7 +4,7 @@ class Controller extends Init {
   HashMap<String, String> elever = new HashMap<String, String>();
   String userName;
   int userType, userID;
-  Button Login, Register, StartupPage, JoinClass, SeeTestAnswers, CreateClass, ViewClasses, Continue, Home, viewTests, CreateTest;
+  Button Login, Register, StartupPage, JoinClass, SeeTestAnswers, CreateClass, ViewClasses, Continue, Home, viewTests, CreateTest, next, previous;
   AnswerFunction test;
   ArrayList<Button> test_knapper = new ArrayList<Button>();
   spg question;
@@ -22,6 +22,9 @@ class Controller extends Init {
 
     viewTests = new Button(275, 110, 150, 40, "Dine tests");
     CreateTest = new Button(275, 110, 150, 40, "Lav test");
+    
+    next = new Button(9*width/10, 8*height/10, 150, 40, "Næste");
+    previous = new Button(2*width/10, 8*height/10, 150, 40, "Tilbage");
   }
 
   void startScreen() {
@@ -198,6 +201,8 @@ class Controller extends Init {
       }
     }
     if (state == 9) {
+      next.display();
+      previous.display();
       if (a.size() >0) {
         try {
           question = new spg(a.get(CurrentQID));
