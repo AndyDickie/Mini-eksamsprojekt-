@@ -10,38 +10,54 @@ StringList elevBesvarelse = new StringList();
 
 
 void mouseReleased() {
+  //State 4 
   if ((c.state == 3 || c.state == 2 || c.state == 4 || c.state==15) && c.JoinClass.hasClicked() && c.userType == 0) {
     background(0, 0, 139);
     c.ToggleClass(true);
     cp5.getController("DineKlasser").hide();
     c.state = 4;
   }
-
+  //State 15 
   if ((c.state == 3 || c.state == 2 || c.state == 4 || c.state==15) && c.viewResults.hasClicked() && c.userType == 0) {
     background(0, 0, 139);
     teacherClass.clear();
     cp5.getController("DineKlasser").show();
     StringList klasseliste = c.getUserClasses(c.getUserId(c.userName));
+    c.state = 15;
     for (int i =0; i<klasseliste.size(); i++) {
       teacherClass.addItem(klasseliste.get(i), c.getClassCode(klasseliste.get(i)));
     }
-
+  }
+  //State ved ikke endnu 
   if ((c.state == 3 || c.state == 2 || c.state == 4|| c.state==15) && c.ViewClasses.hasClicked() && c.userType == 0) {
-   c.ToggleAll(false);
+
+  }
+  //State 2 
+  if ((c.state == 3 || c.state == 2 || c.state == 4|| c.state==15) && c.viewTests.hasClicked() && c.userType == 0) {
     cp5.getController("DineKlasser").hide();
     c.state=2;
   }
-  
-  if ((c.state == 3 || c.state == 2 || c.state == 4|| c.state==15) && c.viewTests.hasClicked() && c.userType == 0) {
-    //c.ToggleAll(false);
-    //cp5.getController("DineKlasser").hide();
-    //c.state=2;
-    fill(255);
-    rect(100,100,100,100);
-  }
-    c.state = 15;
-  }
 
+   //State 13
+  if ((c.state == 13 || c.state == 8 || c.state == 5 || c.state==3 || c.state==20) && c.ViewClasses.hasClicked() && c.userType == 1) {
+    
+  }
+  //State 8
+  if ((c.state == 13 || c.state == 8 || c.state == 5 || c.state==3 || c.state==20) && c.SeeTestAnswers.hasClicked() && c.userType == 1) {
+    
+  }
+  //State 5
+  if ((c.state == 13 || c.state == 8 || c.state == 5 || c.state==3 || c.state==20) && c.CreateTest.hasClicked() && c.userType == 1) {
+    
+  }
+  //State 3
+  if ((c.state == 13 || c.state == 8 || c.state == 5 || c.state==3 || c.state==20) && c.CreateClass.hasClicked() && c.userType == 1) {
+    
+  }
+  //State 20
+  if ((c.state == 13 || c.state == 8 || c.state == 5 || c.state==3 || c.state==20) && c.AssignClass.hasClicked() && c.userType == 1) {
+    
+  }
   if (c.state==15 && c.Continue.hasClicked() && c.userType==0 && selectedClass!=null) {
     c.ToggleAll(false);
     DineTests = c.getTestsPerClass((int)selectedClass);

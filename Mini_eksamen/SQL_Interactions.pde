@@ -98,55 +98,54 @@ class SQL {
       println(i);
       KlasseListe.append(getClassName(KlasseKListe.get(i)));
     }
-    
+
 
     return KlasseListe;
   }
-  
-  
-  StringList getTests(){
-  String s = "SELECT ID FROM Test WHERE IDkey='" + c.userID + "'";
-  db.query(s);
-  StringList o = new StringList();
-   while (db.next()) {
+
+
+  StringList getTests() {
+    String s = "SELECT ID FROM Test WHERE IDkey='" + c.userID + "'";
+    db.query(s);
+    StringList o = new StringList();
+    while (db.next()) {
       String ting = str(db.getInt("ID"));
       o.append(ting);
       println(ting);
     }
     return o;
-  }  
-   StringList getTestName(){
-  String s = "SELECT Navn FROM Test WHERE IDkey='" + c.userID + "'";
-  db.query(s);
-  StringList o = new StringList();
-   while (db.next()) {
+  }
+  StringList getTestName() {
+    String s = "SELECT Navn FROM Test WHERE IDkey='" + c.userID + "'";
+    db.query(s);
+    StringList o = new StringList();
+    while (db.next()) {
       String ting = db.getString("Navn");
       o.append(ting);
       println(ting);
     }
     return o;
-  } 
-  
-  StringList getUsersFromClass(int classID){
-  String s = "SELECT UsernameID FROM \"Elev-tilknytning\" WHERE Klassecode='" + classID + "'";
-  db.query(s);
-  StringList o = new StringList();
-   while (db.next()) {
+  }
+
+  StringList getUsersFromClass(int classID) {
+    String s = "SELECT UsernameID FROM \"Elev-tilknytning\" WHERE Klassecode='" + classID + "'";
+    db.query(s);
+    StringList o = new StringList();
+    while (db.next()) {
       String ting = db.getString("UsernameID");
       o.append(ting);
       //println(ting);
     }
     return o;
-  } 
-  
+  }
+
   void createTest(String testName) {
-    db.query("INSERT INTO Test VALUES('"+c.userID+"', '" + testName + "', null, " + int(random(0,100000)) + ")");
+    db.query("INSERT INTO Test VALUES('"+c.userID+"', '" + testName + "', null, " + int(random(0, 100000)) + ")");
   }
-  void assignTest(String testID, int classCode, String testName){
+  void assignTest(String testID, int classCode, String testName) {
     db.query("INSERT INTO Test VALUES("+c.userID+", '" + testName + "', '"+ classCode + "', " + testID + ")");
-    
   }
-  
+
   void createQuestionAnswer(String question, String forstsporgsmal, String Andetsporgsmal, String Tredjesporgsmal, String Fjerdesporgsmal, int status, int questionNR, String testName) {
     db.query("INSERT INTO Sporgsmal VALUES ('" + question + "','" + forstsporgsmal + "','" + Andetsporgsmal + "','" + Tredjesporgsmal + "','" + Fjerdesporgsmal + "','"+questionNR+"','"+status+"', null,'"+c.getTestID(testName)+"')");
   }
@@ -180,29 +179,35 @@ class SQL {
     while (db.next()) {
       TestListe.append(db.getString("Navn"));
     }
-    for (int i=0; i<TestListe.size(); i++){
-    //set.add(TestListe.get(i));
+    println("før: " + TestListe);
+    for (int i=0; i<TestListe.size(); i++) {
+      for (int j=i+1; j<TestListe.size(); j++) {
+        if (TestListe.get(i).equals(TestListe.get(j))==true) {
+          TestListe.remove(j);
+          j--;
+        }
+      }
     }
     //TestListe.clear();
     //TestListe.add();
-    
-    
+
+    println("efter: "+ TestListe);
     return TestListe;
   }
 
   void insertUserAnswer(String UserAnswer, int questionID, int userID ) {
     db.query("INSERT INTO Elevsvar VALUES (null, '"+ questionID +"', '"+userID+"', '"+ UserAnswer+ "')");
   }
-  
-  void insertUserResults(String results, int TestID){
+
+  void insertUserResults(String results, int TestID) {
     db.query("INSERT INTO Resultater VALUES ("+ TestID + ", " + c.userID + ", '"+ results+"')");
   }
 
   void getuserAnswer(int userID) {
     db.query("SELECT * FROM Elevsvar Where UsernameID = " + userID);
   }
-  
-  String getUserResults(int testID, int userID){
+
+  String getUserResults(int testID, int userID) {
     db.query("SELECT Resultat FROM Resultater WHERE testID="+testID+" AND UsernameID="+userID);
     return db.getString("Resultat");
   }

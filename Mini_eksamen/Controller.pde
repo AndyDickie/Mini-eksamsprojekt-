@@ -46,12 +46,22 @@ class Controller extends Init {
     rect(width/2, height/2+50, 350, 400);
     strokeWeight(1);
   }
+  
+  void navnElev(){
+    textSize(50);
+    textAlign(LEFT);  
+    text("Elev:"+userName, 50, 65);   
+  }
+  
+  void navnLære(){
+   textSize(50);
+   textAlign(LEFT);
+   text("Lære:"+userName, 50, 65); 
+  }
   void homeScreen() {
     if (userType == 1) {
       //background(0,0,139);
-      textSize(50);
-      textAlign(LEFT);
-      text("Lære:"+userName, 50, 65);
+      navnLære();
       CreateTest.display();
       CreateClass.display();
       SeeTestAnswers.display();
@@ -63,10 +73,7 @@ class Controller extends Init {
       rectMode(CENTER);
     } else {
       //background(0,0,139);
-      textSize(50);
-      textAlign(LEFT);
-      
-      text("Elev:"+userName, 50, 65);
+      navnElev();
       JoinClass.display();
       ViewClasses.display();
       viewTests.display();
@@ -107,9 +114,7 @@ class Controller extends Init {
     // Dette er tilslut klasse
     if (state == 4) {
       //text("Hej " + userName, width/2, height/10);
-      textSize(50);
-      textAlign(LEFT);
-      text("Elev:"+userName, 50, 65);
+      navnElev();
       joinClassScreen();
       JoinClass.display();
       ViewClasses.display();
@@ -203,6 +208,7 @@ class Controller extends Init {
       rectMode(CORNER);
       rect(50, 125, 900, 650);
       rectMode(CENTER);
+      c.navnElev();
       Continue.display();
       teacherTests.clear();
     }
@@ -242,6 +248,7 @@ class Controller extends Init {
     }
 
     if (state == 2) {
+      c.ToggleAll(false);
       JoinClass.display();
       ViewClasses.display();
       viewTests.display();
@@ -250,9 +257,7 @@ class Controller extends Init {
       rectMode(CORNER);
       rect(50, 125, 900, 650);
       rectMode(CENTER);
-      textSize(50);
-      textAlign(LEFT);
-      text("Elev:"+userName, 50, 65);
+      navnElev();
       println(test_knapper.size());
       for (int i=0; i<test_knapper.size(); i++) {
         Button b = test_knapper.get(i);
@@ -285,6 +290,15 @@ class Controller extends Init {
     }
     if (state == 20){
       background(0, 0, 139);
+      ViewClasses.display();
+      SeeTestAnswers.display();
+      CreateTest.display();
+      CreateClass.display();
+      AssignClass.display();
+      fill(192);
+      rectMode(CORNER);
+      rect(50, 125, 900, 650);
+      rectMode(CENTER);
       Tildel.display();
     }
   }
