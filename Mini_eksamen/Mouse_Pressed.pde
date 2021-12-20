@@ -6,6 +6,7 @@ int procentCorrect;
 String testNavn;
 StringList DineTests = new StringList();
 StringList testProcent = new StringList();
+StringList elevBesvarelse = new StringList();
 
 
 void mouseReleased() {
@@ -18,6 +19,7 @@ void mouseReleased() {
 
   if ((c.state == 3 || c.state == 2 || c.state == 4 || c.state==15) && c.viewResults.hasClicked() && c.userType == 0) {
     background(0, 0, 139);
+    teacherClass.clear();
     cp5.getController("DineKlasser").show();
     StringList klasseliste = c.getUserClasses(c.getUserId(c.userName));
     for (int i =0; i<klasseliste.size(); i++) {
@@ -44,9 +46,6 @@ void mouseReleased() {
     c.ToggleAll(false);
     DineTests = c.getTestsPerClass((int)selectedClass);
     for (int i=0;i<DineTests.size();i++){
-      //c.getUserResults(c.getTestID(DineTests.get(i)),c.userID);
-      
-      
       c.testsProcent.put(DineTests.get(i),c.getUserResults(c.getTestID(DineTests.get(i)),c.userID));
     }    
     DinValgteKlasseNavn = (String)selectedClassName;
@@ -179,7 +178,17 @@ void mouseReleased() {
   if (c.state==5 && c.Continue.hasClicked() && selectedTest!=null) {
     DinValgteTestNavn = (String)selectedTestName;
     DinValgteTest = (int)selectedTest;
-    c.elever.put("Aske", "90%");
+    DinValgteKlasse = (int)selectedClass;
+    elevBesvarelse = c.getUsersFromClass(DinValgteKlasse);
+    
+    for(int i=0;i<elevBesvarelse.size();i++){    
+      try{
+      c.elever.put(c.getUserName(int(elevBesvarelse.get(i))), c.getUserResults((int)selectedTest,int(elevBesvarelse.get(i))));
+      }catch(Exception e){println("Ikke besvaret");}
+    }
+    
+    
+    
 
     c.ToggleTeacherTests(false);
     c.state=6;

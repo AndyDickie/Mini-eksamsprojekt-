@@ -135,20 +135,21 @@ class Controller extends Init {
     if (state==6) {
       rectMode(CORNER);
       textAlign(CORNER);
-      rykNedaf=150;
+      rykNedaf=130;
       background(0, 0, 139);
-      fill(255);
-      rect(width-300, 20, 280, 100);
+      //fill(255);
+      //rect(width-300, 20, 280, 100);
       fill(0);
-      text("Se hvordan elevernes svar", width-290, 50);
-      text("fordeler sig ved at trykke", width-285, 80);
-      text("på elevens navn", width-240, 110);
+      //text("Se hvordan elevernes svar", width-290, 50);
+      //text("fordeler sig ved at trykke", width-285, 80);
+      //text("på elevens navn", width-240, 110);
       fill(255);
-      textSize(50);
-      text(DinValgteTestNavn, 30, 70);
+      textSize(40);
+      text("Din valgte test er: "+DinValgteTestNavn, 30, 70);
       textSize(20);
-      text("Procent korrekt", 30, 110);
+      //text("Procent korrekt", 30, 110);
       for (Map.Entry me : elever.entrySet()) {
+        try{
         String nuvarendeNavn = (String)me.getKey();
         String nuvarendeProcent = (String)me.getValue();
         rykNedaf+=40;
@@ -158,6 +159,7 @@ class Controller extends Init {
         fill(0);
         text(nuvarendeNavn, 250+5, rykNedaf+30);
         text(nuvarendeProcent, 250+400+5, rykNedaf+30);
+        }catch(Exception e){println("Ikke besvaret");}
       }
       rectMode(CENTER);
       textAlign(CENTER);
