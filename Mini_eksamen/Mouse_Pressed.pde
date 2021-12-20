@@ -1,6 +1,7 @@
 Object selectedClass, selectedTest, selectedTestName;
 String DinValgteTestNavn;
 int DinValgteTest;
+int procentKorrekt;
 
 void mouseReleased() {
   if ((c.state == 3 || c.state == 2 || c.state == 4) && c.JoinClass.hasClicked() && c.userType == 0) {
@@ -70,27 +71,41 @@ void mouseReleased() {
     if (c.previous.hasClicked() && c.CurrentQID>0) {
       c.CurrentQID -= 1;
     }
-    if (c.CurrentQID == c.a.size()-1){
-      c.next.text = "Finish";
-    } else {c.next.text = "Next";}
+    
   }
-  if (c.state == 9 && c.question.mousepressed()){
+  if (c.state == 9){
+    if (c.CurrentQID == c.a.size()-1) {
+      c.next.text = "Finish";
+    } else {
+      c.next.text = "Next";
+    }
+  }
+  if (c.state == 9 && c.question.mousepressed()) {
     String userAns = c.question.mousePress();
     if (userAns != null) {
       c.question.userAns = userAns;
       c.besvaredeTest.add(c.question);
-    //c.insertUserAnswer(userAns, int(c.question.id), c.userID);
+      //c.insertUserAnswer(userAns, int(c.question.id), c.userID);
     }
-    if (c.CurrentQID<c.a.size()-1 && userAns != null){
-      
-     c.CurrentQID += 1; 
-    } else {
-      c.state = 10;
+    if (c.CurrentQID<c.a.size() && userAns != null) {
+      c.CurrentQID += 1;
+    } if (c.CurrentQID == c.a.size()) {
+    float antalKorrekt = 0;
+    println(c.besvaredeTest.size());
+    for (int i=0; i<c.besvaredeTest.size(); i++) {
+      spg l = c.besvaredeTest.get(i);
+      //println("bruger: " + l.userAns);
+      //println("rigtigt " + l.correctAns);
+      if (l.userAns.equals(l.correctAns) == true) {
+        //println("rigtigt");
+        antalKorrekt += 1;
+      }
     }
-
-    
-    
+    procentKorrekt = int((antalKorrekt/c.besvaredeTest.size())*100);
+    c.state = 10;
+    }
   }
+
   if (c.state == 2) {
     for (int i=0; i<c.test_knapper.size(); i++) {
       Button b = c.test_knapper.get(i);
@@ -130,7 +145,8 @@ void mouseReleased() {
   if (c.state==3 && c.CreateTest.hasClicked()) {
     c.state=8;
   }
-  if (c.state==8 && c.NytSpg.hasClicked()){
+
+  if (c.state==8 && c.NytSpg.hasClicked()) {
     String testNavn = cp5.get(Textfield.class, " ").getText();
     String className = cp5.get(Textfield.class, "").getText();
     String question = cp5.get(Textfield.class, "Spørgsmål").getText();
@@ -140,7 +156,7 @@ void mouseReleased() {
     String Fjerdesporgsmal = cp5.get(Textfield.class, "4 svar").getText();
     int status = int(cp5.get(Textfield.class, "Det rigtige svar skriv 1-4").getText());
     int questionNR = int(cp5.get(Textfield.class, "Spørgsmål NR").getText());
-    c.createQuestionAnswer(className,testNavn,question,forstsporgsmal,Andetsporgsmal,Tredjesporgsmal,Fjerdesporgsmal,status,questionNR);
+    c.createQuestionAnswer(question, forstsporgsmal, Andetsporgsmal, Tredjesporgsmal, Fjerdesporgsmal, questionNR, status, className);
   }
 }
 

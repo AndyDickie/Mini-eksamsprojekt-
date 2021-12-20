@@ -95,12 +95,17 @@ class SQL {
   }
 
   void createTest(String testName) {
-    db.query("INSERT INTO Test VALUES(null, '" + testName + "', )");
+    db.query("INSERT INTO Test VALUES(null, '" + testName + "', null )");
+  }
+  void assignTest(String testID, int classCode, String testName){
+    db.query("INSERT INTO Test VALUES(null, null '" + testName + "', '"+ classCode + "', " + testID + ")");
+    
+  }
+  
+  void createQuestionAnswer(String question, String forstsporgsmal, String Andetsporgsmal, String Tredjesporgsmal, String Fjerdesporgsmal, int status, int questionNR, String testName) {
+    db.query("INSERT INTO Sporgsmal VALUES (null, null, '" + question + "','" + forstsporgsmal + "','" + Andetsporgsmal + "','" + Tredjesporgsmal + "','" + Fjerdesporgsmal + "','"+questionNR+"','"+status+"', null,'"+c.getTestID(testName)+"')");
   }
 
-  void createQuestionAnswer(String testNavn,String className, String question, String forstsporgsmal, String Andetsporgsmal, String Tredjesporgsmal, String Fjerdesporgsmal, int status, int questionNR) {
-    db.query("INSERT INTO Sporgsmal VALUES ('" + testNavn + "','"+className+"','" + question + "','" + forstsporgsmal + "','" + Andetsporgsmal + "','" + Tredjesporgsmal + "','" + Fjerdesporgsmal + "','"+questionNR+"','"+status+"', null,null)");
-  }
 
   int getTestID(String testName) {
     db.query("SELECT ID FROM Test WHERE Navn='" + testName + "'");
