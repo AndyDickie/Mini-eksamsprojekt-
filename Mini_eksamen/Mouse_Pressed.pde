@@ -64,10 +64,10 @@ void mouseReleased() {
     c.state = 2;
   }
   if (c.state == 9 && (c.next.hasClicked() || c.previous.hasClicked())) {
-    if (c.next.hasClicked() && c.CurrentQID>c.a.size()){
+    if (c.next.hasClicked() && c.CurrentQID>c.a.size()) {
       c.CurrentQID += 1;
     }
-    if (c.previous.hasClicked() && c.CurrentQID<c.a.size()){
+    if (c.previous.hasClicked() && c.CurrentQID<c.a.size()) {
       c.CurrentQID -= 1;
     }
   }
@@ -93,6 +93,7 @@ void mouseReleased() {
     c.state=6;
   }
 
+
   //if (c.state==7 && c.test.first.hasClicked()){
   //  db.query("INSERT INTO Elevsvar VALUES(null,'"+questionID+"','"+c.getUserId(c.userName)+"','"+forstsvar+"')");
   //}
@@ -105,6 +106,10 @@ void mouseReleased() {
   //if (c.state==7 && c.test.fourth.hasClicked()){
   //  db.query("INSERT INTO Elevsvar VALUES(null,'"+questionID+"','"+c.getUserId(c.userName)+"','"+Fjerdesvar+"')");
   //}
+
+  if (c.state==3 && c.CreateTest.hasClicked()) {
+    c.state=8;
+  }
 }
 
 void DineKlasser (int index) {

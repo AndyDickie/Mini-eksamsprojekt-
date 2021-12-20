@@ -19,7 +19,7 @@ class Controller extends Init {
     ViewClasses = new Button(125, 110, 150, 40, "Se klasser");
     Continue = new Button(width-200, height-200, 150, 50, "Continue");
     test = new AnswerFunction();
-    
+
     viewTests = new Button(275, 110, 150, 40, "Dine tests");
     CreateTest = new Button(275, 110, 150, 40, "Lav test");
     
