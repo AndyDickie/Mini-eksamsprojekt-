@@ -52,7 +52,7 @@ class Init extends SQL {
     spg.setFocus(false);
     spg.setColorBackground(color(255));
     spg.setColorValueLabel(0);
-    KlasseNavn = cp5.addTextfield("").setPosition(250, 190).setSize(250, 40).setAutoClear(false).setFont(f).setVisible(false);
+    KlasseNavn = cp5.addTextfield("").setPosition(width/2-125, height/2-45).setSize(250, 40).setAutoClear(false).setFont(f).setVisible(false);
     KlasseNavn.setFocus(false);
     KlasseNavn.setColorBackground(color(255)); 
     KlasseNavn.setColorValueLabel(0);
@@ -140,13 +140,10 @@ class Init extends SQL {
     toggle("3 svar", vis);
     toggle("4 svar", vis);
     toggle("Spørgsmål",vis);
-    //toggle(" ",vis);
-    
     toggle("Spørgsmål NR",vis);
     toggle("Det rigtige svar skriv 1-4",vis);
   }
-  void ToggleCreateNewTest(boolean vis){
-    
+  void ToggleCreateNewTest(boolean vis){   
     toggle("",vis);
   }
   
