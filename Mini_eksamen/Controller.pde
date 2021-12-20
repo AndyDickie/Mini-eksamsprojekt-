@@ -4,7 +4,7 @@ class Controller extends Init {
   HashMap<String, String> elever = new HashMap<String, String>();
   HashMap<String, String> testsProcent = new HashMap<String, String>();
   String userName;
-  int userType, userID;
+  int userType, userID, BT;
   Button Login, Register, StartupPage, JoinClass, SeeTestAnswers, CreateClass,
   ViewClasses, Continue, Home, viewTests, CreateTest, next, previous, NytSpg, viewResults, LavTest, done, AssignClass, Tildel;
   ArrayList<Button> test_knapper = new ArrayList<Button>();
@@ -13,7 +13,7 @@ class Controller extends Init {
   ArrayList<testAns> a;
   String procentKorrekt;
   ArrayList<spg> besvaredeTest = new ArrayList<spg>();
-
+  
   Controller(int state_) {
     state = state_;
     JoinClass = new Button(425, 110, 150, 40, "Tilslut klasse");
@@ -51,7 +51,7 @@ class Controller extends Init {
       //background(0,0,139);
       textSize(50);
       textAlign(LEFT);
-      text(userType+userName+"", 50, 65);
+      text("Lære:"+userName, 50, 65);
       CreateTest.display();
       CreateClass.display();
       SeeTestAnswers.display();
@@ -65,7 +65,8 @@ class Controller extends Init {
       //background(0,0,139);
       textSize(50);
       textAlign(LEFT);
-      text(userType+userName+"", 50, 65);
+      
+      text("Elev:"+userName, 50, 65);
       JoinClass.display();
       ViewClasses.display();
       viewTests.display();
@@ -95,18 +96,20 @@ class Controller extends Init {
   }
 
   void update() {
-    //background(0,0,139);
+    // Dette er Skærmen hvor du logger ind 
     if (state == 0) {
       startScreen();
     }
+    // Dette er hjemmeskærmen 
     if (state == 3) {
       homeScreen();
     }
+    // Dette er tilslut klasse
     if (state == 4) {
       //text("Hej " + userName, width/2, height/10);
       textSize(50);
       textAlign(LEFT);
-      text(userType+userName+"", 50, 65);
+      text("Elev:"+userName, 50, 65);
       joinClassScreen();
       JoinClass.display();
       ViewClasses.display();
@@ -158,6 +161,7 @@ class Controller extends Init {
       rectMode(CENTER);
       textAlign(CENTER);
     }
+    // Dette er skærmen hvor lærer tilfølger spørgsmål til tests
     if (state==8) {
       ViewClasses.display();
       SeeTestAnswers.display();
@@ -181,10 +185,7 @@ class Controller extends Init {
       NytSpg.display();
       done.display();
       text(testNavn, 250, 220);
-
       fill(0);
-
-      
     }
 
     if (state==15) {
@@ -232,17 +233,17 @@ class Controller extends Init {
     }
 
     if (state == 2) {
-      //text("Hej " + userName, width/2, height/10);
       JoinClass.display();
       ViewClasses.display();
       viewTests.display();
+      viewResults.display();
       fill(192);
       rectMode(CORNER);
       rect(50, 125, 900, 650);
       rectMode(CENTER);
       textSize(50);
       textAlign(LEFT);
-      text(userType+userName+"", 50, 65);
+      text("Elev:"+userName, 50, 65);
       println(test_knapper.size());
       for (int i=0; i<test_knapper.size(); i++) {
         Button b = test_knapper.get(i);
@@ -264,6 +265,7 @@ class Controller extends Init {
         state = 2;
       }
     }
+    // Dette er skærmen hvor man starter med at lave testen
     if (state == 13) {
       LavTest.display();
     }
