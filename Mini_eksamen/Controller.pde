@@ -6,8 +6,7 @@ class Controller extends Init {
   String userName;
   int userType, userID;
   Button Login, Register, StartupPage, JoinClass, SeeTestAnswers, CreateClass,
-    ViewClasses, Continue, Home, viewTests, CreateTest, next, previous, NytSpg, viewResults, LavTest, done;
-  AnswerFunction test;
+  ViewClasses, Continue, Home, viewTests, CreateTest, next, previous, NytSpg, viewResults, LavTest, done;
   ArrayList<Button> test_knapper = new ArrayList<Button>();
   spg question;
   int CurrentQID = 0;
