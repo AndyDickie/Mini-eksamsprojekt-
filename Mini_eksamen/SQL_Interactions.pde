@@ -138,6 +138,11 @@ class SQL {
     int testID = db.getInt("ID");
     return testID;
   }
+  int getTestID(int SpgID) {
+    db.query("SELECT TestID FROM Sporgsmal WHERE ID='" + SpgID + "'");
+    int testID = db.getInt("TestID");
+    return testID;
+  }
 
   StringList getTeacherClasses(int userID) {
     StringList KlasseListe = new StringList();
@@ -156,15 +161,25 @@ class SQL {
     while (db.next()) {
       TestListe.append(db.getString("Navn"));
     }
+    
     return TestListe;
   }
 
   void insertUserAnswer(String UserAnswer, int questionID, int userID ) {
     db.query("INSERT INTO Elevsvar VALUES (null, '"+ questionID +"', '"+userID+"', '"+ UserAnswer+ "')");
   }
+  
+  void insertUserResults(String results, int TestID){
+    db.query("INSERT INTO Resultater VALUES ("+ TestID + ", " + c.userID + ", '"+ results+"')");
+  }
 
-  void getuserAnswer(int questionID, int userID) {
-    db.query("SELECT * FROM Elevsvar Where SporgsmalID = "+ questionID + " AND UsernameID = " + userID);
+  void getuserAnswer(int userID) {
+    db.query("SELECT * FROM Elevsvar Where UsernameID = " + userID);
+  }
+  
+  String getUserResults(int testID, int userID){
+    db.query("SELECT Resultat FROM Resultater WHERE testID="+testID+" AND UsernameID="+userID);
+    return db.getString("Resultat");
   }
 
   //Kan gøres nemmer ved at fjerne * og gøre det specifikt

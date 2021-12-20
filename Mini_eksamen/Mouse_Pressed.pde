@@ -41,12 +41,12 @@ void mouseReleased() {
   if (c.state==15 && c.Continue.hasClicked() && c.userType==0 && selectedClass!=null) {
     c.ToggleAll(false);
     DineTests = c.getTestsPerClass((int)selectedClass);
-    //testProcent = ???;
     for (int i=0;i<DineTests.size();i++){
-      c.testsProcent.put(DineTests.get(i),testProcent.get(i));
+      //c.getUserResults(c.getTestID(DineTests.get(i)),c.userID);
+      
+      
+      c.testsProcent.put(DineTests.get(i),c.getUserResults(c.getTestID(DineTests.get(i)),c.userID));
     }    
-    c.testsProcent.put("Algebra", "30%");
-    c.testsProcent.put("vektor", "50%");
     DinValgteKlasseNavn = (String)selectedClassName;
     c.ToggleTeacherTests(false);
     c.state=14;
@@ -141,6 +141,7 @@ void mouseReleased() {
       for (int i=0; i<c.besvaredeTest.size(); i++) {
         spg l = c.besvaredeTest.get(i);
         c.insertUserAnswer(l.userAns, int(l.id), c.userID );
+        
         println("bruger: " + l.userAns);
         println("rigtigt " + l.correctAns);
         if (l.userAns.equals(l.correctAns) == true) {
@@ -149,6 +150,11 @@ void mouseReleased() {
         }
       }
       procentCorrect = int((antalKorrekt/c.besvaredeTest.size())*100);
+      spg y = c.besvaredeTest.get(0);
+      println("testID: "+c.getTestID(int(y.id)));
+      println("spgID: "+y.id);
+      println(c.getTestID(4));
+      c.insertUserResults((str(procentCorrect)+"%"), c.getTestID(int(y.id)));
       c.state = 10;
       c.besvaredeTest.clear();
     }

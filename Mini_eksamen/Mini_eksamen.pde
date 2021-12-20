@@ -24,6 +24,7 @@ void setup() {
   c.load();
   //println(c.getTests());
   //println(c.getTestName());
+  println("testID: "+c.getTestID(4));
 //hej
 
   //c.test.display();
@@ -33,5 +34,5 @@ void setup() {
 
 void draw() {
   c.update();
-  println(c.state);
+  //println(c.state);
 }

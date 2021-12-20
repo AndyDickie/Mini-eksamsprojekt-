@@ -217,8 +217,9 @@ class Controller extends Init {
       fill(255);
       text("Testens Navn:", 250, 170);
       text("% Rigtigt", 650, 170);
-
+      
       for (Map.Entry me : testsProcent.entrySet()) {
+        try{
         String nuvarendeTestNavn = (String)me.getKey();
         String nuvarendeProcent = (String)me.getValue();
         rykNedaf+=40;
@@ -226,9 +227,12 @@ class Controller extends Init {
         rect(250, rykNedaf, 400, 40);
         rect(250+400, rykNedaf, 70, 40);
         fill(0);
+        println(rykNedaf,nuvarendeTestNavn,nuvarendeProcent);
         text(nuvarendeTestNavn, 250+5, rykNedaf+30);
         text(nuvarendeProcent, 250+400+5, rykNedaf+30);
+        }catch(Exception e){println("Ikke besvaret");}
       }
+      
 
 
       rectMode(CENTER);
