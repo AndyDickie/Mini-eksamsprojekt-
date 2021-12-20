@@ -33,12 +33,18 @@ void mouseReleased() {
 
   if (c.state==15 && c.Continue.hasClicked() && c.userType==0 && selectedClass!=null) {
     DineTests = c.getTestsPerClass((int)selectedClass);
-    testProcent = ???;
+    
+    
+    
+    
+    
+    //c.getUserResults((int)selectedTest,c.userID);
     for (int i=0;i<DineTests.size();i++){
-      c.testsProcent.put(DineTests.get(i),testProcent.get(i));
+      //c.getUserResults(c.getTestID(DineTests.get(i)),c.userID);
+      
+      
+      c.testsProcent.put(DineTests.get(i),c.getUserResults(c.getTestID(DineTests.get(i)),c.userID));
     }    
-    c.testsProcent.put("Algebra", "30%");
-    c.testsProcent.put("vektor", "50%");
     DinValgteKlasseNavn = (String)selectedClassName;
     c.ToggleTeacherTests(false);
     c.state=14;
