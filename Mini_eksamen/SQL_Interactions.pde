@@ -1,3 +1,4 @@
+
 class SQL {
   String signingSalt = "sQLLlerkk4221€€))";
 
@@ -119,6 +120,17 @@ class SQL {
     return o;
   } 
   
+  StringList getUsersFromClass(int classID){
+  String s = "SELECT UsernameID FROM \"Elev-tilknytning\" WHERE Klassecode='" + classID + "'";
+  db.query(s);
+  StringList o = new StringList();
+   while (db.next()) {
+      String ting = db.getString("UsernameID");
+      o.append(ting);
+      //println(ting);
+    }
+    return o;
+  } 
   
   void createTest(String testName) {
     db.query("INSERT INTO Test VALUES('"+c.userID+"', '" + testName + "', null, " + int(random(0,100000)) + ")");
@@ -161,6 +173,12 @@ class SQL {
     while (db.next()) {
       TestListe.append(db.getString("Navn"));
     }
+    for (int i=0; i<TestListe.size(); i++){
+    //set.add(TestListe.get(i));
+    }
+    //TestListe.clear();
+    //TestListe.add();
+    
     
     return TestListe;
   }
