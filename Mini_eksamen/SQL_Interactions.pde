@@ -11,6 +11,13 @@ class SQL {
       return "";
     }
   }
+  
+  String getUserName(int userID) {
+    db.query("SELECT userName FROM Users WHERE ID='"+ userID + "'");
+    String username = db.getString("Username");
+    return username;
+  }
+  
 
   int getUserType(String userName) {
     db.query("SELECT Stilling FROM users WHERE userName='"+ userName + "'");
