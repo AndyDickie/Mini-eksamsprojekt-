@@ -6,13 +6,12 @@ class Controller extends Init {
   String userName;
   int userType, userID;
   Button Login, Register, StartupPage, JoinClass, SeeTestAnswers, CreateClass, ViewClasses, Continue, Home, viewTests, CreateTest, next, previous, NytSpg, viewResults;
-  AnswerFunction test;
   ArrayList<Button> test_knapper = new ArrayList<Button>();
   spg question;
   int CurrentQID = 0;
   ArrayList<testAns> a;
   String procentKorrekt;
-    ArrayList<spg> besvaredeTest = new ArrayList<spg>();
+  ArrayList<spg> besvaredeTest = new ArrayList<spg>();
 
   Controller(int state_) {
     state = state_;
@@ -21,7 +20,6 @@ class Controller extends Init {
     SeeTestAnswers = new Button(425, 110, 150, 40, "Se resultater");
     ViewClasses = new Button(125, 110, 150, 40, "Se klasser");
     Continue = new Button(width-200, height-100, 150, 50, "Continue");
-    test = new AnswerFunction();
     viewTests = new Button(275, 110, 150, 40, "Dine tests");
     viewResults = new Button(580, 110, 160, 40, "Dine Resultater");
     CreateTest = new Button(275, 110, 150, 40, "Lav test");
