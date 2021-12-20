@@ -4,7 +4,7 @@ class Controller extends Init {
   HashMap<String, String> elever = new HashMap<String, String>();
   String userName;
   int userType, userID;
-  Button Login, Register, StartupPage, JoinClass, SeeTestAnswers, CreateClass, ViewClasses, Continue, Home, viewTests, CreateTest, next, previous;
+  Button Login, Register, StartupPage, JoinClass, SeeTestAnswers, CreateClass, ViewClasses, Continue, Home, viewTests, CreateTest, next, previous, NytSpg;
   AnswerFunction test;
   ArrayList<Button> test_knapper = new ArrayList<Button>();
   spg question;
@@ -18,14 +18,13 @@ class Controller extends Init {
     CreateClass = new Button(575, 110, 150, 40, "Lav klasse");
     SeeTestAnswers = new Button(425, 110, 150, 40, "Se resultater");
     ViewClasses = new Button(125, 110, 150, 40, "Se klasser");
-    Continue = new Button(width-200, height-200, 150, 50, "Continue");
+    Continue = new Button(width-200, height-100, 150, 50, "Continue");
     test = new AnswerFunction();
-
     viewTests = new Button(275, 110, 150, 40, "Dine tests");
     CreateTest = new Button(275, 110, 150, 40, "Lav test");
-    
     next = new Button(9*width/10, 8*height/10, 150, 40, "Næste");
     previous = new Button(2*width/10, 8*height/10, 150, 40, "Tilbage");
+    NytSpg = new Button(150,325,150,50,"Nyt Spørgsmål");
   }
 
   void startScreen() {
@@ -80,15 +79,15 @@ class Controller extends Init {
 
   void SeeTestAnswersScreen() {
     background(0, 0, 139);
+    ViewClasses.display();
+    SeeTestAnswers.display();
+    CreateTest.display();
+    CreateClass.display();
     fill(192);
     rectMode(CORNER);
     rect(50, 125, 900, 650);
     rectMode(CENTER);
     Continue.display();
-    ViewClasses.display();
-    SeeTestAnswers.display();
-    CreateTest.display();
-    CreateClass.display();
   }
 
   void update() {
@@ -159,13 +158,14 @@ class Controller extends Init {
     }
     if (state==8) {
       c.ToggleAll(false);
-      background(0, 0, 107);
+      background(0, 0, 139);
       fill(255);
       c.ToggleCreateQuestion(true);
       ViewClasses.display();
       SeeTestAnswers.display();
       CreateTest.display();
       CreateClass.display();
+
       fill(192);
       rectMode(CORNER);
       rect(50, 125, 900, 650);
@@ -179,8 +179,11 @@ class Controller extends Init {
       text("Test navn:", 75, 220);
       // skal tilføje +className efter "String"
       text("Klasse navn:", 75, 170);
-      fill(0);
+      textAlign(CENTER);
       rectMode(CENTER);
+      NytSpg.display();
+      fill(0);
+      
     }
 
     if (state == 2) {
