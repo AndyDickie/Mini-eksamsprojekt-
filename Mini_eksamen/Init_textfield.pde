@@ -132,6 +132,14 @@ class Init extends SQL {
     toggle("ClassID", vis);
     toggle("Class Name", vis);
     toggle("Create Class", vis);
+    toggle("1 svar",vis);
+    toggle("2 svar", vis);
+    toggle("3 svar", vis);
+    toggle("4 svar", vis);
+    toggle("Spørgsmål",vis);
+    toggle("Spørgsmål NR",vis);
+    toggle("Det rigtige svar skriv 1-4",vis);
+    toggle("",vis);
   }
   
   void ToggleCreateQuestion(boolean vis){

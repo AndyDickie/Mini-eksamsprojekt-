@@ -114,6 +114,7 @@ class Controller extends Init {
       JoinClass.display();
       ViewClasses.display();
       viewTests.display();
+      viewResults.display();
       fill(192);
       rectMode(CORNER);
       rect(50, 125, 900, 650);
@@ -184,11 +185,13 @@ class Controller extends Init {
       rectMode(CENTER);
       NytSpg.display();
       done.display();
-      text(testNavn, 250, 220);
+      textSize(30);
+      text(testNavn, 300, 220);
       fill(0);
     }
 
     if (state==15) {
+      c.ToggleAll(false);
       background(0, 0, 139);
       JoinClass.display();
       ViewClasses.display();

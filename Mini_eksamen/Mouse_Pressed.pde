@@ -9,31 +9,39 @@ StringList testProcent = new StringList();
 
 
 void mouseReleased() {
-  if ((c.state == 3 || c.state == 2 || c.state == 4) && c.JoinClass.hasClicked() && c.userType == 0) {
+  if ((c.state == 3 || c.state == 2 || c.state == 4 || c.state==15) && c.JoinClass.hasClicked() && c.userType == 0) {
     background(0, 0, 139);
-    c.ToggleAll(false);
     c.ToggleClass(true);
+    cp5.getController("DineKlasser").hide();
     c.state = 4;
   }
 
-  if ((c.state == 3 || c.state == 2 || c.state == 4) && c.viewResults.hasClicked() && c.userType == 0) {
+  if ((c.state == 3 || c.state == 2 || c.state == 4 || c.state==15) && c.viewResults.hasClicked() && c.userType == 0) {
     background(0, 0, 139);
     cp5.getController("DineKlasser").show();
     StringList klasseliste = c.getUserClasses(c.getUserId(c.userName));
     for (int i =0; i<klasseliste.size(); i++) {
       teacherClass.addItem(klasseliste.get(i), c.getClassCode(klasseliste.get(i)));
     }
-    println(klasseliste);
-    //if(selectedClass!=null){
-    //  DinValgteKlasse=(int)selectedClass;
-    //}
-   
+
+  if ((c.state == 3 || c.state == 2 || c.state == 4|| c.state==15) && c.ViewClasses.hasClicked() && c.userType == 0) {
+   c.ToggleAll(false);
+    cp5.getController("DineKlasser").hide();
+    c.state=2;
+  }
+  
+  if ((c.state == 3 || c.state == 2 || c.state == 4|| c.state==15) && c.viewTests.hasClicked() && c.userType == 0) {
+    c.ToggleAll(false);
+    cp5.getController("DineKlasser").hide();
+    c.state=2;
+  }
     c.state = 15;
   }
 
   if (c.state==15 && c.Continue.hasClicked() && c.userType==0 && selectedClass!=null) {
+    c.ToggleAll(false);
     DineTests = c.getTestsPerClass((int)selectedClass);
-    testProcent = ???;
+    //testProcent = ???;
     for (int i=0;i<DineTests.size();i++){
       c.testsProcent.put(DineTests.get(i),testProcent.get(i));
     }    
@@ -102,12 +110,10 @@ void mouseReleased() {
     if (c.next.hasClicked() && c.CurrentQID<c.a.size()-1) {
       c.CurrentQID += 1;
       background(0,0,159);
-
     }
     if (c.previous.hasClicked() && c.CurrentQID>0) {
       c.CurrentQID -= 1;
       background(0,0,159);
-
     }
   }
   if (c.state == 9) {
@@ -193,9 +199,6 @@ void mouseReleased() {
     textSize(35);
     text("Test navn:", width/2-210, height/2-15);
     c.ToggleCreateNewTest(true);
-
-
-
     c.state=13;
   }
   if (c.state == 13 && c.LavTest.hasClicked()) {
