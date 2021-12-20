@@ -71,10 +71,6 @@ class Controller extends Init {
     }
   }
 
-  void answerScreen() {
-    background(0, 0, 139);
-    test.display();
-  }
   void joinClassScreen() {
     //background(0, 0, 139);
   }
@@ -155,10 +151,6 @@ class Controller extends Init {
       }
       rectMode(CENTER);
       textAlign(CENTER);
-    }
-    if (state==7) {
-      background(0, 0, 139);
-      c.test.display();
     }
     if (state==8) {
       c.ToggleAll(false);
