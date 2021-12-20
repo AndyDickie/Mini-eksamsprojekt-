@@ -16,7 +16,7 @@ void setup() {
   db = new SQLite(this, "users.sqlite" );
   db.connect();
   cp5 = new ControlP5(this);
-  c = new Controller(8);
+  c = new Controller(0);
   println(c.getClassName(622050));
   println(c.getUserClasses(1));
   size(1000, 800);
