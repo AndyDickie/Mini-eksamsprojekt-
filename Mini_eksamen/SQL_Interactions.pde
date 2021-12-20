@@ -150,7 +150,7 @@ class SQL {
       k.append(db.getString("Svar4"));
       k.append(db.getString("Status"));
       k.append(db.getString("ID"));
-      println(db.getString("ID"));
+      println(db.getString("Status"));
       k.append(db.getString("Sporgsmal"));
       h = new testAns(k.get(0), k.get(1), k.get(2), k.get(3), k.get(4), k.get(5), k.get(6));
       c.a.add(h);

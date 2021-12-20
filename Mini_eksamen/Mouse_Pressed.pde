@@ -64,12 +64,32 @@ void mouseReleased() {
     c.state = 2;
   }
   if (c.state == 9 && (c.next.hasClicked() || c.previous.hasClicked())) {
-    if (c.next.hasClicked() && c.CurrentQID>c.a.size()) {
+    if (c.next.hasClicked() && c.CurrentQID<c.a.size()-1) {
       c.CurrentQID += 1;
     }
-    if (c.previous.hasClicked() && c.CurrentQID<c.a.size()) {
+    if (c.previous.hasClicked() && c.CurrentQID>0) {
       c.CurrentQID -= 1;
     }
+    if (c.CurrentQID == c.a.size()-1){
+      c.next.text = "Finish";
+    } else {c.next.text = "Next";}
+  }
+  if (c.state == 9 && c.question.mousepressed()){
+    String userAns = c.question.mousePress();
+    if (userAns != null) {
+      c.question.userAns = userAns;
+      c.besvaredeTest.add(c.question);
+    //c.insertUserAnswer(userAns, int(c.question.id), c.userID);
+    }
+    if (c.CurrentQID<c.a.size()-1 && userAns != null){
+      
+     c.CurrentQID += 1; 
+    } else {
+      c.state = 10;
+    }
+
+    
+    
   }
   if (c.state == 2) {
     for (int i=0; i<c.test_knapper.size(); i++) {

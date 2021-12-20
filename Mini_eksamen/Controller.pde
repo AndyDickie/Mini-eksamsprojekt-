@@ -10,6 +10,7 @@ class Controller extends Init {
   spg question;
   int CurrentQID = 0;
   ArrayList<testAns> a;
+    ArrayList<spg> besvaredeTest = new ArrayList<spg>();
 
   Controller(int state_) {
     state = state_;
@@ -205,6 +206,7 @@ class Controller extends Init {
       previous.display();
       if (a.size() >0) {
         try {
+          println(a.size() + "ANT SPG:" + CurrentQID);
           question = new spg(a.get(CurrentQID));
           question.display();
         }
@@ -213,6 +215,21 @@ class Controller extends Init {
       } else {
         state = 2;
       }
+    }
+    
+    if (state == 10){
+      int antalKorrekt = 0;
+      int procentKorrekt;
+      println(besvaredeTest.size());
+      for (int i=0; i<besvaredeTest.size(); i++){
+        spg l = besvaredeTest.get(i);
+        println(l.userAns);
+        println(l.correctAns);
+        if (l.userAns == l.correctAns){
+          antalKorrekt += 1;
+        }
+      } procentKorrekt = (antalKorrekt/besvaredeTest.size())*100;
+      text(procentKorrekt, width/2, height/2);
     }
   }
 }
