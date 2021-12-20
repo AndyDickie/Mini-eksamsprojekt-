@@ -129,7 +129,7 @@ class SQL {
   }
   
   void createQuestionAnswer(String question, String forstsporgsmal, String Andetsporgsmal, String Tredjesporgsmal, String Fjerdesporgsmal, int status, int questionNR, String testName) {
-    db.query("INSERT INTO Sporgsmal VALUES (null, null, '" + question + "','" + forstsporgsmal + "','" + Andetsporgsmal + "','" + Tredjesporgsmal + "','" + Fjerdesporgsmal + "','"+questionNR+"','"+status+"', null,'"+c.getTestID(testName)+"')");
+    db.query("INSERT INTO Sporgsmal VALUES ('" + question + "','" + forstsporgsmal + "','" + Andetsporgsmal + "','" + Tredjesporgsmal + "','" + Fjerdesporgsmal + "','"+questionNR+"','"+status+"', null,'"+c.getTestID(testName)+"')");
   }
 
 

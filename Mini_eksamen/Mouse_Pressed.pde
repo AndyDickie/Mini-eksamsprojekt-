@@ -31,9 +31,11 @@ void mouseReleased() {
   }
   
   if ((c.state == 3 || c.state == 2 || c.state == 4|| c.state==15) && c.viewTests.hasClicked() && c.userType == 0) {
-    c.ToggleAll(false);
-    cp5.getController("DineKlasser").hide();
-    c.state=2;
+    //c.ToggleAll(false);
+    //cp5.getController("DineKlasser").hide();
+    //c.state=2;
+    fill(255);
+    rect(100,100,100,100);
   }
     c.state = 15;
   }
