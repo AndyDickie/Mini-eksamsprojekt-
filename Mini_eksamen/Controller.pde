@@ -25,7 +25,7 @@ class Controller extends Init {
     CreateTest = new Button(275, 110, 150, 40, "Lav test");
     next = new Button(9*width/10, 8*height/10, 150, 40, "Næste");
     previous = new Button(2*width/10, 8*height/10, 150, 40, "Tilbage");
-    NytSpg = new Button(150,325,150,50,"Nyt Spørgsmål");
+    NytSpg = new Button(150, 325, 150, 50, "Nyt Spørgsmål");
   }
 
   void startScreen() {
@@ -187,7 +187,6 @@ class Controller extends Init {
       rectMode(CENTER);
       NytSpg.display();
       fill(0);
-      
     }
     
     if (state==15){
@@ -267,26 +266,16 @@ class Controller extends Init {
         state = 2;
       }
     }
-    
-    if (state == 10){
-      int antalKorrekt = 0;
-      int procentKorrekt;
-      println(besvaredeTest.size());
-      for (int i=0; i<besvaredeTest.size(); i++){
-        spg l = besvaredeTest.get(i);
-        println(l.userAns);
-        println(l.correctAns);
-        if (l.userAns == l.correctAns){
-          antalKorrekt += 1;
-        }
-      } procentKorrekt = (antalKorrekt/besvaredeTest.size())*100;
-      text(procentKorrekt, width/2, height/2);
+
+    if (state == 10) {
+      background(0);
+      text("Du fik: "+procentKorrekt+"% korrekt", width/2, height/2);
     }
   }
 }
 
-  void udregnProcentRigtigt(PVector point) {
-    //Her skal point PVector bestå af antal rigtige spg på x-koordinaten og antal forkerte skal være på y-koordinaten.
-    String procent = (int)((point.x/(point.x+point.y))*100)+"%";
-    println(procent);
-  }
+void udregnProcentRigtigt(PVector point) {
+  //Her skal point PVector bestå af antal rigtige spg på x-koordinaten og antal forkerte skal være på y-koordinaten.
+  String procent = (int)((point.x/(point.x+point.y))*100)+"%";
+  println(procent);
+}
