@@ -59,7 +59,7 @@ class Controller extends Init {
       AssignClass.display();
       fill(192);
       rectMode(CORNER);
-      //rect(50, 125, 900, 650);
+      rect(50, 125, 900, 650);
       rectMode(CENTER);
     } else {
       //background(0,0,139);
