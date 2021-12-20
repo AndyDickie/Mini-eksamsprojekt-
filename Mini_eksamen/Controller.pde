@@ -22,7 +22,6 @@ class Controller extends Init {
     SeeTestAnswers = new Button(425, 110, 150, 40, "Se resultater");
     ViewClasses = new Button(125, 110, 150, 40, "Se klasser");
     Continue = new Button(width-200, height-100, 150, 50, "Continue");
-    test = new AnswerFunction();
     viewTests = new Button(275, 110, 150, 40, "Dine tests");
     viewResults = new Button(580, 110, 160, 40, "Dine Resultater");
     CreateTest = new Button(275, 110, 150, 40, "Lav test");
@@ -76,10 +75,6 @@ class Controller extends Init {
     }
   }
 
-  void answerScreen() {
-    background(0, 0, 139);
-    test.display();
-  }
   void joinClassScreen() {
     //background(0, 0, 139);
   }
@@ -160,10 +155,6 @@ class Controller extends Init {
       }
       rectMode(CENTER);
       textAlign(CENTER);
-    }
-    if (state==7) {
-      background(0, 0, 139);
-      c.test.display();
     }
     if (state==8) {
       fill(192);
