@@ -1,6 +1,6 @@
 Bang create_user, join_class;
 Button show_password, login, nestespg;
-Textfield username_field, pass_field, class_id, forstspg, andetspg, tredjespg, fjerdespg, spg;
+Textfield username_field, pass_field, class_id, forstspg, andetspg, tredjespg, fjerdespg, spg, KlasseNavn, SpgNR,TestNavn, RigtigeSvar;
 Toggle type;
 ScrollableList teacherTests, teacherClass;
 
@@ -20,8 +20,7 @@ class Init extends SQL {
     //login bangs
     cp5.addButton("Show Password").setPosition(width/2+78, height/2+30).setSize(80, 40).setVisible(true);
     cp5.addButton("Login").setPosition(width/2+78, height/2+190).setSize(80, 40).setVisible(true);
-    cp5.addButton("Nyt spoergsmaal").setPosition(75,300).setSize(150,50).setVisible(false);
-    cp5.setColorBackground(color(128));
+    cp5.setColorBackground(color(128)); 
     cp5.setColorForeground(color(105));
     cp5.setColorActive(color(36));
 
@@ -53,6 +52,22 @@ class Init extends SQL {
     spg.setFocus(false);
     spg.setColorBackground(color(255));
     spg.setColorValueLabel(0);
+    KlasseNavn = cp5.addTextfield("").setPosition(250, 190).setSize(250, 40).setAutoClear(false).setFont(f).setVisible(false);
+    KlasseNavn.setFocus(false);
+    KlasseNavn.setColorBackground(color(255)); 
+    KlasseNavn.setColorValueLabel(0);
+    TestNavn = cp5.addTextfield(" ").setPosition(250, 140).setSize(250, 40).setAutoClear(false).setFont(f).setVisible(false);
+    TestNavn.setFocus(false);
+    TestNavn.setColorBackground(color(255)); 
+    TestNavn.setColorValueLabel(0);
+    SpgNR = cp5.addTextfield("Spørgsmål NR").setPosition(629.1, 280).setSize(250, 50).setAutoClear(false).setFont(f).setVisible(false);
+    SpgNR.setFocus(false);
+    SpgNR.setColorBackground(color(255)); 
+    SpgNR.setColorValueLabel(0);
+    RigtigeSvar = cp5.addTextfield("Det rigtige svar skriv 1-4").setPosition(75, 450).setSize(250, 50).setAutoClear(false).setFont(f).setVisible(false);
+    RigtigeSvar.setFocus(false);
+    RigtigeSvar.setColorBackground(color(255)); 
+    RigtigeSvar.setColorValueLabel(0);
     
     //Scrollable list
     teacherTests = cp5.addScrollableList("DinKlassesTests").setPosition(width/2, 190).setSize(400, 300).setFont(f).setBarHeight(40).setItemHeight(30).setVisible(false);
@@ -124,7 +139,10 @@ class Init extends SQL {
     toggle("3 svar", vis);
     toggle("4 svar", vis);
     toggle("Spørgsmål",vis);
-    toggle("Nyt spoergsmaal", vis);
+    toggle("",vis);
+    toggle(" ",vis);
+    toggle("Spørgsmål NR",vis);
+    toggle("Det rigtige svar skriv 1-4",vis);
   }
   
   
