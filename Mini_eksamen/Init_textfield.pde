@@ -20,7 +20,9 @@ class Init extends SQL {
     //login bangs
     cp5.addButton("Show Password").setPosition(width/2+78, height/2+30).setSize(80, 40).setVisible(true);
     cp5.addButton("Login").setPosition(width/2+78, height/2+190).setSize(80, 40).setVisible(true);
-
+    cp5.setColorBackground(color(128)); 
+    cp5.setColorForeground(color(105));
+    cp5.setColorActive(color(36));
 
 
     //textfields
@@ -78,7 +80,7 @@ class Init extends SQL {
     //Create class textfield
     cp5.addTextfield("Class Name").setPosition(width/2-100, height/2).setSize(200,40).setFont(f).setVisible(false);
     cp5.addButton("Create Class").setPosition(width/2+110, height/2).setSize(80,40).setVisible(false);
-    println("load");    
+    println("load");      
   }
 
   void ToggleLogin(boolean vis) {
