@@ -27,7 +27,7 @@ class Controller extends Init {
     next = new Button(9*width/10, 8*height/10, 150, 40, "Næste");
     previous = new Button(2*width/10, 8*height/10, 150, 40, "Tilbage");
     NytSpg = new Button(150, 325, 150, 50, "Nyt Spørgsmål");
-    LavTest = new Button(width/2, height/3, 150, 40, "Lav Test");
+    LavTest = new Button(width/2, height/2+40, 150, 40, "Lav Test");
     done = new Button(150, 700, 150, 40, "Færdig");
   }
 
@@ -156,6 +156,10 @@ class Controller extends Init {
       textAlign(CENTER);
     }
     if (state==8) {
+      ViewClasses.display();
+      SeeTestAnswers.display();
+      CreateTest.display();
+      CreateClass.display();
       fill(192);
       rectMode(CORNER);
       rect(50, 125, 900, 650);
@@ -163,7 +167,7 @@ class Controller extends Init {
       fill(255);
       textSize(30);
       fill(255);
-      text(c.userType+c.userName+"", 50, 65);
+      //text(c.userType+c.userName+"", 50, 65);
       text("Producere spørgsmål:", 75, 270);
       // skal tilføje +testName efter "String"
       text("Test navn:", 75, 220);
@@ -171,15 +175,12 @@ class Controller extends Init {
       text("Klasse navn:", 75, 170);
       textAlign(CENTER);
       rectMode(CENTER);
+      NytSpg.display();
+      done.display();
       text(testNavn, 250, 220);
 
       fill(0);
-      ViewClasses.display();
-      SeeTestAnswers.display();
-      CreateTest.display();
-      CreateClass.display();
-      NytSpg.display();
-      done.display();
+
       
     }
 

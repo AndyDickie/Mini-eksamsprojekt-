@@ -174,7 +174,8 @@ void mouseReleased() {
     //background(0, 0, 139);
     fill(255);
     //c.ToggleCreateQuestion(true);
-    text("Test navn:", 75, 220);
+    textSize(35);
+    text("Test navn:", width/2-210, height/2-15);
     c.ToggleCreateNewTest(true);
 
 
@@ -191,7 +192,6 @@ void mouseReleased() {
   }
 
   if (c.state==8 && c.NytSpg.hasClicked()) {
-    String className = cp5.get(Textfield.class, " ").getText();
     String question = cp5.get(Textfield.class, "Spørgsmål").getText();
     String forstsporgsmal = cp5.get(Textfield.class, "1 svar").getText();
     String Andetsporgsmal = cp5.get(Textfield.class, "2 svar").getText();
@@ -200,11 +200,22 @@ void mouseReleased() {
     int status = int(cp5.get(Textfield.class, "Det rigtige svar skriv 1-4").getText());
     int questionNR = int(cp5.get(Textfield.class, "Spørgsmål NR").getText());
     c.createQuestionAnswer(question, forstsporgsmal, Andetsporgsmal, Tredjesporgsmal, Fjerdesporgsmal, questionNR, status, testNavn);
-  }
+    cp5.get(Textfield.class,"Spørgsmål").clear();
+    cp5.get(Textfield.class,"1 svar").clear();
+    cp5.get(Textfield.class,"2 svar").clear();
+    cp5.get(Textfield.class,"3 svar").clear();
+    cp5.get(Textfield.class,"4 svar").clear();
+    cp5.get(Textfield.class,"Det rigtige svar skriv 1-4").clear();
+    cp5.get(Textfield.class,"Spørgsmål NR").clear();
+}
+
   if (c.state == 8 && c.done.hasClicked()){
+    c.ToggleAll(false);
+    c.ToggleCreateQuestion(false);
     c.state = 3;
   }
 }
+
 
 void DineKlasser (int index) {
   selectedClass = cp5.get(ScrollableList.class, "DineKlasser").getItem(index).get("value");
