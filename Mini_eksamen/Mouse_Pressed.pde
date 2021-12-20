@@ -9,6 +9,7 @@ StringList testProcent = new StringList();
 
 
 void mouseReleased() {
+   //Elever
   //State 4 
   if ((c.state == 3 || c.state == 2 || c.state == 4 || c.state==15) && c.JoinClass.hasClicked() && c.userType == 0) {
     background(0, 0, 139);
@@ -35,14 +36,15 @@ void mouseReleased() {
     cp5.getController("DineKlasser").hide();
     c.state=2;
   }
-
+    //Lærer
    //State 13
   if ((c.state == 13 || c.state == 8 || c.state == 5 || c.state==3 || c.state==20) && c.ViewClasses.hasClicked() && c.userType == 1) {
     
   }
   //State 8
   if ((c.state == 13 || c.state == 8 || c.state == 5 || c.state==3 || c.state==20) && c.SeeTestAnswers.hasClicked() && c.userType == 1) {
-    
+   
+ 
   }
   //State 5
   if ((c.state == 13 || c.state == 8 || c.state == 5 || c.state==3 || c.state==20) && c.CreateTest.hasClicked() && c.userType == 1) {
