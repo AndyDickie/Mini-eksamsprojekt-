@@ -22,6 +22,8 @@ void setup() {
   size(1000, 800);
   background(0,0,107);
   c.load();
+  //println(c.getTests());
+  //println(c.getTestName());
 //hej
 
   //c.test.display();

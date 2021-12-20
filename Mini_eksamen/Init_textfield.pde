@@ -2,7 +2,7 @@ Bang create_user, join_class;
 Button show_password, login, nestespg;
 Textfield username_field, pass_field, class_id, forstspg, andetspg, tredjespg, fjerdespg, spg, KlasseNavn, SpgNR,TestNavn, RigtigeSvar;
 Toggle type;
-ScrollableList teacherTests, teacherClass;
+ScrollableList teacherTests, teacherClass, teacherTestsID;
 
 class Init extends SQL {
   void toggle(String controller, boolean vis) {
@@ -72,7 +72,8 @@ class Init extends SQL {
     //Scrollable list
     teacherTests = cp5.addScrollableList("DinKlassesTests").setPosition(width/2, 190).setSize(400, 300).setFont(f).setBarHeight(40).setItemHeight(30).setVisible(false);
     teacherClass = cp5.addScrollableList("DineKlasser").setPosition(90, 190).setSize(400, 300).setFont(f).setBarHeight(40).setItemHeight(30).setVisible(false);
-
+    teacherTestsID = cp5.addScrollableList("DineTest").setPosition(width/2, 190).setSize(400, 300).setFont(f).setBarHeight(40).setItemHeight(30).setVisible(false);
+    
     //create user bangs
     cp5.addButton("Create User").setPosition(width/2+78, height/2+140).setSize(80, 40).setVisible(true);
     type = cp5.addToggle("Teacher/Student").setPosition(width/2-165, height/2-140).setSize(80, 40).setValue(false).setMode(ControlP5.SWITCH).setVisible(true);

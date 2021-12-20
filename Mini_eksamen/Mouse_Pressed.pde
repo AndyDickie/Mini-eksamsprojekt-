@@ -1,9 +1,10 @@
-Object selectedClass, selectedTest, selectedTestName, selectedClassName;
+Object selectedClass, selectedTest, selectedTestName, selectedClassName, selectedTestID, selectedTestNavn;
 String DinValgteTestNavn;
 String DinValgteKlasseNavn;
 int DinValgteTest;
 int procentCorrect;
 String testNavn;
+
 
 void mouseReleased() {
   if ((c.state == 3 || c.state == 2 || c.state == 4) && c.JoinClass.hasClicked() && c.userType == 0) {
@@ -53,6 +54,7 @@ void mouseReleased() {
     println("vievClass tryk");
     StringList k = c.getTeacherClasses(c.getUserId(c.userName));
     println(k);
+    rect(50, 125, 900, 650);
     for (int i=0; i<k.size(); i++) {
       println("sss");
       text(k.get(i), width/2, height/20*i+150);
@@ -120,6 +122,7 @@ void mouseReleased() {
       println(c.besvaredeTest.size());
       for (int i=0; i<c.besvaredeTest.size(); i++) {
         spg l = c.besvaredeTest.get(i);
+        c.insertUserAnswer(l.userAns, int(l.id), c.userID );
         println("bruger: " + l.userAns);
         println("rigtigt " + l.correctAns);
         if (l.userAns.equals(l.correctAns) == true) {
@@ -129,6 +132,7 @@ void mouseReleased() {
       }
       procentCorrect = int((antalKorrekt/c.besvaredeTest.size())*100);
       c.state = 10;
+      c.besvaredeTest.clear();
     }
   }
 
@@ -204,6 +208,36 @@ void mouseReleased() {
   if (c.state == 8 && c.done.hasClicked()){
     c.state = 3;
   }
+  
+  if (c.state == 3 && c.AssignClass.hasClicked()){
+    println("sss");
+    cp5.getController("DineKlasser").show();
+    StringList klasseliste = c.getTeacherClasses(c.getUserId(c.userName));
+    for (int i =0; i<klasseliste.size(); i++) {
+      teacherClass.addItem(klasseliste.get(i), c.getClassCode(klasseliste.get(i)));
+    }
+    cp5.getController("DineTest").show();
+    StringList testList = c.getTests();
+    StringList testListName = c.getTestName();
+    println("her" + testList);
+    println("her" + testListName);
+    for (int i=0; i<testList.size(); i++) {
+      teacherTestsID.addItem(testListName.get(i), testList.get(i));
+    }
+    
+    c.state = 20;
+  }
+  
+  if (c.state == 20 && c.Tildel.hasClicked()){
+    int Klassekode = (int)selectedClass;
+    String testID = (String)selectedTestID;
+    String testNavn = (String)selectedTestNavn;
+    println(Klassekode);
+    println(testID);
+    c.assignTest(testID, Klassekode, testNavn);
+    
+    c.state = 3;
+  }
 }
 
 void DineKlasser (int index) {
@@ -216,4 +250,10 @@ void DinKlassesTests (int index) {
   selectedTest = cp5.get(ScrollableList.class, "DinKlassesTests").getItem(index).get("value");
   selectedTestName = cp5.get(ScrollableList.class, "DinKlassesTests").getItem(index).get("name");
   println(selectedTest);
+}
+
+void DineTest (int index) {
+  selectedTestID = cp5.get(ScrollableList.class, "DineTest").getItem(index).get("value");
+  selectedTestNavn = cp5.get(ScrollableList.class, "DineTest").getItem(index).get("name");
+  println(selectedTestID);
 }

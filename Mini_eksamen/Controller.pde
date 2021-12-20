@@ -6,8 +6,7 @@ class Controller extends Init {
   String userName;
   int userType, userID;
   Button Login, Register, StartupPage, JoinClass, SeeTestAnswers, CreateClass,
-    ViewClasses, Continue, Home, viewTests, CreateTest, next, previous, NytSpg, viewResults, LavTest, done;
-  AnswerFunction test;
+  ViewClasses, Continue, Home, viewTests, CreateTest, next, previous, NytSpg, viewResults, LavTest, done, AssignClass, Tildel;
   ArrayList<Button> test_knapper = new ArrayList<Button>();
   spg question;
   int CurrentQID = 0;
@@ -22,6 +21,7 @@ class Controller extends Init {
     SeeTestAnswers = new Button(425, 110, 150, 40, "Se resultater");
     ViewClasses = new Button(125, 110, 150, 40, "Se klasser");
     Continue = new Button(width-200, height-100, 150, 50, "Continue");
+    Tildel = new Button(width-200, height-100, 150, 50, "Tildel klasse");
     viewTests = new Button(275, 110, 150, 40, "Dine tests");
     viewResults = new Button(580, 110, 160, 40, "Dine Resultater");
     CreateTest = new Button(275, 110, 150, 40, "Lav test");
@@ -30,6 +30,7 @@ class Controller extends Init {
     NytSpg = new Button(150, 325, 150, 50, "Nyt Spørgsmål");
     LavTest = new Button(width/2, height/3, 150, 40, "Lav Test");
     done = new Button(150, 700, 150, 40, "Færdig");
+    AssignClass = new Button(725, 110, 150, 40, "Tildel Klasse");
   }
 
   void startScreen() {
@@ -55,9 +56,10 @@ class Controller extends Init {
       CreateClass.display();
       SeeTestAnswers.display();
       ViewClasses.display();
+      AssignClass.display();
       fill(192);
       rectMode(CORNER);
-      rect(50, 125, 900, 650);
+      //rect(50, 125, 900, 650);
       rectMode(CENTER);
     } else {
       //background(0,0,139);
@@ -268,6 +270,10 @@ class Controller extends Init {
     if (state == 10) {
       background(0);
       text("Du fik: "+procentCorrect+"% korrekt", width/2, height/2);
+    }
+    if (state == 20){
+      background(0, 0, 139);
+      Tildel.display();
     }
   }
 }

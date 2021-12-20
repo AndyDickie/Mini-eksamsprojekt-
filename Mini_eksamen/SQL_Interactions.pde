@@ -90,12 +90,38 @@ class SQL {
       println(i);
       KlasseListe.append(getClassName(KlasseKListe.get(i)));
     }
+    
 
     return KlasseListe;
   }
-
+  
+  
+  StringList getTests(){
+  String s = "SELECT ID FROM Test WHERE IDkey='" + c.userID + "'";
+  db.query(s);
+  StringList o = new StringList();
+   while (db.next()) {
+      String ting = str(db.getInt("ID"));
+      o.append(ting);
+      println(ting);
+    }
+    return o;
+  }  
+   StringList getTestName(){
+  String s = "SELECT Navn FROM Test WHERE IDkey='" + 10 + "'";
+  db.query(s);
+  StringList o = new StringList();
+   while (db.next()) {
+      String ting = db.getString("Navn");
+      o.append(ting);
+      println(ting);
+    }
+    return o;
+  } 
+  
+  
   void createTest(String testName) {
-    db.query("INSERT INTO Test VALUES(null, '" + testName + "', null, " + int(random(0,100000)) + ")");
+    db.query("INSERT INTO Test VALUES('"+c.userID+"', '" + testName + "', null, " + int(random(0,100000)) + ")");
   }
   void assignTest(String testID, int classCode, String testName){
     db.query("INSERT INTO Test VALUES(null, '" + testName + "', '"+ classCode + "', " + testID + ")");
