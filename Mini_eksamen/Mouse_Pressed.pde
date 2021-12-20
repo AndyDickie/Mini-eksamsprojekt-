@@ -87,6 +87,12 @@ if (c.state==5 && c.Continue.hasClicked() && selectedTest!=null) {
   c.state=6;
 }
 
+if (c.state==3 && c.CreateTest.hasClicked()){
+  c.state=8;
+  
+}
+
+
 //if (c.state==7 && c.test.first.hasClicked()){
 //  db.query("INSERT INTO Elevsvar VALUES(null,'"+questionID+"','"+c.getUserId(c.userName)+"','"+forstsvar+"')");
 //}
