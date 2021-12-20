@@ -55,8 +55,8 @@ class Init extends SQL {
     spg.setColorValueLabel(0);
     
     //Scrollable list
-    teacherTests = cp5.addScrollableList("DinKlassesTests").setPosition(width/2+50, 100).setSize(400, 300).setFont(f).setBarHeight(40).setItemHeight(30).setVisible(false);
-    teacherClass = cp5.addScrollableList("DineKlasser").setPosition(50, 100).setSize(400, 300).setFont(f).setBarHeight(40).setItemHeight(30).setVisible(false);
+    teacherTests = cp5.addScrollableList("DinKlassesTests").setPosition(width/2, 190).setSize(400, 300).setFont(f).setBarHeight(40).setItemHeight(30).setVisible(false);
+    teacherClass = cp5.addScrollableList("DineKlasser").setPosition(90, 190).setSize(400, 300).setFont(f).setBarHeight(40).setItemHeight(30).setVisible(false);
 
     //create user bangs
     cp5.addButton("Create User").setPosition(width/2+78, height/2+140).setSize(80, 40).setVisible(true);
