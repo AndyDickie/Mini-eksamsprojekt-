@@ -124,6 +124,7 @@ void mouseReleased() {
       for (int i=0; i<c.besvaredeTest.size(); i++) {
         spg l = c.besvaredeTest.get(i);
         c.insertUserAnswer(l.userAns, int(l.id), c.userID );
+        
         println("bruger: " + l.userAns);
         println("rigtigt " + l.correctAns);
         if (l.userAns.equals(l.correctAns) == true) {
@@ -132,6 +133,11 @@ void mouseReleased() {
         }
       }
       procentCorrect = int((antalKorrekt/c.besvaredeTest.size())*100);
+      spg y = c.besvaredeTest.get(0);
+      println("testID: "+c.getTestID(int(y.id)));
+      println("spgID: "+y.id);
+      println(c.getTestID(4));
+      c.insertUserResults((str(procentCorrect)+"%"), c.getTestID(int(y.id)));
       c.state = 10;
       c.besvaredeTest.clear();
     }

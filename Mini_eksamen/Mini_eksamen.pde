@@ -24,6 +24,7 @@ void setup() {
   c.load();
   //println(c.getTests());
   //println(c.getTestName());
+  println("testID: "+c.getTestID(4));
 //hej
 
   //c.test.display();
