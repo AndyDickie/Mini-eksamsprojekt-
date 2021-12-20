@@ -65,7 +65,7 @@ class Init extends SQL {
     //Create class textfield
     cp5.addTextfield("Class Name").setPosition(width/2-100, height/2).setSize(200,40).setFont(f).setVisible(false);
     cp5.addButton("Create Class").setPosition(width/2+110, height/2).setSize(80,40).setVisible(false);
-    println("load");    
+    println("load");      
   }
 
   void ToggleLogin(boolean vis) {

@@ -1,15 +1,17 @@
 class Controller extends Init {
   int state;
-  int rykNedaf=150;
+  int rykNedaf;
   HashMap<String, String> elever = new HashMap<String, String>();
+  HashMap<String, String> testsProcent = new HashMap<String, String>();
   String userName;
   int userType, userID;
-  Button Login, Register, StartupPage, JoinClass, SeeTestAnswers, CreateClass, ViewClasses, Continue, Home, viewTests, CreateTest, next, previous;
+  Button Login, Register, StartupPage, JoinClass, SeeTestAnswers, CreateClass, ViewClasses, Continue, Home, viewTests, CreateTest, next, previous, viewResults;
   AnswerFunction test;
   ArrayList<Button> test_knapper = new ArrayList<Button>();
   spg question;
   int CurrentQID = 0;
   ArrayList<testAns> a;
+  String procentKorrekt;
 
   Controller(int state_) {
     state = state_;
@@ -21,6 +23,7 @@ class Controller extends Init {
     test = new AnswerFunction();
 
     viewTests = new Button(275, 110, 150, 40, "Dine tests");
+    viewResults = new Button(580, 110, 160, 40, "Dine Resultater");
     CreateTest = new Button(275, 110, 150, 40, "Lav test");
     
     next = new Button(9*width/10, 8*height/10, 150, 40, "Næste");
@@ -62,6 +65,7 @@ class Controller extends Init {
       JoinClass.display();
       ViewClasses.display();
       viewTests.display();
+      viewResults.display();
       fill(192);
       rectMode(CORNER);
       rect(50, 125, 900, 650);
@@ -112,6 +116,7 @@ class Controller extends Init {
       rect(50, 125, 900, 650);
       rectMode(CENTER);
     }
+    
     if (state == 5) {
       SeeTestAnswersScreen();
       teacherTests.clear();
@@ -122,6 +127,7 @@ class Controller extends Init {
         }
       }
     }
+    
     if (state==6) {
       rectMode(CORNER);
       textAlign(CORNER);
@@ -180,6 +186,50 @@ class Controller extends Init {
       text("Klasse navn:", 75, 170);
       fill(0);
       rectMode(CENTER);
+    }
+    
+    if (state==15){
+      background(0, 0, 139);
+      JoinClass.display();
+      ViewClasses.display();
+      viewTests.display();
+      viewResults.display();
+      fill(192);
+      rectMode(CORNER);
+      rect(50, 125, 900, 650);
+      rectMode(CENTER);
+      Continue.display();
+      teacherTests.clear();
+    }
+    
+    if(state==14){
+      rectMode(CORNER);
+      textAlign(CORNER);
+      rykNedaf=150;
+      background(0, 0, 139);
+      fill(255);
+      textSize(50);
+      text("Din valgte klasse er: "+DinValgteKlasseNavn, 30, 70);
+      textSize(20);
+      fill(255);
+      text("Testens Navn:",250,170);
+      text("% Rigtigt",650,170);
+      
+      for (Map.Entry me : testsProcent.entrySet()) {
+        String nuvarendeTestNavn = (String)me.getKey();
+        String nuvarendeProcent = (String)me.getValue();
+        rykNedaf+=40;
+        fill(255);
+        rect(250, rykNedaf, 400, 40);
+        rect(250+400, rykNedaf, 70, 40);
+        fill(0);
+        text(nuvarendeTestNavn, 250+5, rykNedaf+30);
+        text(nuvarendeProcent, 250+400+5, rykNedaf+30);
+      }
+      
+      
+      rectMode(CENTER);
+      textAlign(CENTER);
     }
 
     if (state == 2) {

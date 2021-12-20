@@ -1,5 +1,6 @@
-Object selectedClass, selectedTest, selectedTestName;
+Object selectedClass, selectedTest, selectedTestName, selectedClassName;
 String DinValgteTestNavn;
+String DinValgteKlasseNavn;
 int DinValgteTest;
 
 void mouseReleased() {
@@ -9,6 +10,23 @@ void mouseReleased() {
     c.ToggleClass(true);
     c.state = 4;
   }
+  
+  if ((c.state == 3 || c.state == 2 || c.state == 4) && c.viewResults.hasClicked() && c.userType == 0) {
+    background(0, 0, 139);
+    cp5.getController("DineKlasser").show();
+    StringList klasseliste = c.getTeacherClasses(c.getUserId(c.userName));
+    for (int i =0; i<klasseliste.size(); i++) {
+      teacherClass.addItem(klasseliste.get(i), c.getClassCode(klasseliste.get(i)));
+    }
+    c.state = 15;
+  }
+  
+  if(c.state==15 && c.Continue.hasClicked() && c.userType==0 && selectedClass!=null){
+    c.testsProcent.put("Algebra","30%");
+    DinValgteKlasseNavn = (String)selectedClassName;
+    c.ToggleTeacherTests(false);
+    c.state=14;
+  }
 
   if (c.state == 3 && c.SeeTestAnswers.hasClicked() && c.userType == 1) {
     background(0, 0, 139);
@@ -16,7 +34,8 @@ void mouseReleased() {
   }
   if (c.state == 3 && c.SeeTestAnswers.hasClicked()) {
     c.ToggleTeacherTests(true);
-    StringList klasseliste = c.getTeacherClasses(5);
+    
+    StringList klasseliste = c.getTeacherClasses(c.getUserId(c.userName));
     for (int i =0; i<klasseliste.size(); i++) {
       teacherClass.addItem(klasseliste.get(i), c.getClassCode(klasseliste.get(i)));
     }
@@ -88,6 +107,7 @@ void mouseReleased() {
   if (c.state==5 && c.Continue.hasClicked() && selectedTest!=null) {
     DinValgteTestNavn = (String)selectedTestName;
     DinValgteTest = (int)selectedTest;
+    c.elever.put("Aske","90%");
 
     c.ToggleTeacherTests(false);
     c.state=6;
@@ -114,6 +134,7 @@ void mouseReleased() {
 
 void DineKlasser (int index) {
   selectedClass = cp5.get(ScrollableList.class, "DineKlasser").getItem(index).get("value");
+  selectedClassName = cp5.get(ScrollableList.class, "DineKlasser").getItem(index).get("name");
   println(selectedClass);
 }
 
