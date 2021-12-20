@@ -139,10 +139,14 @@ class Init extends SQL {
     toggle("3 svar", vis);
     toggle("4 svar", vis);
     toggle("Spørgsmål",vis);
-    toggle("",vis);
-    toggle(" ",vis);
+    //toggle(" ",vis);
+    
     toggle("Spørgsmål NR",vis);
     toggle("Det rigtige svar skriv 1-4",vis);
+  }
+  void ToggleCreateNewTest(boolean vis){
+    
+    toggle("",vis);
   }
   
   

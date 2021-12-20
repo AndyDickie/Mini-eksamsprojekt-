@@ -5,14 +5,15 @@ class Controller extends Init {
   HashMap<String, String> testsProcent = new HashMap<String, String>();
   String userName;
   int userType, userID;
-  Button Login, Register, StartupPage, JoinClass, SeeTestAnswers, CreateClass, ViewClasses, Continue, Home, viewTests, CreateTest, next, previous, NytSpg, viewResults;
+  Button Login, Register, StartupPage, JoinClass, SeeTestAnswers, CreateClass,
+    ViewClasses, Continue, Home, viewTests, CreateTest, next, previous, NytSpg, viewResults, LavTest, done;
   AnswerFunction test;
   ArrayList<Button> test_knapper = new ArrayList<Button>();
   spg question;
   int CurrentQID = 0;
   ArrayList<testAns> a;
   String procentKorrekt;
-    ArrayList<spg> besvaredeTest = new ArrayList<spg>();
+  ArrayList<spg> besvaredeTest = new ArrayList<spg>();
 
   Controller(int state_) {
     state = state_;
@@ -28,6 +29,8 @@ class Controller extends Init {
     next = new Button(9*width/10, 8*height/10, 150, 40, "Næste");
     previous = new Button(2*width/10, 8*height/10, 150, 40, "Tilbage");
     NytSpg = new Button(150, 325, 150, 50, "Nyt Spørgsmål");
+    LavTest = new Button(width/2, height/3, 150, 40, "Lav Test");
+    done = new Button(150, 700, 150, 40, "Færdig");
   }
 
   void startScreen() {
@@ -116,7 +119,7 @@ class Controller extends Init {
       rect(50, 125, 900, 650);
       rectMode(CENTER);
     }
-    
+
     if (state == 5) {
       SeeTestAnswersScreen();
       teacherTests.clear();
@@ -127,7 +130,7 @@ class Controller extends Init {
         }
       }
     }
-    
+
     if (state==6) {
       rectMode(CORNER);
       textAlign(CORNER);
@@ -163,15 +166,6 @@ class Controller extends Init {
       c.test.display();
     }
     if (state==8) {
-      c.ToggleAll(false);
-      background(0, 0, 139);
-      fill(255);
-      c.ToggleCreateQuestion(true);
-      ViewClasses.display();
-      SeeTestAnswers.display();
-      CreateTest.display();
-      CreateClass.display();
-
       fill(192);
       rectMode(CORNER);
       rect(50, 125, 900, 650);
@@ -179,7 +173,7 @@ class Controller extends Init {
       fill(255);
       textSize(30);
       fill(255);
-      text(userType+userName+"", 50, 65);
+      text(c.userType+c.userName+"", 50, 65);
       text("Producere spørgsmål:", 75, 270);
       // skal tilføje +testName efter "String"
       text("Test navn:", 75, 220);
@@ -187,11 +181,19 @@ class Controller extends Init {
       text("Klasse navn:", 75, 170);
       textAlign(CENTER);
       rectMode(CENTER);
-      NytSpg.display();
+      text(testNavn, 250, 220);
+
       fill(0);
+      ViewClasses.display();
+      SeeTestAnswers.display();
+      CreateTest.display();
+      CreateClass.display();
+      NytSpg.display();
+      done.display();
+      
     }
-    
-    if (state==15){
+
+    if (state==15) {
       background(0, 0, 139);
       JoinClass.display();
       ViewClasses.display();
@@ -204,8 +206,8 @@ class Controller extends Init {
       Continue.display();
       teacherTests.clear();
     }
-    
-    if(state==14){
+
+    if (state==14) {
       rectMode(CORNER);
       textAlign(CORNER);
       rykNedaf=150;
@@ -215,9 +217,9 @@ class Controller extends Init {
       text("Din valgte klasse er: "+DinValgteKlasseNavn, 30, 70);
       textSize(20);
       fill(255);
-      text("Testens Navn:",250,170);
-      text("% Rigtigt",650,170);
-      
+      text("Testens Navn:", 250, 170);
+      text("% Rigtigt", 650, 170);
+
       for (Map.Entry me : testsProcent.entrySet()) {
         String nuvarendeTestNavn = (String)me.getKey();
         String nuvarendeProcent = (String)me.getValue();
@@ -229,8 +231,8 @@ class Controller extends Init {
         text(nuvarendeTestNavn, 250+5, rykNedaf+30);
         text(nuvarendeProcent, 250+400+5, rykNedaf+30);
       }
-      
-      
+
+
       rectMode(CENTER);
       textAlign(CENTER);
     }
@@ -268,10 +270,13 @@ class Controller extends Init {
         state = 2;
       }
     }
+    if (state == 13) {
+      LavTest.display();
+    }
 
     if (state == 10) {
       background(0);
-      text("Du fik: "+procentKorrekt+"% korrekt", width/2, height/2);
+      text("Du fik: "+procentCorrect+"% korrekt", width/2, height/2);
     }
   }
 }

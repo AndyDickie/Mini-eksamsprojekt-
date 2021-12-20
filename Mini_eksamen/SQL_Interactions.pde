@@ -95,10 +95,10 @@ class SQL {
   }
 
   void createTest(String testName) {
-    db.query("INSERT INTO Test VALUES(null, '" + testName + "', null )");
+    db.query("INSERT INTO Test VALUES(null, '" + testName + "', null, " + int(random(0,100000)) + ")");
   }
   void assignTest(String testID, int classCode, String testName){
-    db.query("INSERT INTO Test VALUES(null, null '" + testName + "', '"+ classCode + "', " + testID + ")");
+    db.query("INSERT INTO Test VALUES(null, '" + testName + "', '"+ classCode + "', " + testID + ")");
     
   }
   
@@ -154,6 +154,7 @@ class SQL {
       k.append(db.getString("Svar3"));
       k.append(db.getString("Svar4"));
       k.append(db.getString("Status"));
+      println("Status:" + db.getString("Status"));
       k.append(db.getString("ID"));
       println(db.getString("Status"));
       k.append(db.getString("Sporgsmal"));

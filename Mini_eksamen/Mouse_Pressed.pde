@@ -2,7 +2,8 @@ Object selectedClass, selectedTest, selectedTestName, selectedClassName;
 String DinValgteTestNavn;
 String DinValgteKlasseNavn;
 int DinValgteTest;
-int procentKorrekt;
+int procentCorrect;
+String testNavn;
 
 void mouseReleased() {
   if ((c.state == 3 || c.state == 2 || c.state == 4) && c.JoinClass.hasClicked() && c.userType == 0) {
@@ -11,7 +12,7 @@ void mouseReleased() {
     c.ToggleClass(true);
     c.state = 4;
   }
-  
+
   if ((c.state == 3 || c.state == 2 || c.state == 4) && c.viewResults.hasClicked() && c.userType == 0) {
     background(0, 0, 139);
     cp5.getController("DineKlasser").show();
@@ -21,9 +22,9 @@ void mouseReleased() {
     }
     c.state = 15;
   }
-  
-  if(c.state==15 && c.Continue.hasClicked() && c.userType==0 && selectedClass!=null){
-    c.testsProcent.put("Algebra","30%");
+
+  if (c.state==15 && c.Continue.hasClicked() && c.userType==0 && selectedClass!=null) {
+    c.testsProcent.put("Algebra", "30%");
     DinValgteKlasseNavn = (String)selectedClassName;
     c.ToggleTeacherTests(false);
     c.state=14;
@@ -35,7 +36,7 @@ void mouseReleased() {
   }
   if (c.state == 3 && c.SeeTestAnswers.hasClicked()) {
     c.ToggleTeacherTests(true);
-    
+
     StringList klasseliste = c.getTeacherClasses(c.getUserId(c.userName));
     for (int i =0; i<klasseliste.size(); i++) {
       teacherClass.addItem(klasseliste.get(i), c.getClassCode(klasseliste.get(i)));
@@ -86,13 +87,16 @@ void mouseReleased() {
   if (c.state == 9 && (c.next.hasClicked() || c.previous.hasClicked())) {
     if (c.next.hasClicked() && c.CurrentQID<c.a.size()-1) {
       c.CurrentQID += 1;
+      background(0,0,159);
+
     }
     if (c.previous.hasClicked() && c.CurrentQID>0) {
       c.CurrentQID -= 1;
+      background(0,0,159);
+
     }
-    
   }
-  if (c.state == 9){
+  if (c.state == 9) {
     if (c.CurrentQID == c.a.size()-1) {
       c.next.text = "Finish";
     } else {
@@ -108,20 +112,23 @@ void mouseReleased() {
     }
     if (c.CurrentQID<c.a.size() && userAns != null) {
       c.CurrentQID += 1;
-    } if (c.CurrentQID == c.a.size()) {
-    float antalKorrekt = 0;
-    println(c.besvaredeTest.size());
-    for (int i=0; i<c.besvaredeTest.size(); i++) {
-      spg l = c.besvaredeTest.get(i);
-      //println("bruger: " + l.userAns);
-      //println("rigtigt " + l.correctAns);
-      if (l.userAns.equals(l.correctAns) == true) {
-        //println("rigtigt");
-        antalKorrekt += 1;
-      }
+      background(0,0,159);
+
     }
-    procentKorrekt = int((antalKorrekt/c.besvaredeTest.size())*100);
-    c.state = 10;
+    if (c.CurrentQID == c.a.size()) {
+      float antalKorrekt = 0;
+      println(c.besvaredeTest.size());
+      for (int i=0; i<c.besvaredeTest.size(); i++) {
+        spg l = c.besvaredeTest.get(i);
+        println("bruger: " + l.userAns);
+        println("rigtigt " + l.correctAns);
+        if (l.userAns.equals(l.correctAns) == true) {
+          //println("rigtigt");
+          antalKorrekt += 1;
+        }
+      }
+      procentCorrect = int((antalKorrekt/c.besvaredeTest.size())*100);
+      c.state = 10;
     }
   }
 
@@ -142,7 +149,7 @@ void mouseReleased() {
   if (c.state==5 && c.Continue.hasClicked() && selectedTest!=null) {
     DinValgteTestNavn = (String)selectedTestName;
     DinValgteTest = (int)selectedTest;
-    c.elever.put("Aske","90%");
+    c.elever.put("Aske", "90%");
 
     c.ToggleTeacherTests(false);
     c.state=6;
@@ -163,12 +170,28 @@ void mouseReleased() {
   //}
 
   if (c.state==3 && c.CreateTest.hasClicked()) {
-    c.state=8;
+    c.ToggleAll(false);
+    //background(0, 0, 139);
+    fill(255);
+    //c.ToggleCreateQuestion(true);
+    text("Test navn:", 75, 220);
+    c.ToggleCreateNewTest(true);
+
+
+
+    c.state=13;
+  }
+  if (c.state == 13 && c.LavTest.hasClicked()) {
+    testNavn = cp5.get(Textfield.class, "").getText();
+    c.createTest(testNavn);
+    c.ToggleAll(false);
+    c.ToggleCreateNewTest(false);
+    c.ToggleCreateQuestion(true);
+    c.state = 8;
   }
 
   if (c.state==8 && c.NytSpg.hasClicked()) {
-    String testNavn = cp5.get(Textfield.class, " ").getText();
-    String className = cp5.get(Textfield.class, "").getText();
+    String className = cp5.get(Textfield.class, " ").getText();
     String question = cp5.get(Textfield.class, "Spørgsmål").getText();
     String forstsporgsmal = cp5.get(Textfield.class, "1 svar").getText();
     String Andetsporgsmal = cp5.get(Textfield.class, "2 svar").getText();
@@ -176,7 +199,10 @@ void mouseReleased() {
     String Fjerdesporgsmal = cp5.get(Textfield.class, "4 svar").getText();
     int status = int(cp5.get(Textfield.class, "Det rigtige svar skriv 1-4").getText());
     int questionNR = int(cp5.get(Textfield.class, "Spørgsmål NR").getText());
-    c.createQuestionAnswer(question, forstsporgsmal, Andetsporgsmal, Tredjesporgsmal, Fjerdesporgsmal, questionNR, status, className);
+    c.createQuestionAnswer(question, forstsporgsmal, Andetsporgsmal, Tredjesporgsmal, Fjerdesporgsmal, questionNR, status, testNavn);
+  }
+  if (c.state == 8 && c.done.hasClicked()){
+    c.state = 3;
   }
 }
 
