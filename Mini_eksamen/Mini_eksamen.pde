@@ -35,5 +35,5 @@ void setup() {
 
 void draw() {
   c.update();
-  //println(c.state);
+  println(c.state);
 }
