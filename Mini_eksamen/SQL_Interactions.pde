@@ -108,7 +108,7 @@ class SQL {
     return o;
   }  
    StringList getTestName(){
-  String s = "SELECT Navn FROM Test WHERE IDkey='" + 10 + "'";
+  String s = "SELECT Navn FROM Test WHERE IDkey='" + c.userID + "'";
   db.query(s);
   StringList o = new StringList();
    while (db.next()) {
@@ -124,7 +124,7 @@ class SQL {
     db.query("INSERT INTO Test VALUES('"+c.userID+"', '" + testName + "', null, " + int(random(0,100000)) + ")");
   }
   void assignTest(String testID, int classCode, String testName){
-    db.query("INSERT INTO Test VALUES(null, '" + testName + "', '"+ classCode + "', " + testID + ")");
+    db.query("INSERT INTO Test VALUES("+c.userID+", '" + testName + "', '"+ classCode + "', " + testID + ")");
     
   }
   

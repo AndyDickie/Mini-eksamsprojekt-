@@ -1,9 +1,11 @@
 Object selectedClass, selectedTest, selectedTestName, selectedClassName, selectedTestID, selectedTestNavn;
 String DinValgteTestNavn;
 String DinValgteKlasseNavn;
-int DinValgteTest;
+int DinValgteTest,DinValgteKlasse;
 int procentCorrect;
 String testNavn;
+StringList DineTests = new StringList();
+StringList testProcent = new StringList();
 
 
 void mouseReleased() {
@@ -22,10 +24,19 @@ void mouseReleased() {
       teacherClass.addItem(klasseliste.get(i), c.getClassCode(klasseliste.get(i)));
     }
     println(klasseliste);
+    //if(selectedClass!=null){
+    //  DinValgteKlasse=(int)selectedClass;
+    //}
+   
     c.state = 15;
   }
 
   if (c.state==15 && c.Continue.hasClicked() && c.userType==0 && selectedClass!=null) {
+    DineTests = c.getTestsPerClass((int)selectedClass);
+    testProcent = ???;
+    for (int i=0;i<DineTests.size();i++){
+      c.testsProcent.put(DineTests.get(i),testProcent.get(i));
+    }    
     c.testsProcent.put("Algebra", "30%");
     c.testsProcent.put("vektor", "50%");
     DinValgteKlasseNavn = (String)selectedClassName;
