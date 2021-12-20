@@ -5,8 +5,6 @@ int DinValgteTest;
 void mouseReleased() {
   if ((c.state == 3 || c.state == 2 || c.state == 4) && c.JoinClass.hasClicked() && c.userType == 0) {
     background(0, 0, 139);
-    textSize(50);
-    text("Hej " + c.userName, width/2, height/10);
     c.ToggleAll(false);
     c.ToggleClass(true);
     c.state = 4;
@@ -43,7 +41,7 @@ void mouseReleased() {
   if ((c.state == 3 || c.state == 2 || c.state == 4) && c.ViewClasses.hasClicked() && c.userType == 0) {
     background(0, 0, 139);
     textSize(50);
-    text("Hej " + c.userName, width/2, height/10);
+    //text("Hej " + c.userName, width/2, height/10);
     c.ToggleAll(false);
     StringList k = c.getUserClasses(c.getUserId(c.userName));
     println(k);
@@ -61,7 +59,7 @@ void mouseReleased() {
   if ((c.state == 2 || c.state==3|| c.state == 4) && c.viewTests.hasClicked() && c.userType == 0) {
     background(0, 0, 139);
     textSize(50);
-    text("Hej " + c.userName, width/2, height/10);
+    //text("Hej " + c.userName, width/2, height/10);
     c.AssignedTests();
     c.state = 2;
   }

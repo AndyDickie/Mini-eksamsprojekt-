@@ -13,13 +13,14 @@ class Controller extends Init {
 
   Controller(int state_) {
     state = state_;
-    JoinClass = new Button(width/10, 2*height/10, 150, 50, "Join Class");
-    CreateClass = new Button(width/10, 2*height/10, 150, 50, "Create Class");
+    JoinClass = new Button(425, 110, 150, 40, "Tilslut klasse");
+    CreateClass = new Button(575, 110, 150, 40, "Lav klasse");
     SeeTestAnswers = new Button(425, 110, 150, 40, "Se resultater");
     ViewClasses = new Button(125, 110, 150, 40, "Se klasser");
     Continue = new Button(width-200, height-200, 150, 50, "Continue");
     test = new AnswerFunction();
-    viewTests = new Button(width/10, 2*height/7.5+55, 150, 50, "Tests");
+
+    viewTests = new Button(275, 110, 150, 40, "Dine tests");
     CreateTest = new Button(275, 110, 150, 40, "Lav test");
   }
 
@@ -40,17 +41,28 @@ class Controller extends Init {
     if (userType == 1) {
       //background(0,0,139);
       textSize(50);
-      text("Hej " + userName, width/2, height/10);
+      textAlign(LEFT);
+      text(userType+userName+"", 50, 65);
+      CreateTest.display();
       CreateClass.display();
       SeeTestAnswers.display();
       ViewClasses.display();
+      fill(192);
+      rectMode(CORNER);
+      rect(50, 125, 900, 650);
+      rectMode(CENTER);
     } else {
       //background(0,0,139);
       textSize(50);
-      text("Hej " + userName, width/2, height/10);
+      textAlign(LEFT);
+      text(userType+userName+"", 50, 65);
       JoinClass.display();
       ViewClasses.display();
       viewTests.display();
+      fill(192);
+      rectMode(CORNER);
+      rect(50, 125, 900, 650);
+      rectMode(CENTER);
     }
   }
 
@@ -64,7 +76,15 @@ class Controller extends Init {
 
   void SeeTestAnswersScreen() {
     background(0, 0, 139);
+    fill(192);
+    rectMode(CORNER);
+    rect(50, 125, 900, 650);
+    rectMode(CENTER);
     Continue.display();
+    ViewClasses.display();
+    SeeTestAnswers.display();
+    CreateTest.display();
+    CreateClass.display();
   }
 
   void update() {
@@ -77,10 +97,17 @@ class Controller extends Init {
     }
     if (state == 4) {
       //text("Hej " + userName, width/2, height/10);
+      textSize(50);
+      textAlign(LEFT);
+      text(userType+userName+"", 50, 65);
       joinClassScreen();
       JoinClass.display();
       ViewClasses.display();
       viewTests.display();
+      fill(192);
+      rectMode(CORNER);
+      rect(50, 125, 900, 650);
+      rectMode(CENTER);
     }
     if (state == 5) {
       SeeTestAnswersScreen();
@@ -134,6 +161,7 @@ class Controller extends Init {
       ViewClasses.display();
       SeeTestAnswers.display();
       CreateTest.display();
+      CreateClass.display();
       fill(192);
       rectMode(CORNER);
       rect(50, 125, 900, 650);
@@ -150,11 +178,19 @@ class Controller extends Init {
       fill(0);
       rectMode(CENTER);
     }
+
     if (state == 2) {
       //text("Hej " + userName, width/2, height/10);
       JoinClass.display();
       ViewClasses.display();
       viewTests.display();
+      fill(192);
+      rectMode(CORNER);
+      rect(50, 125, 900, 650);
+      rectMode(CENTER);
+      textSize(50);
+      textAlign(LEFT);
+      text(userType+userName+"", 50, 65);
       println(test_knapper.size());
       for (int i=0; i<test_knapper.size(); i++) {
         Button b = test_knapper.get(i);
@@ -176,8 +212,8 @@ class Controller extends Init {
   }
 }
 
-void udregnProcentRigtigt(PVector point) {
-  //Her skal point PVector bestå af antal rigtige spg på x-koordinaten og antal forkerte skal være på y-koordinaten.
-  String procent = (int)((point.x/(point.x+point.y))*100)+"%";
-  println(procent);
-}
+  void udregnProcentRigtigt(PVector point) {
+    //Her skal point PVector bestå af antal rigtige spg på x-koordinaten og antal forkerte skal være på y-koordinaten.
+    String procent = (int)((point.x/(point.x+point.y))*100)+"%";
+    println(procent);
+  }
