@@ -138,10 +138,10 @@ class SQL {
 
   //Kan gøres nemmer ved at fjerne * og gøre det specifikt
   ArrayList getTestAnswer(int testID) {
-    println("ssss");
+    //println("ssss");
     db.query("SELECT Svar1, Svar2, Svar3, Svar4, Status, ID, Sporgsmal FROM Sporgsmal WHERE TestID =" +testID);
     StringList k = new StringList();
-    ArrayList<testAns> a = new ArrayList<testAns>();
+    c.a = new ArrayList<testAns>();
     testAns h;
     while (db.next()) {
       k.append(db.getString("Svar1"));
@@ -150,12 +150,13 @@ class SQL {
       k.append(db.getString("Svar4"));
       k.append(db.getString("Status"));
       k.append(db.getString("ID"));
+      println(db.getString("ID"));
       k.append(db.getString("Sporgsmal"));
       h = new testAns(k.get(0), k.get(1), k.get(2), k.get(3), k.get(4), k.get(5), k.get(6));
-      a.add(h);
+      c.a.add(h);
       k.clear();
     }
-    return a;
+    return c.a;
   }
 
   //void getTestAnswer(int testID) {
@@ -174,6 +175,7 @@ class SQL {
   //}
 
   void AssignedTests() {
+    c.test_knapper.clear();
     StringList o = c.getUserClasses(c.userID);
     //c.test_knapper.clear();
     for (int i=0; i<o.size(); i++) {
@@ -181,10 +183,10 @@ class SQL {
       StringList m = c.getTestsPerClass(c.getClassCode(o.get(i)));
       println(m);
       //println(c.getClassCode(o.get(i)));
-      for (int j=0; i<m.size(); i++) {
+      for (int j=0; j<m.size(); j++) {
         String s = m.get(j);
-        println("m");
-        Button b = new Button(width/2, 2*height/10+50*i, 150, 50, s);
+        println(s + " ss");
+        Button b = new Button(width/2, 2*height/10+50*j, 150, 50, s);
         c.test_knapper.add(b);
       }
     }

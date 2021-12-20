@@ -29,6 +29,20 @@ class spg {
     ansb4.display();
   }
   
-  
+  String mousePress(){
+    if (ansb1.hasClicked()){
+      return ans1;
+    }
+    if (ansb2.hasClicked()){
+      return ans2;
+    }
+    if (ansb3.hasClicked()){
+      return ans3;
+    }
+    if (ansb4.hasClicked()){
+      return ans4;
+    }
+    else { return null; }
+  }
   
 }

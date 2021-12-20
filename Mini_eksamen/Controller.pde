@@ -7,6 +7,9 @@ class Controller extends Init {
   Button Login, Register, StartupPage, JoinClass, SeeTestAnswers, CreateClass, ViewClasses, Continue, Home, viewTests, CreateTest;
   AnswerFunction test;
   ArrayList<Button> test_knapper = new ArrayList<Button>();
+  spg question;
+  int CurrentQID = 0;
+  ArrayList<testAns> a;
 
   Controller(int state_) {
     state = state_;
@@ -17,7 +20,7 @@ class Controller extends Init {
     Continue = new Button(width-200, height-200, 150, 50, "Continue");
     test = new AnswerFunction();
     viewTests = new Button(width/10, 2*height/7.5+55, 150, 50, "Tests");
-    CreateTest = new Button(275,110,150,40,"Lav test");
+    CreateTest = new Button(275, 110, 150, 40, "Lav test");
   }
 
   void startScreen() {
@@ -147,21 +150,34 @@ class Controller extends Init {
       fill(0);
       rectMode(CENTER);
     }
-      if (state == 2) {
-        //text("Hej " + userName, width/2, height/10);
-        JoinClass.display();
-        ViewClasses.display();
-        viewTests.display();
-        for (int i=0; i<test_knapper.size(); i++) {
-          Button b = test_knapper.get(i);
-          b.display();
+    if (state == 2) {
+      //text("Hej " + userName, width/2, height/10);
+      JoinClass.display();
+      ViewClasses.display();
+      viewTests.display();
+      println(test_knapper.size());
+      for (int i=0; i<test_knapper.size(); i++) {
+        Button b = test_knapper.get(i);
+        b.display();
+      }
+    }
+    if (state == 9) {
+      if (a.size() >0) {
+        try {
+          question = new spg(a.get(CurrentQID));
+          question.display();
         }
+        catch(Exception e) {
+        }
+      } else {
+        state = 2;
       }
     }
   }
+}
 
-  void udregnProcentRigtigt(PVector point) {
-    //Her skal point PVector bestå af antal rigtige spg på x-koordinaten og antal forkerte skal være på y-koordinaten.
-    String procent = (int)((point.x/(point.x+point.y))*100)+"%";
-    println(procent);
-  }
+void udregnProcentRigtigt(PVector point) {
+  //Her skal point PVector bestå af antal rigtige spg på x-koordinaten og antal forkerte skal være på y-koordinaten.
+  String procent = (int)((point.x/(point.x+point.y))*100)+"%";
+  println(procent);
+}
