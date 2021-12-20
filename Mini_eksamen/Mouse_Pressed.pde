@@ -17,15 +17,17 @@ void mouseReleased() {
   if ((c.state == 3 || c.state == 2 || c.state == 4) && c.viewResults.hasClicked() && c.userType == 0) {
     background(0, 0, 139);
     cp5.getController("DineKlasser").show();
-    StringList klasseliste = c.getTeacherClasses(c.getUserId(c.userName));
+    StringList klasseliste = c.getUserClasses(c.getUserId(c.userName));
     for (int i =0; i<klasseliste.size(); i++) {
       teacherClass.addItem(klasseliste.get(i), c.getClassCode(klasseliste.get(i)));
     }
+    println(klasseliste);
     c.state = 15;
   }
 
   if (c.state==15 && c.Continue.hasClicked() && c.userType==0 && selectedClass!=null) {
     c.testsProcent.put("Algebra", "30%");
+    c.testsProcent.put("vektor", "50%");
     DinValgteKlasseNavn = (String)selectedClassName;
     c.ToggleTeacherTests(false);
     c.state=14;
@@ -37,7 +39,6 @@ void mouseReleased() {
   }
   if (c.state == 3 && c.SeeTestAnswers.hasClicked()) {
     c.ToggleTeacherTests(true);
-
     StringList klasseliste = c.getTeacherClasses(c.getUserId(c.userName));
     for (int i =0; i<klasseliste.size(); i++) {
       teacherClass.addItem(klasseliste.get(i), c.getClassCode(klasseliste.get(i)));
@@ -54,7 +55,7 @@ void mouseReleased() {
     println("vievClass tryk");
     StringList k = c.getTeacherClasses(c.getUserId(c.userName));
     println(k);
-    rect(50, 125, 900, 650);
+    //rect(50, 125, 900, 650);
     for (int i=0; i<k.size(); i++) {
       println("sss");
       text(k.get(i), width/2, height/20*i+150);
