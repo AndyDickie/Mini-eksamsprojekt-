@@ -110,6 +110,18 @@ void mouseReleased() {
   if (c.state==3 && c.CreateTest.hasClicked()) {
     c.state=8;
   }
+  if (c.state==8 && c.NytSpg.hasClicked()){
+    String testNavn = cp5.get(Textfield.class, " ").getText();
+    String className = cp5.get(Textfield.class, "").getText();
+    String question = cp5.get(Textfield.class, "Spørgsmål").getText();
+    String forstsporgsmal = cp5.get(Textfield.class, "1 svar").getText();
+    String Andetsporgsmal = cp5.get(Textfield.class, "2 svar").getText();
+    String Tredjesporgsmal = cp5.get(Textfield.class, "3 svar").getText();
+    String Fjerdesporgsmal = cp5.get(Textfield.class, "4 svar").getText();
+    int status = int(cp5.get(Textfield.class, "Det rigtige svar skriv 1-4").getText());
+    int questionNR = int(cp5.get(Textfield.class, "Spørgsmål NR").getText());
+    c.createQuestionAnswer(className,testNavn,question,forstsporgsmal,Andetsporgsmal,Tredjesporgsmal,Fjerdesporgsmal,status,questionNR);
+  }
 }
 
 void DineKlasser (int index) {

@@ -98,8 +98,8 @@ class SQL {
     db.query("INSERT INTO Test VALUES(null, '" + testName + "', )");
   }
 
-  void createQuestionAnswer(int testID, String question, String forstsporgsmal, String Andetsporgsmal, String Tredjesporgsmal, String Fjerdesporgsmal, int status, int questionNR) {
-    db.query("INSERT INTO Sporgsmal VALUES ('" + testID + "','" + question + "','" + forstsporgsmal + "','" + Andetsporgsmal + "','" + Tredjesporgsmal + "','" + Fjerdesporgsmal + "','"+questionNR+"', null)");
+  void createQuestionAnswer(String testNavn,String className, String question, String forstsporgsmal, String Andetsporgsmal, String Tredjesporgsmal, String Fjerdesporgsmal, int status, int questionNR) {
+    db.query("INSERT INTO Sporgsmal VALUES ('" + testNavn + "','"+className+"','" + question + "','" + forstsporgsmal + "','" + Andetsporgsmal + "','" + Tredjesporgsmal + "','" + Fjerdesporgsmal + "','"+questionNR+"','"+status+"', null,null)");
   }
 
   int getTestID(String testName) {
