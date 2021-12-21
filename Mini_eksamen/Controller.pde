@@ -370,6 +370,13 @@ class Controller extends Init {
       }
     }
     if (c.state == 31) {
+      background(0, 0, 139);
+      fill(192);
+      navnLaere();
+      fill(192);
+      rectMode(CORNER);
+      rect(50, 125, 900, 650);
+      rectMode(CENTER);
     }
   }
 }
