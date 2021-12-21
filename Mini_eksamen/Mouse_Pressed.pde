@@ -12,7 +12,8 @@ StringList k, k1;
 void mouseReleased() {
   //Elever
   //State 4
-  if((c.state==6||c.state==14)&&c.tilbagetilstart.hasClicked()){
+  if((c.state==6||c.state==14||c.state==31)&&c.tilbagetilstart.hasClicked()){
+    c.ToggleAll(false);
     c.state=3;
   }
   
