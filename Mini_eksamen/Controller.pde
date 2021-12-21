@@ -348,8 +348,9 @@ class Controller extends Init {
         for (int i=0; i<k.size(); i++) {
           try {
             fill(0);
-            textSize(20);
+            textSize(35);
             text("Klassenavn",width/3 ,height/20+200);
+            textSize(20);
             text(k.get(i), width/3, height/20*i+270);
           }
           catch (Exception e) {
@@ -373,9 +374,11 @@ class Controller extends Init {
         for (int i=0; i<k1.size(); i++) {
           println("sss");
           fill(0);
+          textSize(35);
           text("Klassenavn",width/3 ,height/20+200);
-          text(k1.get(i), width/3, height/20*i+270);
           text("Klassekode",width-width/3 ,height/20+200);
+          textSize(20);
+          text(k1.get(i), width/3, height/20*i+270);
           text(c.getClassCode(k1.get(i)), width-width/3, height/20*i+270);
         }
       }
