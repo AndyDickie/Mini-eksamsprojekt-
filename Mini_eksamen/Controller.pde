@@ -53,7 +53,7 @@ class Controller extends Init {
     text("Elev:"+userName, 50, 65);   
   }
   
-  void navnLære(){
+  void navnLaere(){
    textSize(50);
    textAlign(LEFT);
    text("Lære:"+userName, 50, 65); 
@@ -61,7 +61,7 @@ class Controller extends Init {
   void homeScreen() {
     if (userType == 1) {
       //background(0,0,139);
-      navnLære();
+      navnLaere();
       CreateTest.display();
       CreateClass.display();
       SeeTestAnswers.display();
