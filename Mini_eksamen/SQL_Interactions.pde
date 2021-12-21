@@ -127,11 +127,13 @@ class SQL {
     String s = "SELECT Navn FROM Test WHERE IDkey='" + c.userID + "'";
     db.query(s);
     StringList o = new StringList();
+    
     while (db.next()) {
       String ting = db.getString("Navn");
       o.append(ting);
       println(ting);
     }
+    println("før: "+o);
     for (int i=0; i<o.size(); i++) {
       for (int j=i+1; j<o.size(); j++) {
         if (o.get(i).equals(o.get(j))==true) {
@@ -140,6 +142,7 @@ class SQL {
         }
       }
     }
+    println("efter: "+o);
     return o;
   }
 

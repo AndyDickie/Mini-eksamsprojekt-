@@ -6,14 +6,14 @@ class Controller extends Init {
   String userName;
   int userType, userID, BT;
   Button Login, Register, StartupPage, JoinClass, SeeTestAnswers, CreateClass,
-  ViewClasses, Continue, Home, viewTests, CreateTest, next, previous, NytSpg, viewResults, LavTest, done, AssignClass, Tildel;
+    ViewClasses, Continue, Home, viewTests, CreateTest, next, previous, NytSpg, viewResults, LavTest, done, AssignClass, Tildel, tilbage;
   ArrayList<Button> test_knapper = new ArrayList<Button>();
   spg question;
   int CurrentQID = 0;
   ArrayList<testAns> a;
   String procentKorrekt;
   ArrayList<spg> besvaredeTest = new ArrayList<spg>();
-  
+
   Controller(int state_) {
     state = state_;
     JoinClass = new Button(425, 110, 150, 40, "Tilslut klasse");
@@ -31,6 +31,7 @@ class Controller extends Init {
     LavTest = new Button(width/2, height/2+40, 150, 40, "Lav Test");
     done = new Button(150, 700, 150, 40, "Færdig");
     AssignClass = new Button(725, 110, 150, 40, "Tildel Klasse");
+    tilbage = new Button(width/2-75, 8*height/10, 150, 40, "Gå tilbage");
   }
 
   void startScreen() {
@@ -46,8 +47,8 @@ class Controller extends Init {
     rect(width/2, height/2+50, 350, 400);
     strokeWeight(1);
   }
-  
-  void navnElev(){
+
+  void navnElev() {
     textSize(50);
     textAlign(LEFT);  
     text("Elev: "+userName, 50, 65);   
@@ -60,7 +61,7 @@ class Controller extends Init {
   }
   void homeScreen() {
     if (userType == 1) {
-      //background(0,0,139);
+      background(0, 0, 139);
       navnLaere();
       CreateTest.display();
       CreateClass.display();
@@ -72,7 +73,7 @@ class Controller extends Init {
       rect(50, 125, 900, 650);
       rectMode(CENTER);
     } else {
-      //background(0,0,139);
+      background(0, 0, 139);
       navnElev();
       JoinClass.display();
       ViewClasses.display();
@@ -104,11 +105,11 @@ class Controller extends Init {
   }
 
   void update() {
-    // Dette er Skærmen hvor du logger ind 
+    // Dette er Skærmen hvor du logger ind
     if (state == 0) {
       startScreen();
     }
-    // Dette er hjemmeskærmen 
+    // Dette er hjemmeskærmen
     if (state == 3) {
       homeScreen();
     }
@@ -155,17 +156,20 @@ class Controller extends Init {
       textSize(20);
       //text("Procent korrekt", 30, 110);
       for (Map.Entry me : elever.entrySet()) {
-        try{
-        String nuvarendeNavn = (String)me.getKey();
-        String nuvarendeProcent = (String)me.getValue();
-        rykNedaf+=40;
-        fill(255);
-        rect(250, rykNedaf, 400, 40);
-        rect(250+400, rykNedaf, 70, 40);
-        fill(0);
-        text(nuvarendeNavn, 250+5, rykNedaf+30);
-        text(nuvarendeProcent, 250+400+5, rykNedaf+30);
-        }catch(Exception e){println("Ikke besvaret");}
+        try {
+          String nuvarendeNavn = (String)me.getKey();
+          String nuvarendeProcent = (String)me.getValue();
+          rykNedaf+=40;
+          fill(255);
+          rect(250, rykNedaf, 400, 40);
+          rect(250+400, rykNedaf, 70, 40);
+          fill(0);
+          text(nuvarendeNavn, 250+5, rykNedaf+30);
+          text(nuvarendeProcent, 250+400+5, rykNedaf+30);
+        }
+        catch(Exception e) {
+          println("Ikke besvaret");
+        }
       }
       rectMode(CENTER);
       textAlign(CENTER);
@@ -226,22 +230,25 @@ class Controller extends Init {
       fill(255);
       text("Testens Navn:", 250, 170);
       text("% Rigtigt", 650, 170);
-      
+
       for (Map.Entry me : testsProcent.entrySet()) {
-        try{
-        String nuvarendeTestNavn = (String)me.getKey();
-        String nuvarendeProcent = (String)me.getValue();
-        rykNedaf+=40;
-        fill(255);
-        rect(250, rykNedaf, 400, 40);
-        rect(250+400, rykNedaf, 70, 40);
-        fill(0);
-        println(rykNedaf,nuvarendeTestNavn,nuvarendeProcent);
-        text(nuvarendeTestNavn, 250+5, rykNedaf+30);
-        text(nuvarendeProcent, 250+400+5, rykNedaf+30);
-        }catch(Exception e){println("Ikke besvaret");}
+        try {
+          String nuvarendeTestNavn = (String)me.getKey();
+          String nuvarendeProcent = (String)me.getValue();
+          rykNedaf+=40;
+          fill(255);
+          rect(250, rykNedaf, 400, 40);
+          rect(250+400, rykNedaf, 70, 40);
+          fill(0);
+          println(rykNedaf, nuvarendeTestNavn, nuvarendeProcent);
+          text(nuvarendeTestNavn, 250+5, rykNedaf+30);
+          text(nuvarendeProcent, 250+400+5, rykNedaf+30);
+        }
+        catch(Exception e) {
+          println("Ikke besvaret");
+        }
       }
-      
+
 
 
       rectMode(CENTER);
@@ -288,8 +295,9 @@ class Controller extends Init {
     if (state == 10) {
       background(0);
       text("Du fik: "+procentCorrect+"% korrekt", width/2, height/2);
+      tilbage.display();
     }
-    if (state == 20){
+    if (state == 20) {
       background(0, 0, 139);
       ViewClasses.display();
       SeeTestAnswers.display();
@@ -301,6 +309,38 @@ class Controller extends Init {
       rect(50, 125, 900, 650);
       rectMode(CENTER);
       Tildel.display();
+    }
+
+    if (state == 30) {
+      if (userType == 0) {
+        for (int i=0; i<k.size(); i++) {
+          try {
+            fill(0);
+            textSize(20);
+            text(k.get(i), width/2, height/20*(i+1)+250);
+          }
+          catch (Exception e) {
+          }
+        }
+        JoinClass.display();
+        ViewClasses.display();
+        viewTests.display();
+        viewResults.display();
+      }
+
+      if (userType == 1) {
+        for (int i=0; i<k1.size(); i++) {
+          println("sss");
+          fill(0);
+          text(k1.get(i), width/2, height/20*i+250);
+          text(c.getClassCode(k1.get(i)), width/2+200, height/20*i+250);
+        }
+        ViewClasses.display();
+        SeeTestAnswers.display();
+        CreateTest.display();
+        CreateClass.display();
+        AssignClass.display();
+      }
     }
   }
 }

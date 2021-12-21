@@ -1,26 +1,27 @@
 Object selectedClass, selectedTest, selectedTestName, selectedClassName, selectedTestID, selectedTestNavn;
 String DinValgteTestNavn;
 String DinValgteKlasseNavn;
-int DinValgteTest,DinValgteKlasse;
+int DinValgteTest, DinValgteKlasse;
 int procentCorrect;
 String testNavn;
 StringList DineTests = new StringList();
 StringList testProcent = new StringList();
 StringList elevBesvarelse = new StringList();
+StringList k, k1;
 
 
 void mouseReleased() {
-   //Elever
-  //State 4 
-  if ((c.state == 3 || c.state == 2 || c.state == 4 || c.state==15) && c.JoinClass.hasClicked() && c.userType == 0) {
+  //Elever
+  //State 4
+  if ((c.state == 3 || c.state == 2 || c.state == 4 || c.state==15 || c.state==30) && c.JoinClass.hasClicked() && c.userType == 0) {
     c.ToggleAll(false);
     background(0, 0, 139);
     c.ToggleClass(true);
     cp5.getController("DineKlasser").hide();
     c.state = 4;
   }
-  //State 15 
-  if ((c.state == 3 || c.state == 2 || c.state == 4 || c.state==15) && c.viewResults.hasClicked() && c.userType == 0) {
+  //State 15
+  if ((c.state == 3 || c.state == 2 || c.state == 4 || c.state==15|| c.state==30) && c.viewResults.hasClicked() && c.userType == 0) {
     c.ToggleAll(false);
     background(0, 0, 139);
     teacherClass.clear();
@@ -32,19 +33,30 @@ void mouseReleased() {
       teacherClass.addItem(klasseliste.get(i), c.getClassCode(klasseliste.get(i)));
     }
   }
-  //State ved ikke endnu 
-  if ((c.state == 3 || c.state == 2 || c.state == 4|| c.state==15) && c.ViewClasses.hasClicked() && c.userType == 0) {
+  //State ved ikke endnu
+  if ((c.state == 3 || c.state == 2 || c.state == 4|| c.state==15|| c.state==30) && c.ViewClasses.hasClicked() && c.userType == 0) {
     c.ToggleAll(false);
-
+    background(0,0,139);
+     k = c.getUserClasses(c.userID);
+      c.state = 30;
   }
-  //State 2 
-  if ((c.state == 3 || c.state == 2 || c.state == 4|| c.state==15) && c.viewTests.hasClicked() && c.userType == 0) {
+  if ((c.state == 3 || c.state == 2 || c.state == 4|| c.state==15|| c.state==30) && c.ViewClasses.hasClicked() && c.userType == 1) {
+    c.ToggleAll(false);
+    k1 = c.getTeacherClasses(c.getUserId(c.userName));
+    background(0,0,139);
+    println(k1);
+    //rect(50, 125, 900, 650);
+   
+    c.state = 30;
+  }
+  //State 2
+  if ((c.state == 3 || c.state == 2 || c.state == 4|| c.state==15|| c.state==30) && c.viewTests.hasClicked() && c.userType == 0) {
     c.ToggleAll(false);
     cp5.getController("DineKlasser").hide();
     c.state=2;
   }
-    //Lærer
-   //State 13
+  //Lærer
+  //State 13
   if ((c.state == 13 || c.state == 8 || c.state == 5 || c.state==3 || c.state==20) && c.ViewClasses.hasClicked() && c.userType == 1) {
     c.ToggleAll(false);
     c.state=13;
@@ -105,15 +117,15 @@ void mouseReleased() {
   if (c.state==15 && c.Continue.hasClicked() && c.userType==0 && selectedClass!=null) {
     c.ToggleAll(false);
     DineTests = c.getTestsPerClass((int)selectedClass);
-    for (int i=0;i<DineTests.size();i++){
-      c.testsProcent.put(DineTests.get(i),c.getUserResults(c.getTestID(DineTests.get(i)),c.userID));
-    }    
+    for (int i=0; i<DineTests.size(); i++) {
+      c.testsProcent.put(DineTests.get(i), c.getUserResults(c.getTestID(DineTests.get(i)), c.userID));
+    }
     DinValgteKlasseNavn = (String)selectedClassName;
     c.ToggleTeacherTests(false);
     c.state=14;
   }
 
-  if (c.state == 3 && c.SeeTestAnswers.hasClicked() && c.userType == 1) {
+  if ((c.state == 3|| c.state==30) && c.SeeTestAnswers.hasClicked() && c.userType == 1) {
     background(0, 0, 139);
     c.ToggleAll(false);
   }
@@ -131,36 +143,16 @@ void mouseReleased() {
     c.ToggleCreateClass(true);
     println("createclass tryk");
   }
-  if (c.state == 3 && c.ViewClasses.hasClicked() && c.userType == 1) {
-    println("vievClass tryk");
-    StringList k = c.getTeacherClasses(c.getUserId(c.userName));
-    println(k);
-    //rect(50, 125, 900, 650);
-    for (int i=0; i<k.size(); i++) {
-      println("sss");
-      text(k.get(i), width/2, height/20*i+150);
-      text(c.getClassCode(k.get(i)), width/2+200, height/20*i+150);
-    }
-  }
+
   if ((c.state == 3 || c.state == 2 || c.state == 4) && c.ViewClasses.hasClicked() && c.userType == 0) {
     background(0, 0, 139);
     textSize(50);
     //text("Hej " + c.userName, width/2, height/10);
-    c.ToggleAll(false);
-    StringList k = c.getUserClasses(c.getUserId(c.userName));
-    println(k);
-    for (int i=0; i<k.size(); i++) {
-      try {
-        textSize(20);
-        text(k.get(i), width/2, height/20*(i+1)+150);
-      }
-      catch (Exception e) {
-      }
-      c.state = 3;
-    }
+
+    c.state = 3;
   }
 
-  if ((c.state == 2 || c.state==3|| c.state == 4) && c.viewTests.hasClicked() && c.userType == 0) {
+  if ((c.state == 2 || c.state==3|| c.state == 4|| c.state==30) && c.viewTests.hasClicked() && c.userType == 0) {
     background(0, 0, 139);
     textSize(50);
     //text("Hej " + c.userName, width/2, height/10);
@@ -170,11 +162,11 @@ void mouseReleased() {
   if (c.state == 9 && (c.next.hasClicked() || c.previous.hasClicked())) {
     if (c.next.hasClicked() && c.CurrentQID<c.a.size()-1) {
       c.CurrentQID += 1;
-      background(0,0,159);
+      background(0, 0, 159);
     }
     if (c.previous.hasClicked() && c.CurrentQID>0) {
       c.CurrentQID -= 1;
-      background(0,0,159);
+      background(0, 0, 159);
     }
   }
   if (c.state == 9) {
@@ -193,8 +185,7 @@ void mouseReleased() {
     }
     if (c.CurrentQID<c.a.size() && userAns != null) {
       c.CurrentQID += 1;
-      background(0,0,159);
-
+      background(0, 0, 159);
     }
     if (c.CurrentQID == c.a.size()) {
       float antalKorrekt = 0;
@@ -202,7 +193,7 @@ void mouseReleased() {
       for (int i=0; i<c.besvaredeTest.size(); i++) {
         spg l = c.besvaredeTest.get(i);
         c.insertUserAnswer(l.userAns, int(l.id), c.userID );
-        
+
         println("bruger: " + l.userAns);
         println("rigtigt " + l.correctAns);
         if (l.userAns.equals(l.correctAns) == true) {
@@ -240,15 +231,18 @@ void mouseReleased() {
     DinValgteTest = (int)selectedTest;
     DinValgteKlasse = (int)selectedClass;
     elevBesvarelse = c.getUsersFromClass(DinValgteKlasse);
-    
-    for(int i=0;i<elevBesvarelse.size();i++){    
-      try{
-      c.elever.put(c.getUserName(int(elevBesvarelse.get(i))), c.getUserResults((int)selectedTest,int(elevBesvarelse.get(i))));
-      }catch(Exception e){println("Ikke besvaret");}
+
+    for (int i=0; i<elevBesvarelse.size(); i++) {
+      try {
+        c.elever.put(c.getUserName(int(elevBesvarelse.get(i))), c.getUserResults((int)selectedTest, int(elevBesvarelse.get(i))));
+      }
+      catch(Exception e) {
+        println("Ikke besvaret");
+      }
     }
-    
-    
-    
+
+
+
 
     c.ToggleTeacherTests(false);
     c.state=6;
@@ -268,7 +262,12 @@ void mouseReleased() {
   //  db.query("INSERT INTO Elevsvar VALUES(null,'"+questionID+"','"+c.getUserId(c.userName)+"','"+Fjerdesvar+"')");
   //}
 
-  if (c.state==3 && c.CreateTest.hasClicked()) {
+  if ((c.state==3|| c.state==30) && c.CreateTest.hasClicked()) {
+
+    fill(192);
+    rectMode(CORNER);
+    rect(50, 125, 900, 650);
+    rectMode(CENTER);
     c.ToggleAll(false);
     //background(0, 0, 139);
     fill(255);
@@ -296,16 +295,16 @@ void mouseReleased() {
     int status = int(cp5.get(Textfield.class, "Det rigtige svar skriv 1-4").getText());
     int questionNR = int(cp5.get(Textfield.class, "Spørgsmål NR").getText());
     c.createQuestionAnswer(question, forstsporgsmal, Andetsporgsmal, Tredjesporgsmal, Fjerdesporgsmal, questionNR, status, testNavn);
-    cp5.get(Textfield.class,"Spørgsmål").clear();
-    cp5.get(Textfield.class,"1 svar").clear();
-    cp5.get(Textfield.class,"2 svar").clear();
-    cp5.get(Textfield.class,"3 svar").clear();
-    cp5.get(Textfield.class,"4 svar").clear();
-    cp5.get(Textfield.class,"Det rigtige svar skriv 1-4").clear();
-    cp5.get(Textfield.class,"Spørgsmål NR").clear();
-}
+    cp5.get(Textfield.class, "Spørgsmål").clear();
+    cp5.get(Textfield.class, "1 svar").clear();
+    cp5.get(Textfield.class, "2 svar").clear();
+    cp5.get(Textfield.class, "3 svar").clear();
+    cp5.get(Textfield.class, "4 svar").clear();
+    cp5.get(Textfield.class, "Det rigtige svar skriv 1-4").clear();
+    cp5.get(Textfield.class, "Spørgsmål NR").clear();
+  }
 
-  if (c.state == 8 && c.done.hasClicked()){
+  if (c.state == 8 && c.done.hasClicked()) {
     c.ToggleAll(false);
     c.ToggleCreateQuestion(false);
     c.state = 3;
@@ -337,7 +336,10 @@ void mouseReleased() {
     println(Klassekode);
     println(testID);
     c.assignTest(testID, Klassekode, testNavn);
-    
+
+    c.state = 3;
+  }
+  if (c.state == 10 && c.tilbage.hasClicked()){
     c.state = 3;
   }
 }
