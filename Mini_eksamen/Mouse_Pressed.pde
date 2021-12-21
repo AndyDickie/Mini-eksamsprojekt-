@@ -140,7 +140,7 @@ void mouseReleased() {
   //  }
   //  c.state = 5;
   //}
-  if ((c.state == 3|| c.state == 30) && c.CreateClass.hasClicked() && c.userType == 1) {
+  if ((c.state == 3|| c.state == 30|| c.state==5 || c.state == 20) && c.CreateClass.hasClicked() && c.userType == 1) {
     c.state=31;
     background(0, 0, 139);
     c.ToggleAll(false);
@@ -245,9 +245,6 @@ void mouseReleased() {
       }
     }
 
-
-
-
     c.ToggleTeacherTests(false);
     c.state=6;
   }
@@ -266,18 +263,9 @@ void mouseReleased() {
   //  db.query("INSERT INTO Elevsvar VALUES(null,'"+questionID+"','"+c.getUserId(c.userName)+"','"+Fjerdesvar+"')");
   //}
 
-  if ((c.state==3|| c.state==30|| c.state ==5) && c.CreateTest.hasClicked()) {
+  if ((c.state==3|| c.state==30|| c.state==5 || c.state==20) && c.CreateTest.hasClicked()) {
 
-    fill(192);
-    rectMode(CORNER);
-    rect(50, 125, 900, 650);
-    rectMode(CENTER);
     c.ToggleAll(false);
-    //background(0, 0, 139);
-    fill(255);
-    //c.ToggleCreateQuestion(true);
-    textSize(35);
-    text("Test navn:", width/2-210, height/2-15);
     c.ToggleCreateNewTest(true);
     c.state=13;
   }

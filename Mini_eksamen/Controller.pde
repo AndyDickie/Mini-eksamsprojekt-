@@ -50,14 +50,14 @@ class Controller extends Init {
 
   void navnElev() {
     textSize(50);
-    textAlign(LEFT);  
-    text("Elev: "+userName, 50, 65);   
+    textAlign(LEFT);
+    text("Elev: "+userName, 50, 65);
   }
-  
-  void navnLaere(){
-   textSize(50);
-   textAlign(LEFT);
-   text("Lærer: "+userName, 50, 65); 
+
+  void navnLaere() {
+    textSize(50);
+    textAlign(LEFT);
+    text("Lærer: "+userName, 50, 65);
   }
   void homeScreen() {
     if (userType == 1) {
@@ -203,7 +203,7 @@ class Controller extends Init {
     }
 
     if (state==15) {
-      
+
       background(0, 0, 139);
       JoinClass.display();
       ViewClasses.display();
@@ -289,6 +289,17 @@ class Controller extends Init {
     }
     // Dette er skærmen hvor man starter med at lave testen
     if (state == 13) {
+      background(0, 0, 139);
+      fill(192);
+      rectMode(CORNER);
+      rect(50, 125, 900, 650);
+      rectMode(CENTER);
+      //c.ToggleAll(false);
+      //background(0, 0, 139);
+      fill(255);
+      //c.ToggleCreateQuestion(true);
+      textSize(35);
+      text("Test navn:", width/2-210, height/2-15);
       LavTest.display();
     }
 
@@ -313,7 +324,7 @@ class Controller extends Init {
 
     if (state == 30) {
       if (userType == 0) {
-       
+
         fill(192);
         navnElev();
         JoinClass.display();
@@ -333,11 +344,10 @@ class Controller extends Init {
           catch (Exception e) {
           }
         }
-
-       }
+      }
 
       if (userType == 1) {
-        
+
         fill(192);
         navnLaere();
         ViewClasses.display();
@@ -356,6 +366,8 @@ class Controller extends Init {
           text(c.getClassCode(k1.get(i)), width/2+200, height/20*i+250);
         }
       }
+    }
+    if (c.state == 31) {
     }
   }
 }
