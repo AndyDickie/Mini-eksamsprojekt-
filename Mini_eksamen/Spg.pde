@@ -34,7 +34,9 @@ class spg {
   }
 
   void display() {
-    text(question, width/2, height/10);
+    textSize(50);
+    fill(0);
+    text(question, width/2, 2*height/10);
     //println(question);
     ansb1.display();
     ansb2.display();
