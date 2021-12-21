@@ -179,9 +179,9 @@ void mouseReleased() {
   }
   if (c.state == 9) {
     if (c.CurrentQID == c.a.size()-1) {
-      c.next.text = "Finish";
+      c.next.text = "Færdig";
     } else {
-      c.next.text = "Next";
+      c.next.text = "Naeste";
     }
   }
   if (c.state == 9 && c.question.mousepressed()) {
