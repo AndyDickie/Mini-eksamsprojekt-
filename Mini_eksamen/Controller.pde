@@ -5,7 +5,7 @@ class Controller extends Init {
   HashMap<String, String> testsProcent = new HashMap<String, String>();
   String userName;
   int userType, userID, BT;
-  Button Login, Register, StartupPage, JoinClass, SeeTestAnswers, CreateClass,
+  Button Login, Register, StartupPage, JoinClass, SeeTestAnswers, CreateClass, 
     ViewClasses, Continue, Home, viewTests, CreateTest, next, previous, NytSpg, viewResults, LavTest, done, AssignClass, Tildel, tilbage, tilbagetilstart;
   ArrayList<Button> test_knapper = new ArrayList<Button>();
   spg question;
@@ -16,7 +16,7 @@ class Controller extends Init {
 
   Controller(int state_) {
     state = state_;
-    tilbagetilstart = new Button(width-150,height-100,100,40,"Gå tilbage");
+    tilbagetilstart = new Button(width-150, height-100, 100, 40, "Gå tilbage");
     JoinClass = new Button(425, 110, 150, 40, "Tilslut klasse");
     CreateClass = new Button(575, 110, 150, 40, "Lav klasse");
     SeeTestAnswers = new Button(425, 110, 150, 40, "Se resultater");
@@ -36,12 +36,10 @@ class Controller extends Init {
   }
 
   void startScreen() {
-    //background(0,0,107);
     textAlign(CENTER);
     fill(255);
     textSize(80);
     text("Dit test univers", width/2, 120);
-    //stroke(0,0,140);
     line(200, 130, 800, 130);
     fill(0, 0, 209);
     strokeWeight(2);
@@ -88,10 +86,6 @@ class Controller extends Init {
     }
   }
 
-  void joinClassScreen() {
-    //background(0, 0, 139);
-  }
-
   void SeeTestAnswersScreen() {
     background(0, 0, 139);
     ViewClasses.display();
@@ -107,19 +101,14 @@ class Controller extends Init {
   }
 
   void update() {
-    // Dette er Skærmen hvor du logger ind
     if (state == 0) {
       startScreen();
     }
-    // Dette er hjemmeskærmen
     if (state == 3) {
       homeScreen();
     }
-    // Dette er tilslut klasse
     if (state == 4) {
-      //text("Hej " + userName, width/2, height/10);
       navnElev();
-      joinClassScreen();
       JoinClass.display();
       ViewClasses.display();
       viewTests.display();
@@ -139,7 +128,7 @@ class Controller extends Init {
           teacherTests.addItem(testliste.get(i), getTestID(testliste.get(i)));
         }
       }
-            navnLaere();
+      navnLaere();
     }
 
     if (state==6) {
@@ -150,12 +139,10 @@ class Controller extends Init {
       fill(192);
       rectMode(CORNER);
       rect(50, 125, 900, 650);
-   
       fill(255);
       textSize(40);
       text("Din valgte test er: "+DinValgteTestNavn, 30, 70);
       textSize(20);
-      //text("Procent korrekt", 30, 110);
       for (Map.Entry me : elever.entrySet()) {
         try {
           String nuvarendeNavn = (String)me.getKey();
@@ -169,14 +156,12 @@ class Controller extends Init {
           text(nuvarendeProcent, 250+400+5, rykNedaf+30);
         }
         catch(Exception e) {
-          println("Ikke besvaret");
         }
       }
       rectMode(CENTER);
       textAlign(CENTER);
       tilbagetilstart.display();
     }
-    // Dette er skærmen hvor lærer tilfølger spørgsmål til tests
     if (state==8) {
       ViewClasses.display();
       SeeTestAnswers.display();
@@ -191,11 +176,8 @@ class Controller extends Init {
       fill(255);
       textSize(30);
       fill(255);
-      //text(c.userType+c.userName+"", 50, 65);
-      text("Producere spørgsmål:", 75, 270);
-      // skal tilføje +testName efter "String"
+      text("Producer spørgsmål:", 75, 270);
       text("Test navn:", 75, 220);
-      // skal tilføje +className efter "String"
       text("Klasse navn:", 75, 170);
       textAlign(CENTER);
       rectMode(CENTER);
@@ -207,9 +189,7 @@ class Controller extends Init {
       textAlign(CENTER);
       fill(0);
     }
-
     if (state==15) {
-
       background(0, 0, 139);
       JoinClass.display();
       ViewClasses.display();
@@ -223,16 +203,13 @@ class Controller extends Init {
       Continue.display();
       teacherTests.clear();
     }
-
     if (state==14) {
       rectMode(CORNER);
       textAlign(CORNER);
       rykNedaf=150;
       background(0, 0, 139);
       fill(192);
- 
       rect(50, 125, 900, 650);
-
       fill(255);
       textSize(50);
       text("Din valgte klasse er: "+DinValgteKlasseNavn, 30, 70);
@@ -240,7 +217,6 @@ class Controller extends Init {
       fill(255);
       text("Testens Navn:", 250, 170);
       text("% Rigtigt", 650, 170);
-
       for (Map.Entry me : testsProcent.entrySet()) {
         try {
           String nuvarendeTestNavn = (String)me.getKey();
@@ -250,19 +226,16 @@ class Controller extends Init {
           rect(250, rykNedaf, 400, 40);
           rect(250+400, rykNedaf, 70, 40);
           fill(0);
-          println(rykNedaf, nuvarendeTestNavn, nuvarendeProcent);
           text(nuvarendeTestNavn, 250+5, rykNedaf+30);
           text(nuvarendeProcent, 250+400+5, rykNedaf+30);
         }
         catch(Exception e) {
-          println("Ikke besvaret");
         }
       }
       rectMode(CENTER);
       textAlign(CENTER);
       tilbagetilstart.display();
     }
-
     if (state == 2) {
       c.ToggleAll(false);
       JoinClass.display();
@@ -274,7 +247,6 @@ class Controller extends Init {
       rect(50, 125, 900, 650);
       rectMode(CENTER);
       navnElev();
-      println(test_knapper.size());
       for (int i=0; i<test_knapper.size(); i++) {
         Button b = test_knapper.get(i);
         b.display();
@@ -287,12 +259,10 @@ class Controller extends Init {
       rect(50, 125, 900, 650);
       rectMode(CENTER);
       navnElev();
-      
       next.display();
       previous.display();
       if (a.size() >0) {
         try {
-          println(a.size() + "ANT SPG:" + CurrentQID);
           question = new spg(a.get(CurrentQID));
           question.display();
         }
@@ -302,7 +272,6 @@ class Controller extends Init {
         state = 2;
       }
     }
-    // Dette er skærmen hvor man starter med at lave testen
     if (state == 13) {
       background(0, 0, 139);
       fill(192);
@@ -310,15 +279,11 @@ class Controller extends Init {
       rect(50, 125, 900, 650);
       rectMode(CENTER);
       navnLaere();
-      //c.ToggleAll(false);
-      //background(0, 0, 139);
       fill(255);
-      //c.ToggleCreateQuestion(true);
       textSize(35);
       text("Test navn:", width/2-250, height/2-15);
       LavTest.display();
     }
-
     if (state == 10) {
       background(0);
       text("Du fik: "+procentCorrect+"% korrekt", width/2, height/2);
@@ -338,10 +303,8 @@ class Controller extends Init {
       rectMode(CENTER);
       Tildel.display();
     }
-
     if (state == 30) {
       if (userType == 0) {
-        
         fill(192);
         navnElev();
         JoinClass.display();
@@ -356,7 +319,7 @@ class Controller extends Init {
           try {
             fill(0);
             textSize(35);
-            text("Klassenavn",width/3 ,height/20+200);
+            text("Klassenavn", width/3, height/20+200);
             textSize(20);
             text(k.get(i), width/3, height/20*i+270);
           }
@@ -379,11 +342,10 @@ class Controller extends Init {
         rect(50, 125, 900, 650);
         rectMode(CENTER);
         for (int i=0; i<k1.size(); i++) {
-          println("sss");
           fill(0);
           textSize(35);
-          text("Klassenavn",width/3 ,height/20+200);
-          text("Klassekode",width-width/3 ,height/20+200);
+          text("Klassenavn", width/3, height/20+200);
+          text("Klassekode", width-width/3, height/20+200);
           textSize(20);
           text(k1.get(i), width/3, height/20*i+270);
           text(c.getClassCode(k1.get(i)), width-width/3, height/20*i+270);
@@ -401,10 +363,4 @@ class Controller extends Init {
       tilbagetilstart.display();
     }
   }
-}
-
-void udregnProcentRigtigt(PVector point) {
-  //Her skal point PVector bestå af antal rigtige spg på x-koordinaten og antal forkerte skal være på y-koordinaten.
-  String procent = (int)((point.x/(point.x+point.y))*100)+"%";
-  println(procent);
 }

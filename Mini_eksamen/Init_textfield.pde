@@ -26,7 +26,6 @@ class Init extends SQL {
     cp5.setColorForeground(color(105));
     cp5.setColorActive(color(36));
 
-
     //textfields
     username_field = cp5.addTextfield("Brugernavn").setPosition(width/2-150, height/2-50).setSize(200, 40).setAutoClear(false).setFont(f).setVisible(true);
     username_field.setFocus(false);
@@ -88,8 +87,7 @@ class Init extends SQL {
     skabklasse =cp5.addTextfield("Klasse navn").setPosition(width/2-100, height/2).setSize(200,40).setFont(f).setVisible(false);
     skabklasse.setColorBackground(color(255)); 
     skabklasse.setColorValueLabel(0);
-    cp5.addButton("Skab klasse").setPosition(width/2+110, height/2).setSize(80,40).setVisible(false);
-    println("load");      
+    cp5.addButton("Skab klasse").setPosition(width/2+110, height/2).setSize(80,40).setVisible(false);  
   }
 
   void ToggleLogin(boolean vis) {
@@ -100,7 +98,6 @@ class Init extends SQL {
   }
 
   void ToggleTeacherTests(boolean vis) {
-    println("Toggle TeacherTestList");
     if (vis) {
       cp5.getController("DinKlassesTests").show();
       cp5.getController("DineKlasser").show();
@@ -118,8 +115,6 @@ class Init extends SQL {
   }
 
   void ToggleClass(boolean vis) {
-    //cp5.getController("Tilslut klasse").setVisible(vis);
-    //cp5.getController("Klasse kode").setVisible(vis);
     toggle("Tilslut klasse", vis);
     toggle("Klasse kode", vis);
   }
@@ -160,12 +155,9 @@ class Init extends SQL {
     toggle("3 svar", vis);
     toggle("4 svar", vis);
     toggle("Spørgsmål",vis);
-    //toggle("Spørgsmål NR",vis);
     toggle("Det rigtige svar skriv 1-4",vis);
   }
   void ToggleCreateNewTest(boolean vis){   
     toggle("",vis);
   }
-  
-  
 }

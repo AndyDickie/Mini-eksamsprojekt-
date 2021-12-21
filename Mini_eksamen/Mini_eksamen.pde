@@ -18,22 +18,11 @@ void setup() {
   db.connect();
   cp5 = new ControlP5(this);
   c = new Controller(0);
-  println(c.getClassName(622050));
-  println(c.getUserClasses(1));
   size(1000, 800);
-  background(0,0,107);
+  background(0, 0, 107);
   c.load();
-  //println(c.getTests());
-  //println(c.getTestName());
-  println("testID: "+c.getTestID(4));
-//hej
-
-  //c.test.display();
-  //c.createQuestionAnswer(c.getTestID("matProveTest2"),"Antalplaneter","7");
-
 }
 
 void draw() {
   c.update();
-  println(c.state);
 }
