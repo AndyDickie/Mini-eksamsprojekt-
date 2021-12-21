@@ -73,5 +73,6 @@ void controlEvent(ControlEvent theEvent) {
    catch(Exception e){
      println("Something went wrong");
    }
+   c.state=3;
   }
 }

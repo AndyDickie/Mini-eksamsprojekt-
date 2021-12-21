@@ -42,7 +42,7 @@ void mouseReleased() {
      k = c.getUserClasses(c.userID);
       c.state = 30;
   }
-  if ((c.state == 3 || c.state == 2 || c.state == 4|| c.state==15|| c.state==30) && c.ViewClasses.hasClicked() && c.userType == 1) {
+  if ((c.state == 3 || c.state == 2 || c.state == 4|| c.state==15|| c.state==30|| c.state ==5|| c.state == 8|| c.state==20) && c.ViewClasses.hasClicked() && c.userType == 1) {
     c.ToggleAll(false);
     k1 = c.getTeacherClasses(c.getUserId(c.userName));
     background(0,0,139);
@@ -59,12 +59,12 @@ void mouseReleased() {
   }
   //Lærer
   //State 13
-  if ((c.state == 13 || c.state == 8 || c.state == 5 || c.state==3 || c.state==20) && c.ViewClasses.hasClicked() && c.userType == 1) {
-    c.ToggleAll(false);
-    c.state=13;
-  }
+  //if ((c.state == 13 || c.state == 8 || c.state == 5 || c.state==3 || c.state==20) && c.ViewClasses.hasClicked() && c.userType == 1) {
+  //  c.ToggleAll(false);
+  //  c.state=13;
+  //}
   //State 8
-  if ((c.state == 13 || c.state == 8 || c.state == 5 || c.state==3 || c.state==20) && c.SeeTestAnswers.hasClicked() && c.userType == 1) {
+  if ((c.state == 13 || c.state == 8 || c.state == 5 || c.state==3 || c.state==20|| c.state == 30) && c.SeeTestAnswers.hasClicked() && c.userType == 1) {
     c.ToggleAll(false);
     teacherTests.clear();
       teacherClass.clear();
@@ -76,7 +76,8 @@ void mouseReleased() {
     c.state=5;
   }
   //State 5
-  if ((c.state == 13 || c.state == 8 || c.state == 5 || c.state==3 || c.state==20) && c.CreateTest.hasClicked() && c.userType == 1) {
+   //|| c.state == 8 || c.state == 5 || c.state==3 || c.state==20|| c.state == 30
+  if ((c.state == 13) && c.LavTest.hasClicked() && c.userType == 1) {
     c.ToggleAll(false);
     testNavn = cp5.get(Textfield.class, "").getText();
     c.createTest(testNavn);
@@ -86,12 +87,12 @@ void mouseReleased() {
     c.state=8;
   }
   //State 3
-  if ((c.state == 13 || c.state == 8 || c.state == 5 || c.state==3 || c.state==20) && c.CreateClass.hasClicked() && c.userType == 1) {
-    c.ToggleAll(false);
-    c.state=3;
-  }
+  //if ((c.state == 13 || c.state == 8 || c.state == 5 || c.state==3 || c.state==20) && c.LavTest.hasClicked() && c.userType == 1) {
+  //  c.ToggleAll(false);
+  //  c.state=3;
+  //}
   //State 20
-  if ((c.state == 13 || c.state == 8 || c.state == 5 || c.state==3 || c.state==20) && c.AssignClass.hasClicked() && c.userType == 1) {
+  if ((c.state == 13 || c.state == 8 || c.state == 5 || c.state==3 || c.state==20|| c.state == 30) && c.AssignClass.hasClicked() && c.userType == 1) {
     c.ToggleAll(false);
     teacherClass.clear();
     teacherTestsID.clear();
@@ -139,7 +140,8 @@ void mouseReleased() {
   //  }
   //  c.state = 5;
   //}
-  if (c.state == 3 && c.CreateClass.hasClicked() && c.userType == 1) {
+  if ((c.state == 3|| c.state == 30) && c.CreateClass.hasClicked() && c.userType == 1) {
+    c.state=31;
     background(0, 0, 139);
     c.ToggleAll(false);
     c.ToggleCreateClass(true);
@@ -264,7 +266,7 @@ void mouseReleased() {
   //  db.query("INSERT INTO Elevsvar VALUES(null,'"+questionID+"','"+c.getUserId(c.userName)+"','"+Fjerdesvar+"')");
   //}
 
-  if ((c.state==3|| c.state==30) && c.CreateTest.hasClicked()) {
+  if ((c.state==3|| c.state==30|| c.state ==5) && c.CreateTest.hasClicked()) {
 
     fill(192);
     rectMode(CORNER);
@@ -288,7 +290,7 @@ void mouseReleased() {
   //  c.state = 8;
   //}
 
-  if (c.state==8 && c.NytSpg.hasClicked()) {
+  if (c.state==13 && c.NytSpg.hasClicked()) {
     String question = cp5.get(Textfield.class, "Spørgsmål").getText();
     String forstsporgsmal = cp5.get(Textfield.class, "1 svar").getText();
     String Andetsporgsmal = cp5.get(Textfield.class, "2 svar").getText();
