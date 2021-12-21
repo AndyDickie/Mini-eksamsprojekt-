@@ -332,7 +332,6 @@ class Controller extends Init {
 
     if (state == 30) {
       if (userType == 0) {
-
         fill(192);
         navnElev();
         JoinClass.display();
