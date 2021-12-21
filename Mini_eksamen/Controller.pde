@@ -202,7 +202,9 @@ class Controller extends Init {
       NytSpg.display();
       done.display();
       textSize(30);
+      textAlign(LEFT);
       text(testNavn, 300, 220);
+      textAlign(CENTER);
       fill(0);
     }
 
@@ -306,7 +308,7 @@ class Controller extends Init {
       fill(255);
       //c.ToggleCreateQuestion(true);
       textSize(35);
-      text("Test navn:", width/2-210, height/2-15);
+      text("Test navn:", width/2-250, height/2-15);
       LavTest.display();
     }
 
@@ -332,7 +334,7 @@ class Controller extends Init {
 
     if (state == 30) {
       if (userType == 0) {
-
+        
         fill(192);
         navnElev();
         JoinClass.display();
@@ -342,12 +344,13 @@ class Controller extends Init {
         fill(192);
         rectMode(CORNER);
         rect(50, 125, 900, 650);
-        rectMode(CENTER);
+        rectMode(CENTER); 
         for (int i=0; i<k.size(); i++) {
           try {
             fill(0);
             textSize(20);
-            text(k.get(i), width/2, height/20*(i+1)+250);
+            text("Klassenavn",width/3 ,height/20+200);
+            text(k.get(i), width/3, height/20*i+270);
           }
           catch (Exception e) {
           }
@@ -370,8 +373,10 @@ class Controller extends Init {
         for (int i=0; i<k1.size(); i++) {
           println("sss");
           fill(0);
-          text(k1.get(i), width/2, height/20*i+250);
-          text(c.getClassCode(k1.get(i)), width/2+200, height/20*i+250);
+          text("Klassenavn",width/3 ,height/20+200);
+          text(k1.get(i), width/3, height/20*i+270);
+          text("Klassekode",width-width/3 ,height/20+200);
+          text(c.getClassCode(k1.get(i)), width-width/3, height/20*i+270);
         }
       }
     }

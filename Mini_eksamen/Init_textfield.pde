@@ -1,6 +1,6 @@
 Bang create_user, join_class;
 Button show_password, login, nestespg;
-Textfield username_field, pass_field, class_id, forstspg, andetspg, tredjespg, fjerdespg, spg, KlasseNavn, SpgNR,TestNavn, RigtigeSvar;
+Textfield username_field, pass_field, class_id, forstspg, andetspg, tredjespg, fjerdespg, spg, KlasseNavn, SpgNR,TestNavn, RigtigeSvar, skabklasse;
 Toggle type;
 ScrollableList teacherTests, teacherClass, teacherTestsID;
 
@@ -28,8 +28,12 @@ class Init extends SQL {
     //textfields
     username_field = cp5.addTextfield("Brugernavn").setPosition(width/2-150, height/2-50).setSize(200, 40).setAutoClear(false).setFont(f).setVisible(true);
     username_field.setFocus(false);
+    username_field.setColorBackground(color(255)); 
+    username_field.setColorValueLabel(0);
     pass_field = cp5.addTextfield("Kodeord").setPosition(width/2-150, height/2+30).setSize(200, 40).setAutoClear(false).setFont(f).setVisible(true);
     pass_field.setFocus(false);
+    pass_field.setColorBackground(color(255)); 
+    pass_field.setColorValueLabel(0);
     pass_field.setPasswordMode(passMode);
     
     forstspg = cp5.addTextfield("1 svar").setPosition(629.1, 365).setSize(250, 50).setAutoClear(false).setFont(f).setVisible(false);
@@ -79,7 +83,9 @@ class Init extends SQL {
     type = cp5.addToggle("Laerer/Elev").setPosition(width/2-165, height/2-140).setSize(80, 40).setValue(false).setMode(ControlP5.SWITCH).setVisible(true);
     
     //Create class textfield
-    cp5.addTextfield("Klasse navn").setPosition(width/2-100, height/2).setSize(200,40).setFont(f).setVisible(false);
+    skabklasse =cp5.addTextfield("Klasse navn").setPosition(width/2-100, height/2).setSize(200,40).setFont(f).setVisible(false);
+    skabklasse.setColorBackground(color(255)); 
+    skabklasse.setColorValueLabel(0);
     cp5.addButton("Skab klasse").setPosition(width/2+110, height/2).setSize(80,40).setVisible(false);
     println("load");      
   }
