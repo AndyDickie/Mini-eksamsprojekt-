@@ -25,7 +25,7 @@ class Controller extends Init {
     viewTests = new Button(275, 110, 150, 40, "Dine tests");
     viewResults = new Button(580, 110, 160, 40, "Dine Resultater");
     CreateTest = new Button(275, 110, 150, 40, "Lav test");
-    next = new Button(9*width/10, 8*height/10, 150, 40, "Næste");
+    next = new Button(8*width/10, 8*height/10, 150, 40, "Næste");
     previous = new Button(2*width/10, 8*height/10, 150, 40, "Tilbage");
     NytSpg = new Button(150, 325, 150, 50, "Nyt Spørgsmål");
     LavTest = new Button(width/2, height/2+40, 150, 40, "Lav Test");
@@ -273,6 +273,13 @@ class Controller extends Init {
       }
     }
     if (state == 9) {
+      background(0, 0, 139);
+      fill(192);
+      rectMode(CORNER);
+      rect(50, 125, 900, 650);
+      rectMode(CENTER);
+      navnElev();
+      
       next.display();
       previous.display();
       if (a.size() >0) {
