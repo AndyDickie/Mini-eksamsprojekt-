@@ -391,6 +391,7 @@ class Controller extends Init {
       rectMode(CORNER);
       rect(50, 125, 900, 650);
       rectMode(CENTER);
+      tilbagetilstart.display();
     }
   }
 }
