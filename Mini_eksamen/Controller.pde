@@ -180,6 +180,8 @@ class Controller extends Init {
       SeeTestAnswers.display();
       CreateTest.display();
       CreateClass.display();
+      AssignClass.display();
+      navnLaere();
       fill(192);
       rectMode(CORNER);
       rect(50, 125, 900, 650);
