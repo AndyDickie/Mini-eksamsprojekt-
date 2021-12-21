@@ -308,6 +308,9 @@ void mouseReleased() {
 
     c.state = 3;
   }
+  if (c.state == 10 && c.tilbage.hasClicked()){
+    c.state = 3;
+  }
 }
 
 
