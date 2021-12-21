@@ -203,7 +203,7 @@ class Controller extends Init {
     }
 
     if (state==15) {
-      c.ToggleAll(false);
+      
       background(0, 0, 139);
       JoinClass.display();
       ViewClasses.display();
@@ -313,6 +313,7 @@ class Controller extends Init {
 
     if (state == 30) {
       if (userType == 0) {
+       
         fill(192);
         navnElev();
         JoinClass.display();
@@ -336,6 +337,7 @@ class Controller extends Init {
        }
 
       if (userType == 1) {
+        
         fill(192);
         navnLaere();
         ViewClasses.display();

@@ -26,12 +26,13 @@ void mouseReleased() {
     background(0, 0, 139);
     teacherClass.clear();
     teacherTests.clear();
-    cp5.getController("DineKlasser").show();
+    
     StringList klasseliste = c.getUserClasses(c.getUserId(c.userName));
     c.state = 15;
     for (int i =0; i<klasseliste.size(); i++) {
       teacherClass.addItem(klasseliste.get(i), c.getClassCode(klasseliste.get(i)));
     }
+    cp5.getController("DineKlasser").show();
   }
   //State ved ikke endnu
   if ((c.state == 3 || c.state == 2 || c.state == 4|| c.state==15|| c.state==30) && c.ViewClasses.hasClicked() && c.userType == 0) {
