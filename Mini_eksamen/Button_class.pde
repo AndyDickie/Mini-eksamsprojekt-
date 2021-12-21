@@ -15,9 +15,9 @@ class Button {
   void display() {
     if (show) {
       textAlign(CENTER);
-      if(text=="Færdig")fill(0,128,0);
-        else fill(105);
-      if (mouseX >= x-w/2 && mouseX <= x+w/2 && mouseY <= y+h/2 && mouseY >= y-h/2){
+      if (text=="Færdig")fill(0, 128, 0);
+      else fill(105);
+      if (mouseX >= x-w/2 && mouseX <= x+w/2 && mouseY <= y+h/2 && mouseY >= y-h/2) {
         fill(150);
       }
       rect(x, y, w, h);

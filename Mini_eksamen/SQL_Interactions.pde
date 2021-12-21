@@ -1,4 +1,3 @@
-
 class SQL {
   String signingSalt = "sQLLlerkk4221€€))";
 
@@ -11,19 +10,17 @@ class SQL {
       return "";
     }
   }
-  
+
   String getUserName(int userID) {
     db.query("SELECT userName FROM Users WHERE ID='"+ userID + "'");
     String username = db.getString("Username");
     return username;
   }
-  
+
 
   int getUserType(String userName) {
     db.query("SELECT Stilling FROM users WHERE userName='"+ userName + "'");
     int userType = db.getInt("Stilling");
-    //if (userType == 0)return "Elev";
-    //else return "Lærer";
     return userType;
   }
 
@@ -55,7 +52,6 @@ class SQL {
   boolean login(String userName, String password) {
     password = hash(password);
     if (getUser(userName) == "") return false;
-    //text("user does not exist", width/2, height/10);
     if (password.equals(getPassword(userName))) return true;
     else return false;
   }
@@ -92,14 +88,10 @@ class SQL {
     while (db.next()) {
       int ting = db.getInt(kc);
       KlasseKListe.append(ting);
-      println(ting);
     }
     for (int i=0; i < KlasseKListe.size(); i++) {
-      println(i);
       KlasseListe.append(getClassName(KlasseKListe.get(i)));
     }
-
-
     return KlasseListe;
   }
 
@@ -111,7 +103,6 @@ class SQL {
     while (db.next()) {
       String ting = str(db.getInt("ID"));
       o.append(ting);
-      println(ting);
     }
     for (int i=0; i<o.size(); i++) {
       for (int j=i+1; j<o.size(); j++) {
@@ -127,13 +118,11 @@ class SQL {
     String s = "SELECT Navn FROM Test WHERE IDkey='" + c.userID + "'";
     db.query(s);
     StringList o = new StringList();
-    
+
     while (db.next()) {
       String ting = db.getString("Navn");
       o.append(ting);
-      println(ting);
     }
-    println("før: "+o);
     for (int i=0; i<o.size(); i++) {
       for (int j=i+1; j<o.size(); j++) {
         if (o.get(i).equals(o.get(j))==true) {
@@ -142,7 +131,6 @@ class SQL {
         }
       }
     }
-    println("efter: "+o);
     return o;
   }
 
@@ -153,7 +141,6 @@ class SQL {
     while (db.next()) {
       String ting = db.getString("UsernameID");
       o.append(ting);
-      //println(ting);
     }
     return o;
   }
@@ -198,7 +185,6 @@ class SQL {
     while (db.next()) {
       TestListe.append(db.getString("Navn"));
     }
-    println("før: " + TestListe);
     for (int i=0; i<TestListe.size(); i++) {
       for (int j=i+1; j<TestListe.size(); j++) {
         if (TestListe.get(i).equals(TestListe.get(j))==true) {
@@ -207,10 +193,6 @@ class SQL {
         }
       }
     }
-    //TestListe.clear();
-    //TestListe.add();
-
-    println("efter: "+ TestListe);
     return TestListe;
   }
 
@@ -231,9 +213,7 @@ class SQL {
     return db.getString("Resultat");
   }
 
-  //Kan gøres nemmer ved at fjerne * og gøre det specifikt
   ArrayList getTestAnswer(int testID) {
-    //println("ssss");
     db.query("SELECT Svar1, Svar2, Svar3, Svar4, Status, ID, Sporgsmal FROM Sporgsmal WHERE TestID =" +testID);
     StringList k = new StringList();
     c.a = new ArrayList<testAns>();
@@ -244,9 +224,7 @@ class SQL {
       k.append(db.getString("Svar3"));
       k.append(db.getString("Svar4"));
       k.append(db.getString("Status"));
-      println("Status:" + db.getString("Status"));
       k.append(db.getString("ID"));
-      println(db.getString("Status"));
       k.append(db.getString("Sporgsmal"));
       h = new testAns(k.get(0), k.get(1), k.get(2), k.get(3), k.get(4), k.get(5), k.get(6));
       c.a.add(h);
@@ -255,33 +233,17 @@ class SQL {
     return c.a;
   }
 
-  //void getTestAnswer(int testID) {
-  //  db.query("SELECT * FROM Elevsvar,Sporgsmal,Test Where Elevsvar.SporgsmalID=Sporgsmal.ID AND Sporgsmal.TestID=Test.ID AND Test.ID =" +testID);
-  //}
-
   void getQuestionAnswer(int questionID) {
     db.query("SELECT * FROM Elevsvar Where SporgsmalID = " + questionID );
   }
 
-  // det er noget lort ved ikke om vi skal bruge det
-  //int getquestionID(){
-  //  db.query("SELECT SpgNr FROM Sporgsmal Where ID=" +questionNR);
-  //  int questionID = db.getInt("ID");
-  //  return questionID;
-  //}
-
   void AssignedTests() {
     c.test_knapper.clear();
     StringList o = c.getUserClasses(c.userID);
-    //c.test_knapper.clear();
     for (int i=0; i<o.size(); i++) {
-      println("lll");
       StringList m = c.getTestsPerClass(c.getClassCode(o.get(i)));
-      println(m);
-      //println(c.getClassCode(o.get(i)));
       for (int j=0; j<m.size(); j++) {
         String s = m.get(j);
-        println(s + " ss");
         Button b = new Button(width/2, 2*height/10+50*j, 150, 50, s);
         c.test_knapper.add(b);
       }
@@ -304,22 +266,6 @@ class SQL {
     }
     return null;
   }
-
-  //Boolean answerStatus(String StudentAnswer, String CorrectAnswer) {
-  //  if (StudentAnswer==CorrectAnswer) return true;
-  //  if (StudentAnswer!=CorrectAnswer) return false;
-  //  else return false;
-  //}
-
-  //String StudentAnswer(int questionID, int userID) {
-  //  db.query("SELECT Svar,Elevsvar,UsernameID FROM Sporgsmal,Elevsvar Where Sporgsmal.ID=" +questionID+ " AND Elevsvar.SporgsmalID="+questionID+" AND Elevsvar.UsernameID="+userID);
-  //  return db.getString("Elevsvar");
-  //}
-
-  //String CorrectAnswer(int questionID, int userID) {
-  //  db.query("SELECT Svar,Elevsvar,UsernameID FROM Sporgsmal,Elevsvar Where Sporgsmal.ID=" +questionID+ " AND Elevsvar.SporgsmalID="+questionID+" AND Elevsvar.UsernameID="+userID);
-  //  return db.getString("Svar");
-  //}
 
   Boolean answerCorrect(int questionID, int userID) {
     db.query("SELECT Svar,Elevsvar,UsernameID FROM Sporgsmal,Elevsvar Where Sporgsmal.ID=" +questionID+ " AND Elevsvar.SporgsmalID="+questionID+" AND Elevsvar.UsernameID="+userID);
