@@ -6,7 +6,7 @@ class Controller extends Init {
   String userName;
   int userType, userID, BT;
   Button Login, Register, StartupPage, JoinClass, SeeTestAnswers, CreateClass,
-    ViewClasses, Continue, Home, viewTests, CreateTest, next, previous, NytSpg, viewResults, LavTest, done, AssignClass, Tildel, tilbage;
+    ViewClasses, Continue, Home, viewTests, CreateTest, next, previous, NytSpg, viewResults, LavTest, done, AssignClass, Tildel, tilbage, tilbagetilstart;
   ArrayList<Button> test_knapper = new ArrayList<Button>();
   spg question;
   int CurrentQID = 0;
@@ -16,6 +16,7 @@ class Controller extends Init {
 
   Controller(int state_) {
     state = state_;
+    tilbagetilstart = new Button(width-150,height-100,100,40,"Gå tilbage");
     JoinClass = new Button(425, 110, 150, 40, "Tilslut klasse");
     CreateClass = new Button(575, 110, 150, 40, "Lav klasse");
     SeeTestAnswers = new Button(425, 110, 150, 40, "Se resultater");
@@ -27,7 +28,7 @@ class Controller extends Init {
     CreateTest = new Button(275, 110, 150, 40, "Lav test");
     next = new Button(8*width/10, 8*height/10, 150, 40, "Næste");
     previous = new Button(2*width/10, 8*height/10, 150, 40, "Tilbage");
-    NytSpg = new Button(150, 325, 150, 50, "Nyt Spørgsmål");
+    NytSpg = new Button(150, 325, 150, 50, "Indsæt spg.");
     LavTest = new Button(width/2, height/2+40, 150, 40, "Lav Test");
     done = new Button(150, 700, 150, 40, "Færdig");
     AssignClass = new Button(725, 110, 150, 40, "Tildel Klasse");
@@ -58,6 +59,7 @@ class Controller extends Init {
     textSize(50);
     textAlign(LEFT);
     text("Lærer: "+userName, 50, 65);
+    textAlign(CENTER);
   }
   void homeScreen() {
     if (userType == 1) {
@@ -137,6 +139,7 @@ class Controller extends Init {
           teacherTests.addItem(testliste.get(i), getTestID(testliste.get(i)));
         }
       }
+            navnLaere();
     }
 
     if (state==6) {
@@ -144,12 +147,10 @@ class Controller extends Init {
       textAlign(CORNER);
       rykNedaf=130;
       background(0, 0, 139);
-      //fill(255);
-      //rect(width-300, 20, 280, 100);
-      fill(0);
-      //text("Se hvordan elevernes svar", width-290, 50);
-      //text("fordeler sig ved at trykke", width-285, 80);
-      //text("på elevens navn", width-240, 110);
+      fill(192);
+      rectMode(CORNER);
+      rect(50, 125, 900, 650);
+   
       fill(255);
       textSize(40);
       text("Din valgte test er: "+DinValgteTestNavn, 30, 70);
@@ -173,6 +174,7 @@ class Controller extends Init {
       }
       rectMode(CENTER);
       textAlign(CENTER);
+      tilbagetilstart.display();
     }
     // Dette er skærmen hvor lærer tilfølger spørgsmål til tests
     if (state==8) {
@@ -180,6 +182,8 @@ class Controller extends Init {
       SeeTestAnswers.display();
       CreateTest.display();
       CreateClass.display();
+      AssignClass.display();
+      navnLaere();
       fill(192);
       rectMode(CORNER);
       rect(50, 125, 900, 650);
@@ -198,7 +202,9 @@ class Controller extends Init {
       NytSpg.display();
       done.display();
       textSize(30);
+      textAlign(LEFT);
       text(testNavn, 300, 220);
+      textAlign(CENTER);
       fill(0);
     }
 
@@ -223,6 +229,10 @@ class Controller extends Init {
       textAlign(CORNER);
       rykNedaf=150;
       background(0, 0, 139);
+      fill(192);
+ 
+      rect(50, 125, 900, 650);
+
       fill(255);
       textSize(50);
       text("Din valgte klasse er: "+DinValgteKlasseNavn, 30, 70);
@@ -248,11 +258,9 @@ class Controller extends Init {
           println("Ikke besvaret");
         }
       }
-
-
-
       rectMode(CENTER);
       textAlign(CENTER);
+      tilbagetilstart.display();
     }
 
     if (state == 2) {
@@ -301,12 +309,13 @@ class Controller extends Init {
       rectMode(CORNER);
       rect(50, 125, 900, 650);
       rectMode(CENTER);
+      navnLaere();
       //c.ToggleAll(false);
       //background(0, 0, 139);
       fill(255);
       //c.ToggleCreateQuestion(true);
       textSize(35);
-      text("Test navn:", width/2-210, height/2-15);
+      text("Test navn:", width/2-250, height/2-15);
       LavTest.display();
     }
 
@@ -322,6 +331,7 @@ class Controller extends Init {
       CreateTest.display();
       CreateClass.display();
       AssignClass.display();
+      navnLaere();
       fill(192);
       rectMode(CORNER);
       rect(50, 125, 900, 650);
@@ -331,7 +341,7 @@ class Controller extends Init {
 
     if (state == 30) {
       if (userType == 0) {
-
+        
         fill(192);
         navnElev();
         JoinClass.display();
@@ -341,12 +351,14 @@ class Controller extends Init {
         fill(192);
         rectMode(CORNER);
         rect(50, 125, 900, 650);
-        rectMode(CENTER);
+        rectMode(CENTER); 
         for (int i=0; i<k.size(); i++) {
           try {
             fill(0);
+            textSize(35);
+            text("Klassenavn",width/3 ,height/20+200);
             textSize(20);
-            text(k.get(i), width/2, height/20*(i+1)+250);
+            text(k.get(i), width/3, height/20*i+270);
           }
           catch (Exception e) {
           }
@@ -369,8 +381,12 @@ class Controller extends Init {
         for (int i=0; i<k1.size(); i++) {
           println("sss");
           fill(0);
-          text(k1.get(i), width/2, height/20*i+250);
-          text(c.getClassCode(k1.get(i)), width/2+200, height/20*i+250);
+          textSize(35);
+          text("Klassenavn",width/3 ,height/20+200);
+          text("Klassekode",width-width/3 ,height/20+200);
+          textSize(20);
+          text(k1.get(i), width/3, height/20*i+270);
+          text(c.getClassCode(k1.get(i)), width-width/3, height/20*i+270);
         }
       }
     }
@@ -382,6 +398,7 @@ class Controller extends Init {
       rectMode(CORNER);
       rect(50, 125, 900, 650);
       rectMode(CENTER);
+      tilbagetilstart.display();
     }
   }
 }

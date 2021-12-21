@@ -9,10 +9,15 @@ StringList testProcent = new StringList();
 StringList elevBesvarelse = new StringList();
 StringList k, k1;
 
-
 void mouseReleased() {
   //Elever
   //State 4
+  if((c.state==6||c.state==14||c.state==31)&&c.tilbagetilstart.hasClicked()){
+    c.ToggleAll(false);
+    c.state=3;
+  }
+  
+  
   if ((c.state == 3 || c.state == 2 || c.state == 4 || c.state==15 || c.state==30) && c.JoinClass.hasClicked() && c.userType == 0) {
     c.ToggleAll(false);
     background(0, 0, 139);
@@ -175,9 +180,9 @@ void mouseReleased() {
   }
   if (c.state == 9) {
     if (c.CurrentQID == c.a.size()-1) {
-      c.next.text = "Finish";
+      c.next.text = "Færdig";
     } else {
-      c.next.text = "Next";
+      c.next.text = "Naeste";
     }
   }
   if (c.state == 9 && c.question.mousepressed()) {
@@ -278,7 +283,7 @@ void mouseReleased() {
   //  c.state = 8;
   //}
 
-  if (c.state==13 && c.NytSpg.hasClicked()) {
+  if (c.state==8 && c.NytSpg.hasClicked()) {
     String question = cp5.get(Textfield.class, "Spørgsmål").getText();
     String forstsporgsmal = cp5.get(Textfield.class, "1 svar").getText();
     String Andetsporgsmal = cp5.get(Textfield.class, "2 svar").getText();
