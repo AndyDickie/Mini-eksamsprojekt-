@@ -122,6 +122,11 @@ class Init extends SQL {
   }
 
   void ToggleAll(boolean vis) {
+    toggle("Class Name", vis);
+    toggle("Create Class", vis);
+    toggle("DineKlasser", vis);
+    toggle("DinKlassesTests", vis);
+    toggle("DineTest", vis);
     toggle("Username", vis);
     toggle("Password", vis);
     toggle("Show Password", vis);

@@ -50,13 +50,13 @@ class Controller extends Init {
   void navnElev(){
     textSize(50);
     textAlign(LEFT);  
-    text("Elev:"+userName, 50, 65);   
+    text("Elev: "+userName, 50, 65);   
   }
   
   void navnLaere(){
    textSize(50);
    textAlign(LEFT);
-   text("Lære:"+userName, 50, 65); 
+   text("Lærer: "+userName, 50, 65); 
   }
   void homeScreen() {
     if (userType == 1) {
@@ -95,6 +95,7 @@ class Controller extends Init {
     SeeTestAnswers.display();
     CreateTest.display();
     CreateClass.display();
+    AssignClass.display();
     fill(192);
     rectMode(CORNER);
     rect(50, 125, 900, 650);
