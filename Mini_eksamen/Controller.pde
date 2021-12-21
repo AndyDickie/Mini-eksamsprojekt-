@@ -6,7 +6,7 @@ class Controller extends Init {
   String userName;
   int userType, userID, BT;
   Button Login, Register, StartupPage, JoinClass, SeeTestAnswers, CreateClass,
-    ViewClasses, Continue, Home, viewTests, CreateTest, next, previous, NytSpg, viewResults, LavTest, done, AssignClass, Tildel, tilbage;
+    ViewClasses, Continue, Home, viewTests, CreateTest, next, previous, NytSpg, viewResults, LavTest, done, AssignClass, Tildel, tilbage, tilbagetilstart;
   ArrayList<Button> test_knapper = new ArrayList<Button>();
   spg question;
   int CurrentQID = 0;
@@ -16,6 +16,7 @@ class Controller extends Init {
 
   Controller(int state_) {
     state = state_;
+    tilbagetilstart = new Button(width-150,height-100,100,40,"Gå tilbage");
     JoinClass = new Button(425, 110, 150, 40, "Tilslut klasse");
     CreateClass = new Button(575, 110, 150, 40, "Lav klasse");
     SeeTestAnswers = new Button(425, 110, 150, 40, "Se resultater");
@@ -27,7 +28,7 @@ class Controller extends Init {
     CreateTest = new Button(275, 110, 150, 40, "Lav test");
     next = new Button(9*width/10, 8*height/10, 150, 40, "Næste");
     previous = new Button(2*width/10, 8*height/10, 150, 40, "Tilbage");
-    NytSpg = new Button(150, 325, 150, 50, "Nyt Spørgsmål");
+    NytSpg = new Button(150, 325, 150, 50, "Indsæt spg.");
     LavTest = new Button(width/2, height/2+40, 150, 40, "Lav Test");
     done = new Button(150, 700, 150, 40, "Færdig");
     AssignClass = new Button(725, 110, 150, 40, "Tildel Klasse");
@@ -175,6 +176,7 @@ class Controller extends Init {
       }
       rectMode(CENTER);
       textAlign(CENTER);
+      tilbagetilstart.display();
     }
     // Dette er skærmen hvor lærer tilfølger spørgsmål til tests
     if (state==8) {
@@ -252,11 +254,9 @@ class Controller extends Init {
           println("Ikke besvaret");
         }
       }
-
-
-
       rectMode(CENTER);
       textAlign(CENTER);
+      tilbagetilstart.display();
     }
 
     if (state == 2) {
