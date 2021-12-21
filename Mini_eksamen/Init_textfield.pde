@@ -15,6 +15,8 @@ class Init extends SQL {
   void load() {
     //Join class bang & textfield
     class_id = cp5.addTextfield("Klasse kode").setPosition(width/2, height/3).setSize(200, 40).setAutoClear(false).setFont(f).setVisible(false);
+    class_id.setColorBackground(color(0)); 
+    class_id.setColorValueLabel(255);
     cp5.addButton("Tilslut klasse").setPosition(width/2+220, height/3).setSize(80, 40).setVisible(false);
 
     //login bangs
