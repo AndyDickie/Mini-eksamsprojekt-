@@ -53,15 +53,15 @@ class Controller extends Init {
     textAlign(LEFT);
     text("Elev:"+userName, 50, 65);
   }
-  
-  void navnLaere(){
-   textSize(50);
-   textAlign(LEFT);
-   text("Lære:"+userName, 50, 65); 
+
+  void navnLaere() {
+    textSize(50);
+    textAlign(LEFT);
+    text("Lære:"+userName, 50, 65);
   }
   void homeScreen() {
     if (userType == 1) {
-      background(0,0,139);
+      background(0, 0, 139);
       navnLaere();
       CreateTest.display();
       CreateClass.display();
@@ -73,7 +73,7 @@ class Controller extends Init {
       rect(50, 125, 900, 650);
       rectMode(CENTER);
     } else {
-      background(0,0,139);
+      background(0, 0, 139);
       navnElev();
       JoinClass.display();
       ViewClasses.display();
@@ -312,13 +312,28 @@ class Controller extends Init {
 
     if (state == 30) {
       if (userType == 0) {
-      JoinClass.display();
-      ViewClasses.display();
-      viewTests.display();
-      viewResults.display();
+        for (int i=0; i<k.size(); i++) {
+          try {
+            fill(0);
+            textSize(20);
+            text(k.get(i), width/2, height/20*(i+1)+250);
+          }
+          catch (Exception e) {
+          }
+        }
+        JoinClass.display();
+        ViewClasses.display();
+        viewTests.display();
+        viewResults.display();
       }
 
       if (userType == 1) {
+        for (int i=0; i<k1.size(); i++) {
+          println("sss");
+          fill(0);
+          text(k1.get(i), width/2, height/20*i+250);
+          text(c.getClassCode(k1.get(i)), width/2+200, height/20*i+250);
+        }
         ViewClasses.display();
         SeeTestAnswers.display();
         CreateTest.display();

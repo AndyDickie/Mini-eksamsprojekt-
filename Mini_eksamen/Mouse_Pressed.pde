@@ -7,6 +7,7 @@ String testNavn;
 StringList DineTests = new StringList();
 StringList testProcent = new StringList();
 StringList elevBesvarelse = new StringList();
+StringList k, k1;
 
 
 void mouseReleased() {
@@ -32,29 +33,16 @@ void mouseReleased() {
   //State ved ikke endnu
   if ((c.state == 3 || c.state == 2 || c.state == 4|| c.state==15|| c.state==30) && c.ViewClasses.hasClicked() && c.userType == 0) {
     c.ToggleAll(false);
-    StringList k = c.getUserClasses(c.getUserId(c.userName));
-    println(k);
-    for (int i=0; i<k.size(); i++) {
-      try {
-        fill(0);
-        textSize(20);
-        text(k.get(i), width/2, height/20*(i+1)+250);
-      }
-      catch (Exception e) {
-      }
+    background(0,0,139);
+     k = c.getUserClasses(c.userID);
       c.state = 30;
-    }
   }
   if ((c.state == 3 || c.state == 2 || c.state == 4|| c.state==15|| c.state==30) && c.ViewClasses.hasClicked() && c.userType == 1) {
-    StringList k1 = c.getTeacherClasses(c.getUserId(c.userName));
+    k1 = c.getTeacherClasses(c.getUserId(c.userName));
+    background(0,0,139);
     println(k1);
     //rect(50, 125, 900, 650);
-    for (int i=0; i<k1.size(); i++) {
-      println("sss");
-      fill(0);
-      text(k1.get(i), width/2, height/20*i+250);
-      text(c.getClassCode(k1.get(i)), width/2+200, height/20*i+250);
-    }
+   
     c.state = 30;
   }
   //State 2
