@@ -17,7 +17,7 @@ void controlEvent(ControlEvent theEvent) {
       text("Der skete en fejl, prøv igen", width/2, height-100);
     }
   }
-  if (theEvent.getName() == "Create User") {
+  if (theEvent.getName() == "Skab bruger") {
     background(0, 0, 139);
     String userName = cp5.get(Textfield.class, "Brugernavn").getText();
     String password = cp5.get(Textfield.class, "Kodeord").getText();
@@ -28,10 +28,12 @@ void controlEvent(ControlEvent theEvent) {
       cp5.get(Textfield.class, "Kodeord").clear();
       textSize(20);
       fill(255);
+      println("Sucessfuldt");
       text("Bruger oprettet succesfuldt", width/2, height-100);
     } else {
       textSize(20);
       fill(255);
+      println("Der skete en fejl, prøv igen");
       text("Der skete en fejl, prøv igen", width/2, height-100);
     }
   }
