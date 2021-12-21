@@ -58,6 +58,7 @@ class Controller extends Init {
     textSize(50);
     textAlign(LEFT);
     text("Lærer: "+userName, 50, 65);
+    textAlign(CENTER);
   }
   void homeScreen() {
     if (userType == 1) {
@@ -137,6 +138,7 @@ class Controller extends Init {
           teacherTests.addItem(testliste.get(i), getTestID(testliste.get(i)));
         }
       }
+            navnLaere();
     }
 
     if (state==6) {
@@ -296,6 +298,7 @@ class Controller extends Init {
       rectMode(CORNER);
       rect(50, 125, 900, 650);
       rectMode(CENTER);
+      navnLaere();
       //c.ToggleAll(false);
       //background(0, 0, 139);
       fill(255);
@@ -317,6 +320,7 @@ class Controller extends Init {
       CreateTest.display();
       CreateClass.display();
       AssignClass.display();
+      navnLaere();
       fill(192);
       rectMode(CORNER);
       rect(50, 125, 900, 650);
