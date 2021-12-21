@@ -36,6 +36,7 @@ void mouseReleased() {
   //State ved ikke endnu
   if ((c.state == 3 || c.state == 2 || c.state == 4|| c.state==15|| c.state==30) && c.ViewClasses.hasClicked() && c.userType == 0) {
     c.ToggleAll(false);
+    cp5.getController("DineKlasser").hide();
     background(0,0,139);
      k = c.getUserClasses(c.userID);
       c.state = 30;

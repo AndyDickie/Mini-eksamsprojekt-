@@ -313,6 +313,16 @@ class Controller extends Init {
 
     if (state == 30) {
       if (userType == 0) {
+        fill(192);
+        navnElev();
+        JoinClass.display();
+        ViewClasses.display();
+        viewTests.display();
+        viewResults.display();
+        fill(192);
+        rectMode(CORNER);
+        rect(50, 125, 900, 650);
+        rectMode(CENTER);
         for (int i=0; i<k.size(); i++) {
           try {
             fill(0);
@@ -322,24 +332,27 @@ class Controller extends Init {
           catch (Exception e) {
           }
         }
-        JoinClass.display();
-        ViewClasses.display();
-        viewTests.display();
-        viewResults.display();
-      }
+
+       }
 
       if (userType == 1) {
+        fill(192);
+        navnLaere();
+        ViewClasses.display();
+        SeeTestAnswers.display();
+        CreateTest.display();
+        CreateClass.display();
+        AssignClass.display();
+        fill(192);
+        rectMode(CORNER);
+        rect(50, 125, 900, 650);
+        rectMode(CENTER);
         for (int i=0; i<k1.size(); i++) {
           println("sss");
           fill(0);
           text(k1.get(i), width/2, height/20*i+250);
           text(c.getClassCode(k1.get(i)), width/2+200, height/20*i+250);
         }
-        ViewClasses.display();
-        SeeTestAnswers.display();
-        CreateTest.display();
-        CreateClass.display();
-        AssignClass.display();
       }
     }
   }
