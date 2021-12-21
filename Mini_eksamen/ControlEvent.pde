@@ -2,8 +2,8 @@ void controlEvent(ControlEvent theEvent) {
   if (theEvent.getName() == "Login") {
     background(0,0,139);
     println("login er asdasdw");
-    String userName = cp5.get(Textfield.class, "Username").getText();
-    String password = cp5.get(Textfield.class, "Password").getText();
+    String userName = cp5.get(Textfield.class, "Brugernavn").getText();
+    String password = cp5.get(Textfield.class, "Kodeord").getText();
     println(" textInput 1 = " + userName);
     println(" textInput 2 = " + password);
     println();
@@ -26,14 +26,14 @@ void controlEvent(ControlEvent theEvent) {
   }
   if (theEvent.getName() == "Create User") {
     background(0,0,139);
-    String userName = cp5.get(Textfield.class, "Username").getText();
-    String password = cp5.get(Textfield.class, "Password").getText();
-    int type = int(cp5.get(Toggle.class, "Teacher/Student").getValue());
+    String userName = cp5.get(Textfield.class, "Brugernavn").getText();
+    String password = cp5.get(Textfield.class, "Kodeord").getText();
+    int type = int(cp5.get(Toggle.class, "Laerer/Elev").getValue());
     println(type);
     if (password != "" && userName != "") {
       c.createUser(userName, password, type);
-      cp5.get(Textfield.class, "Username").clear();
-      cp5.get(Textfield.class, "Password").clear();
+      cp5.get(Textfield.class, "Brugernavn").clear();
+      cp5.get(Textfield.class, "Kodeord").clear();
       textSize(20);
       fill(255);
       text("Bruger oprettet succesfuldt",width/2,height-100);
@@ -43,9 +43,9 @@ void controlEvent(ControlEvent theEvent) {
       text("Der skete en fejl, prøv igen",width/2,height-100);
     }
   }
-  if (theEvent.getName() == "Join Class") {
+  if (theEvent.getName() == "Tilslut klasse") {
     background(0,0,139);
-    String classID = cp5.get(Textfield.class, "ClassID").getText();
+    String classID = cp5.get(Textfield.class, "Klasse kode").getText();
     try {
       c.userJoinClass(c.getUserId(c.userName), classID);
       c.ToggleClass(false);
@@ -56,16 +56,16 @@ void controlEvent(ControlEvent theEvent) {
       println("Something went wrong");
     }
   }
-  if (theEvent.getName() == "Show Password") {
-    Textfield pass = cp5.get(Textfield.class, "Password");
+  if (theEvent.getName() == "Vis kodeord") {
+    Textfield pass = cp5.get(Textfield.class, "Kodeord");
     passMode = !passMode;
     pass.setPasswordMode(passMode);
   }
   
-  if (theEvent.getName() == "Create Class"){
+  if (theEvent.getName() == "Skab klasse"){
    background(0,0,139);
    println("saskdaskd");
-   String className = cp5.get(Textfield.class, "Class Name").getText();
+   String className = cp5.get(Textfield.class, "Klasse navn").getText();
    try{
    c.createClass(className, c.getUserId(c.userName));
    c.ToggleAll(false);

@@ -14,11 +14,11 @@ class Init extends SQL {
   }
   void load() {
     //Join class bang & textfield
-    class_id = cp5.addTextfield("ClassID").setPosition(width/2, height/3).setSize(200, 40).setAutoClear(false).setFont(f).setVisible(false);
-    cp5.addButton("Join Class").setPosition(width/2+220, height/3).setSize(80, 40).setVisible(false);
+    class_id = cp5.addTextfield("Klasse kode").setPosition(width/2, height/3).setSize(200, 40).setAutoClear(false).setFont(f).setVisible(false);
+    cp5.addButton("Tilslut klasse").setPosition(width/2+220, height/3).setSize(80, 40).setVisible(false);
 
     //login bangs
-    cp5.addButton("Show Password").setPosition(width/2+78, height/2+30).setSize(80, 40).setVisible(true);
+    cp5.addButton("Vis kodeord").setPosition(width/2+78, height/2+30).setSize(80, 40).setVisible(true);
     cp5.addButton("Login").setPosition(width/2+78, height/2+190).setSize(80, 40).setVisible(true);
     cp5.setColorBackground(color(128)); 
     cp5.setColorForeground(color(105));
@@ -26,9 +26,9 @@ class Init extends SQL {
 
 
     //textfields
-    username_field = cp5.addTextfield("Username").setPosition(width/2-150, height/2-50).setSize(200, 40).setAutoClear(false).setFont(f).setVisible(true);
+    username_field = cp5.addTextfield("Brugernavn").setPosition(width/2-150, height/2-50).setSize(200, 40).setAutoClear(false).setFont(f).setVisible(true);
     username_field.setFocus(false);
-    pass_field = cp5.addTextfield("Password").setPosition(width/2-150, height/2+30).setSize(200, 40).setAutoClear(false).setFont(f).setVisible(true);
+    pass_field = cp5.addTextfield("Kodeord").setPosition(width/2-150, height/2+30).setSize(200, 40).setAutoClear(false).setFont(f).setVisible(true);
     pass_field.setFocus(false);
     pass_field.setPasswordMode(passMode);
     
@@ -75,19 +75,19 @@ class Init extends SQL {
     teacherTestsID = cp5.addScrollableList("DineTest").setPosition(width/2, 190).setSize(400, 300).setFont(f).setBarHeight(40).setItemHeight(30).setVisible(false);
     
     //create user bangs
-    cp5.addButton("Create User").setPosition(width/2+78, height/2+140).setSize(80, 40).setVisible(true);
-    type = cp5.addToggle("Teacher/Student").setPosition(width/2-165, height/2-140).setSize(80, 40).setValue(false).setMode(ControlP5.SWITCH).setVisible(true);
+    cp5.addButton("Skab bruger").setPosition(width/2+78, height/2+140).setSize(80, 40).setVisible(true);
+    type = cp5.addToggle("Laerer/Elev").setPosition(width/2-165, height/2-140).setSize(80, 40).setValue(false).setMode(ControlP5.SWITCH).setVisible(true);
     
     //Create class textfield
-    cp5.addTextfield("Class Name").setPosition(width/2-100, height/2).setSize(200,40).setFont(f).setVisible(false);
-    cp5.addButton("Create Class").setPosition(width/2+110, height/2).setSize(80,40).setVisible(false);
+    cp5.addTextfield("Klasse navn").setPosition(width/2-100, height/2).setSize(200,40).setFont(f).setVisible(false);
+    cp5.addButton("Skab klasse").setPosition(width/2+110, height/2).setSize(80,40).setVisible(false);
     println("load");      
   }
 
   void ToggleLogin(boolean vis) {
-    toggle("Username", vis);
-    toggle("Password", vis);
-    toggle("Show Password", vis);
+    toggle("Brugernavn", vis);
+    toggle("Kodeord", vis);
+    toggle("Vis kodeord", vis);
     toggle("Login", vis);
   }
 
@@ -103,40 +103,39 @@ class Init extends SQL {
   }
 
   void ToggleRegister(boolean vis) {
-    toggle("Create User", vis);
-    toggle("Teacher/Student", vis);
-    toggle("Username", vis);
-    toggle("Password", vis);
+    toggle("Skab bruger", vis);
+    toggle("Laerer/Elev", vis);
+    toggle("Brugernavn", vis);
+    toggle("Kodeord", vis);
   }
 
   void ToggleClass(boolean vis) {
-    //cp5.getController("Join Class").setVisible(vis);
-    //cp5.getController("ClassID").setVisible(vis);
-    toggle("Join Class", vis);
-    toggle("ClassID", vis);
+    //cp5.getController("Tilslut klasse").setVisible(vis);
+    //cp5.getController("Klasse kode").setVisible(vis);
+    toggle("Tilslut klasse", vis);
+    toggle("Klasse kode", vis);
   }
   
   void ToggleCreateClass(boolean vis){
-    toggle("Class Name", vis);
-    toggle("Create Class", vis);
+    toggle("Klasse navn", vis);
+    toggle("Skab klasse", vis);
   }
 
   void ToggleAll(boolean vis) {
-    toggle("Class Name", vis);
-    toggle("Create Class", vis);
+    toggle("Klasse navn", vis);
+    toggle("Skab klasse", vis);
     toggle("DineKlasser", vis);
     toggle("DinKlassesTests", vis);
     toggle("DineTest", vis);
-    toggle("Username", vis);
-    toggle("Password", vis);
-    toggle("Show Password", vis);
+    toggle("Brugernavn", vis);
+    toggle("Kodeord", vis);
+    toggle("Vis kodeord", vis);
     toggle("Login", vis);
-    toggle("Create User", vis);
-    toggle("Teacher/Student", vis);
-    toggle("Join Class", vis);
-    toggle("ClassID", vis);
-    toggle("Class Name", vis);
-    toggle("Create Class", vis);
+    toggle("Skab bruger", vis);
+    toggle("Laerer/Elev", vis);
+    toggle("Tilslut klasse", vis);
+    toggle("Klasse kode", vis);
+    toggle("Skab klasse", vis);
     toggle("1 svar",vis);
     toggle("2 svar", vis);
     toggle("3 svar", vis);
