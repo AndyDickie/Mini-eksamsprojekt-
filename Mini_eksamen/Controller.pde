@@ -147,12 +147,10 @@ class Controller extends Init {
       textAlign(CORNER);
       rykNedaf=130;
       background(0, 0, 139);
-      //fill(255);
-      //rect(width-300, 20, 280, 100);
-      fill(0);
-      //text("Se hvordan elevernes svar", width-290, 50);
-      //text("fordeler sig ved at trykke", width-285, 80);
-      //text("på elevens navn", width-240, 110);
+      fill(192);
+      rectMode(CORNER);
+      rect(50, 125, 900, 650);
+   
       fill(255);
       textSize(40);
       text("Din valgte test er: "+DinValgteTestNavn, 30, 70);
@@ -229,6 +227,10 @@ class Controller extends Init {
       textAlign(CORNER);
       rykNedaf=150;
       background(0, 0, 139);
+      fill(192);
+ 
+      rect(50, 125, 900, 650);
+
       fill(255);
       textSize(50);
       text("Din valgte klasse er: "+DinValgteKlasseNavn, 30, 70);
