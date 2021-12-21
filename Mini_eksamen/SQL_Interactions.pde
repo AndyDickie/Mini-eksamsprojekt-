@@ -45,7 +45,6 @@ class SQL {
     if (getClassName(int(classID)) != null) {
       db.query("INSERT INTO 'Elev-tilknytning' VALUES ('"+classID+"', " + userId + ")");
     } else {
-      println("FEJL");
     }
   }
 

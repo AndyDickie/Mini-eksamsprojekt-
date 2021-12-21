@@ -47,9 +47,6 @@ void mouseReleased() {
     c.ToggleAll(false);
     k1 = c.getTeacherClasses(c.getUserId(c.userName));
     background(0, 0, 139);
-    println(k1);
-    //rect(50, 125, 900, 650);
-
     c.state = 30;
   }
   //State 2
@@ -96,9 +93,7 @@ void mouseReleased() {
       try {
         teacherTestsID.addItem(testListName.get(i), testList.get(i));
       }
-      catch(Exception e) {
-        println("findes ikke");
-      }
+      catch(Exception e) {}
     }
     c.state=20;
   }
@@ -202,9 +197,7 @@ void mouseReleased() {
       try {
         c.elever.put(c.getUserName(int(elevBesvarelse.get(i))), c.getUserResults((int)selectedTest, int(elevBesvarelse.get(i))));
       }
-      catch(Exception e) {
-        println("Ikke besvaret");
-      }
+      catch(Exception e) {}
     }
 
     c.ToggleTeacherTests(false);

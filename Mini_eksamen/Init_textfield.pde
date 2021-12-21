@@ -87,8 +87,7 @@ class Init extends SQL {
     skabklasse =cp5.addTextfield("Klasse navn").setPosition(width/2-100, height/2).setSize(200,40).setFont(f).setVisible(false);
     skabklasse.setColorBackground(color(255)); 
     skabklasse.setColorValueLabel(0);
-    cp5.addButton("Skab klasse").setPosition(width/2+110, height/2).setSize(80,40).setVisible(false);
-    println("load");      
+    cp5.addButton("Skab klasse").setPosition(width/2+110, height/2).setSize(80,40).setVisible(false);  
   }
 
   void ToggleLogin(boolean vis) {
@@ -99,7 +98,6 @@ class Init extends SQL {
   }
 
   void ToggleTeacherTests(boolean vis) {
-    println("Toggle TeacherTestList");
     if (vis) {
       cp5.getController("DinKlassesTests").show();
       cp5.getController("DineKlasser").show();
