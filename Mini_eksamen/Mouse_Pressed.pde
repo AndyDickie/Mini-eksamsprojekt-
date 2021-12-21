@@ -41,24 +41,23 @@ void mouseReleased() {
     //Lærer
    //State 13
   if ((c.state == 13 || c.state == 8 || c.state == 5 || c.state==3 || c.state==20) && c.ViewClasses.hasClicked() && c.userType == 1) {
-    
+    c.state=13;
   }
   //State 8
   if ((c.state == 13 || c.state == 8 || c.state == 5 || c.state==3 || c.state==20) && c.SeeTestAnswers.hasClicked() && c.userType == 1) {
-   
- 
+    c.state=8;
   }
   //State 5
   if ((c.state == 13 || c.state == 8 || c.state == 5 || c.state==3 || c.state==20) && c.CreateTest.hasClicked() && c.userType == 1) {
-    
+    c.state=5;
   }
   //State 3
   if ((c.state == 13 || c.state == 8 || c.state == 5 || c.state==3 || c.state==20) && c.CreateClass.hasClicked() && c.userType == 1) {
-    
+    c.state=3;
   }
   //State 20
   if ((c.state == 13 || c.state == 8 || c.state == 5 || c.state==3 || c.state==20) && c.AssignClass.hasClicked() && c.userType == 1) {
-    
+    c.state=20;
   }
   if (c.state==15 && c.Continue.hasClicked() && c.userType==0 && selectedClass!=null) {
     c.ToggleAll(false);

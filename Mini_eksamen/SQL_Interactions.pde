@@ -113,6 +113,14 @@ class SQL {
       o.append(ting);
       println(ting);
     }
+    for (int i=0; i<o.size(); i++) {
+      for (int j=i+1; j<o.size(); j++) {
+        if (o.get(i).equals(o.get(j))==true) {
+          o.remove(j);
+          j--;
+        }
+      }
+    }
     return o;
   }
   StringList getTestName() {
@@ -123,6 +131,14 @@ class SQL {
       String ting = db.getString("Navn");
       o.append(ting);
       println(ting);
+    }
+    for (int i=0; i<o.size(); i++) {
+      for (int j=i+1; j<o.size(); j++) {
+        if (o.get(i).equals(o.get(j))==true) {
+          o.remove(j);
+          j--;
+        }
+      }
     }
     return o;
   }
